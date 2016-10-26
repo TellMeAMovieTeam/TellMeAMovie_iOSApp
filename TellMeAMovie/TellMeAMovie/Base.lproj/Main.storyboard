@@ -157,6 +157,7 @@
                                                 <slider opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="KLt-ok-G21">
                                                     <frame key="frameInset" minX="90" minY="6" width="268" height="31"/>
                                                     <connections>
+                                                        <action selector="startRatingSliderAction:" destination="MDS-ak-1cT" eventType="valueChanged" id="18c-Vs-HrF"/>
                                                         <action selector="startYearSliderAction:" destination="MDS-ak-1cT" eventType="valueChanged" id="QH7-t3-Vmc"/>
                                                     </connections>
                                                 </slider>
@@ -190,6 +191,7 @@
                                                 <slider opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="mSb-vy-3oC">
                                                     <frame key="frameInset" minX="90" minY="6" width="268" height="31"/>
                                                     <connections>
+                                                        <action selector="endRatingSliderAction:" destination="MDS-ak-1cT" eventType="valueChanged" id="8M1-uJ-HBe"/>
                                                         <action selector="startYearSliderAction:" destination="MDS-ak-1cT" eventType="valueChanged" id="t6h-Vp-jBF"/>
                                                     </connections>
                                                 </slider>
@@ -232,8 +234,12 @@
                     <connections>
                         <outlet property="detailCountry" destination="JqO-DN-9R5" id="y39-hY-LTJ"/>
                         <outlet property="detailGenre" destination="jkh-7w-11v" id="Y9y-1u-PZF"/>
+                        <outlet property="endRatingSlider" destination="mSb-vy-3oC" id="eX5-5b-nSW"/>
+                        <outlet property="endRatingTextBox" destination="ig8-bk-bLF" id="2Mm-id-AjE"/>
                         <outlet property="endYearSlider" destination="Zef-na-rnu" id="jot-VM-LBk"/>
                         <outlet property="endYearTextBox" destination="5Az-zA-89P" id="w6H-hE-FJZ"/>
+                        <outlet property="startRatingSlider" destination="KLt-ok-G21" id="bEZ-ey-rB4"/>
+                        <outlet property="startRatingTextBox" destination="Qg8-Id-92y" id="Dpr-O4-695"/>
                         <outlet property="startYearSlider" destination="Ybe-U9-xvf" id="tns-jM-e3K"/>
                         <outlet property="startYearTextBox" destination="Aoe-QV-6NW" id="2fg-SF-3zh"/>
                     </connections>

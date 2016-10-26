@@ -33,18 +33,42 @@ class SettingsMenuController: UITableViewController {
     @IBAction func startYearSliderAction(_ sender: AnyObject) {
         
         self.startYearTextBox.text = String(lroundf(self.startYearSlider.value))
+        self.startYearSlider.maximumValue = self.endYearSlider.value
         
     }
+    
     
     @IBOutlet weak var endYearSlider: UISlider!
     
     @IBAction func endYearSliderAction(_ sender: AnyObject) {
         
         self.endYearTextBox.text = String(lroundf(self.endYearSlider.value))
-        
+        self.endYearSlider.minimumValue = self.startYearSlider.value
     }
     
     @IBOutlet weak var endYearTextBox: UILabel!
+    
+    
+    @IBOutlet weak var startRatingSlider: UISlider!
+    @IBAction func startRatingSliderAction(_ sender: AnyObject) {
+        
+        self.startRatingTextBox.text = String(roundf(100*startRatingSlider.value)/100)
+        self.startRatingSlider.maximumValue = self.endRatingSlider.value
+    }
+    
+    @IBOutlet weak var startRatingTextBox: UILabel!
+    
+    
+    @IBOutlet weak var endRatingSlider: UISlider!
+    
+    @IBAction func endRatingSliderAction(_ sender: AnyObject) {
+        
+        self.endRatingTextBox.text = String(roundf(100*endRatingSlider.value)/100)
+        self.endRatingSlider.minimumValue = self.startRatingSlider.value
+        
+        
+    }
+    @IBOutlet weak var endRatingTextBox: UILabel!
     
     /// Анвинд с сохраненнием выбранного жанра
     ///
@@ -80,6 +104,15 @@ class SettingsMenuController: UITableViewController {
         self.endYearTextBox.text = String(lroundf(endYearSlider.maximumValue))
         self.endYearSlider.value = self.endYearSlider.maximumValue
         
+        self.startRatingSlider.minimumValue = 0
+        self.startRatingSlider.maximumValue = 10
+        self.startRatingSlider.value = self.startRatingSlider.minimumValue
+        self.startRatingTextBox.text = String(lroundf(startRatingSlider.minimumValue))
+        
+        self.endRatingSlider.minimumValue = 0
+        self.endRatingSlider.maximumValue = 10
+        self.endRatingSlider.value = self.endRatingSlider.maximumValue
+        self.endRatingTextBox.text = String(lroundf(endRatingSlider.maximumValue))
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false

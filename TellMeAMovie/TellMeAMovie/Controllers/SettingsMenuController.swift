@@ -20,10 +20,30 @@ class SettingsMenuController: UITableViewController {
         }
     }
     
+    var country:String = "Нет" {
+        didSet {
+            detailCountry.text? = country
+        }
+    }
+    
+    /// Анвинд с сохраненнием выбранного жанра
+    ///
+    /// - parameter segue: Сегвей, который делает unwind
     @IBAction func unwindWithSelectedGenre(segue:UIStoryboardSegue) {
         if let genreTableViewController = segue.source as? GenreTableViewController,
             let selectedGenre = genreTableViewController.selectedGenre {
             genre = selectedGenre
+        }
+    }
+    
+    
+    /// Анвинд с сохраненнием выбранной страны
+    ///
+    /// - parameter segue: Сегвей, который делает unwind
+    @IBAction func unwindWithSelectedCountry(segue:UIStoryboardSegue) {
+        if let countrysTableViewController = segue.source as? CountrysTableViewController,
+            let selectedCountry = countrysTableViewController.selectedCountry {
+            country = selectedCountry
         }
     }
     

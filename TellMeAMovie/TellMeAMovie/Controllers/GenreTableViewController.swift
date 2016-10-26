@@ -11,6 +11,7 @@ import UIKit
 class GenreTableViewController: UITableViewController {
     
     var genres:[String] = [
+        "Нет",
         "Боевик",
         "Хоррор",
         "Триллер",
@@ -20,6 +21,8 @@ class GenreTableViewController: UITableViewController {
     
     var selectedGenreIndex:Int?
     
+    
+    /// Получает выбранный жанр
     var selectedGenre:String? {
         didSet {
             if let genre = selectedGenre {

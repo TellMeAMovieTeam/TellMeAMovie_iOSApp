@@ -6,10 +6,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Settings Menu Controller-->
+        <!--Настройки-->
         <scene sceneID="J1S-ZU-vYT">
             <objects>
-                <tableViewController id="MDS-ak-1cT" customClass="SettingsMenuController" customModule="TellMeAMovie" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="Настройки" id="MDS-ak-1cT" customClass="SettingsMenuController" customModule="TellMeAMovie" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="U9E-BM-GEy">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -41,7 +41,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="mGx-Du-o1W" kind="show" id="4ky-cr-lj3"/>
+                                            <segue destination="mGx-Du-o1W" kind="show" identifier="PickGenre" id="5DS-L3-bCG"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -72,7 +72,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="3ft-FB-jij" kind="show" id="yXq-RZ-mOa"/>
+                                            <segue destination="3ft-FB-jij" kind="show" identifier="PickCountry" id="M3Z-60-z8v"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -134,12 +134,12 @@
                     <navigationItem key="navigationItem" id="Nwz-lp-Vgp">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="cLR-c5-GYZ">
                             <connections>
-                                <segue destination="aLc-41-bgb" kind="unwind" unwindAction="cancelSettingsToMainMenuWithSegue:" id="PN2-Gv-R4k"/>
+                                <segue destination="aLc-41-bgb" kind="unwind" identifier="CancelSettings" unwindAction="cancelSettingsToMainMenuWithSegue:" id="PN2-Gv-R4k"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="J5y-7M-wja">
                             <connections>
-                                <segue destination="aLc-41-bgb" kind="unwind" unwindAction="saveSettingsToMainMenuWithSegue:" id="Aku-MO-GTO"/>
+                                <segue destination="aLc-41-bgb" kind="unwind" identifier="SaveSettings" unwindAction="saveSettingsToMainMenuWithSegue:" id="Aku-MO-GTO"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -153,10 +153,10 @@
             </objects>
             <point key="canvasLocation" x="2412" y="139"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Страна-->
         <scene sceneID="JUy-bk-oyv">
             <objects>
-                <tableViewController id="3ft-FB-jij" sceneMemberID="viewController">
+                <tableViewController title="Страна" id="3ft-FB-jij" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="BdJ-MG-nOD">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -181,10 +181,10 @@
             </objects>
             <point key="canvasLocation" x="3148" y="459"/>
         </scene>
-        <!--Genre Table View Controller-->
+        <!--Жанр-->
         <scene sceneID="z4E-xi-atu">
             <objects>
-                <tableViewController id="mGx-Du-o1W" customClass="GenreTableViewController" customModule="TellMeAMovie" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="Жанр" id="mGx-Du-o1W" customClass="GenreTableViewController" customModule="TellMeAMovie" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="y36-em-JnX">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -206,6 +206,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="QmC-ge-qbs" kind="unwind" identifier="SaveSelectedGenre" unwindAction="unwindWithSelectedGenreWithSegue:" id="qMb-kD-ETH"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -215,6 +218,7 @@
                     </tableView>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7cj-vC-mkW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="QmC-ge-qbs" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="3148" y="-232"/>
         </scene>

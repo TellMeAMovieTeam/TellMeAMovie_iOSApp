@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -17,7 +18,7 @@
                         <sections>
                             <tableViewSection headerTitle="Жанр" id="o2K-4F-3ru">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="GenreCell" textLabel="gUn-Bw-UQR" detailTextLabel="jkh-7w-11v" style="IBUITableViewCellStyleValue1" id="LfJ-w3-jUy">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="GenreCell" textLabel="gUn-Bw-UQR" detailTextLabel="jkh-7w-11v" style="IBUITableViewCellStyleValue1" id="LfJ-w3-jUy">
                                         <rect key="frame" x="0.0" y="92" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LfJ-w3-jUy" id="dib-Mq-8HW">
@@ -48,7 +49,7 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="Страна" id="k3p-JG-8tH">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="CountryCell" textLabel="Umi-Tf-gtc" detailTextLabel="JqO-DN-9R5" style="IBUITableViewCellStyleValue1" id="2o5-YX-DFv">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="CountryCell" textLabel="Umi-Tf-gtc" detailTextLabel="JqO-DN-9R5" style="IBUITableViewCellStyleValue1" id="2o5-YX-DFv">
                                         <rect key="frame" x="0.0" y="164" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2o5-YX-DFv" id="lnI-rK-mrk">
@@ -79,48 +80,133 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="Минимальный год" id="z82-PQ-Gf1">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Mxq-0M-w8f">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="Mxq-0M-w8f">
                                         <rect key="frame" x="0.0" y="236" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Mxq-0M-w8f" id="iwi-66-foX">
                                             <frame key="frameInset" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <slider opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="Ybe-U9-xvf">
+                                                    <frame key="frameInset" minX="90" minY="6" width="268" height="31"/>
+                                                    <connections>
+                                                        <action selector="startYearSliderAction:" destination="MDS-ak-1cT" eventType="valueChanged" id="fPq-Ky-Kip"/>
+                                                    </connections>
+                                                </slider>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Год" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aoe-QV-6NW">
+                                                    <frame key="frameInset" minX="16" minY="10" width="68" height="20"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Aoe-QV-6NW" firstAttribute="leading" secondItem="iwi-66-foX" secondAttribute="leadingMargin" constant="8" id="IGh-mC-VBf"/>
+                                                <constraint firstItem="Ybe-U9-xvf" firstAttribute="top" secondItem="iwi-66-foX" secondAttribute="top" constant="6" id="KtH-Nf-Ubn"/>
+                                                <constraint firstAttribute="trailing" secondItem="Ybe-U9-xvf" secondAttribute="trailing" constant="19" id="Ytr-H6-7Vp"/>
+                                                <constraint firstItem="Aoe-QV-6NW" firstAttribute="top" secondItem="iwi-66-foX" secondAttribute="topMargin" constant="2" id="jUX-RU-RrB"/>
+                                                <constraint firstItem="Ybe-U9-xvf" firstAttribute="leading" secondItem="Aoe-QV-6NW" secondAttribute="trailing" constant="8" id="wXt-ub-3kc"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Максимальный год" id="BLe-7d-JwA">
+                            <tableViewSection headerTitle="Максимальный год" id="vry-eC-iht">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="oVD-P3-5jz">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="BKB-Az-1qy">
                                         <rect key="frame" x="0.0" y="308" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="oVD-P3-5jz" id="UWQ-ua-Ef1">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BKB-Az-1qy" id="94i-eD-K0W">
                                             <frame key="frameInset" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <slider opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="Zef-na-rnu">
+                                                    <frame key="frameInset" minX="90" minY="6" width="268" height="31"/>
+                                                    <connections>
+                                                        <action selector="endYearSliderAction:" destination="MDS-ak-1cT" eventType="valueChanged" id="D70-vj-5VC"/>
+                                                        <action selector="startYearSliderAction:" destination="MDS-ak-1cT" eventType="valueChanged" id="Eek-OG-jJw"/>
+                                                    </connections>
+                                                </slider>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Год" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Az-zA-89P">
+                                                    <frame key="frameInset" minX="16" minY="10" width="68" height="20"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Zef-na-rnu" firstAttribute="leading" secondItem="5Az-zA-89P" secondAttribute="trailing" constant="8" id="8Yh-y7-AVP"/>
+                                                <constraint firstItem="Zef-na-rnu" firstAttribute="top" secondItem="94i-eD-K0W" secondAttribute="top" constant="6" id="Kn7-KE-CQl"/>
+                                                <constraint firstItem="5Az-zA-89P" firstAttribute="leading" secondItem="94i-eD-K0W" secondAttribute="leadingMargin" constant="8" id="Yn5-n1-uZB"/>
+                                                <constraint firstItem="5Az-zA-89P" firstAttribute="top" secondItem="94i-eD-K0W" secondAttribute="topMargin" constant="2" id="tUp-gk-mSR"/>
+                                                <constraint firstAttribute="trailing" secondItem="Zef-na-rnu" secondAttribute="trailing" constant="19" id="ysd-xZ-ixB"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Минимальная оценка" id="vH5-5H-Cby">
+                            <tableViewSection headerTitle="Минимальная оценка" id="D6O-e4-fNo">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="LJZ-fE-mWZ">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="eWb-76-d1q">
                                         <rect key="frame" x="0.0" y="380" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LJZ-fE-mWZ" id="YzM-7j-JJl">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eWb-76-d1q" id="yYg-Mm-N9u">
                                             <frame key="frameInset" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <slider opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="KLt-ok-G21">
+                                                    <frame key="frameInset" minX="90" minY="6" width="268" height="31"/>
+                                                    <connections>
+                                                        <action selector="startYearSliderAction:" destination="MDS-ak-1cT" eventType="valueChanged" id="QH7-t3-Vmc"/>
+                                                    </connections>
+                                                </slider>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Оценка" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qg8-Id-92y">
+                                                    <frame key="frameInset" minX="16" minY="10" width="68" height="20"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="KLt-ok-G21" secondAttribute="trailing" constant="19" id="9ey-qg-d4b"/>
+                                                <constraint firstItem="Qg8-Id-92y" firstAttribute="leading" secondItem="yYg-Mm-N9u" secondAttribute="leadingMargin" constant="8" id="BMd-5F-zh3"/>
+                                                <constraint firstItem="KLt-ok-G21" firstAttribute="top" secondItem="yYg-Mm-N9u" secondAttribute="top" constant="6" id="cPQ-dr-aS7"/>
+                                                <constraint firstItem="KLt-ok-G21" firstAttribute="leading" secondItem="Qg8-Id-92y" secondAttribute="trailing" constant="8" id="dhe-pw-hkV"/>
+                                                <constraint firstItem="Qg8-Id-92y" firstAttribute="top" secondItem="yYg-Mm-N9u" secondAttribute="topMargin" constant="2" id="qPT-6d-A6r"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Максимальная оценка" id="684-Ai-utW">
+                            <tableViewSection headerTitle="Максимальная оценка" id="42n-ES-h97">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Saa-bD-08o">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="Ius-ol-s1B">
                                         <rect key="frame" x="0.0" y="452" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Saa-bD-08o" id="HmM-hq-Fyc">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ius-ol-s1B" id="weh-Gv-mvs">
                                             <frame key="frameInset" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <slider opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="mSb-vy-3oC">
+                                                    <frame key="frameInset" minX="90" minY="6" width="268" height="31"/>
+                                                    <connections>
+                                                        <action selector="startYearSliderAction:" destination="MDS-ak-1cT" eventType="valueChanged" id="t6h-Vp-jBF"/>
+                                                    </connections>
+                                                </slider>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Оценка" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ig8-bk-bLF">
+                                                    <frame key="frameInset" minX="16" minY="10" width="68" height="20"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="ig8-bk-bLF" firstAttribute="leading" secondItem="weh-Gv-mvs" secondAttribute="leadingMargin" constant="8" id="At7-zi-u3Z"/>
+                                                <constraint firstItem="ig8-bk-bLF" firstAttribute="top" secondItem="weh-Gv-mvs" secondAttribute="topMargin" constant="2" id="MB7-ph-5Ig"/>
+                                                <constraint firstItem="mSb-vy-3oC" firstAttribute="leading" secondItem="ig8-bk-bLF" secondAttribute="trailing" constant="8" id="oeX-QJ-hhU"/>
+                                                <constraint firstItem="mSb-vy-3oC" firstAttribute="top" secondItem="weh-Gv-mvs" secondAttribute="top" constant="6" id="vz7-nZ-efC"/>
+                                                <constraint firstAttribute="trailing" secondItem="mSb-vy-3oC" secondAttribute="trailing" constant="19" id="wcm-1e-72Y"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
@@ -146,12 +232,16 @@
                     <connections>
                         <outlet property="detailCountry" destination="JqO-DN-9R5" id="y39-hY-LTJ"/>
                         <outlet property="detailGenre" destination="jkh-7w-11v" id="Y9y-1u-PZF"/>
+                        <outlet property="endYearSlider" destination="Zef-na-rnu" id="jot-VM-LBk"/>
+                        <outlet property="endYearTextBox" destination="5Az-zA-89P" id="w6H-hE-FJZ"/>
+                        <outlet property="startYearSlider" destination="Ybe-U9-xvf" id="tns-jM-e3K"/>
+                        <outlet property="startYearTextBox" destination="Aoe-QV-6NW" id="2fg-SF-3zh"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PUe-x2-Pdw" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="aLc-41-bgb" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2412" y="139"/>
+            <point key="canvasLocation" x="2412" y="138.98050974512745"/>
         </scene>
         <!--Страна-->
         <scene sceneID="JUy-bk-oyv">

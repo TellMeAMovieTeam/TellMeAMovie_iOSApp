@@ -26,6 +26,26 @@ class SettingsMenuController: UITableViewController {
         }
     }
     
+    @IBOutlet weak var startYearSlider: UISlider!
+    
+    @IBOutlet weak var startYearTextBox: UILabel!
+    
+    @IBAction func startYearSliderAction(_ sender: AnyObject) {
+        
+        self.startYearTextBox.text = String(lroundf(self.startYearSlider.value))
+        
+    }
+    
+    @IBOutlet weak var endYearSlider: UISlider!
+    
+    @IBAction func endYearSliderAction(_ sender: AnyObject) {
+        
+        self.endYearTextBox.text = String(lroundf(self.endYearSlider.value))
+        
+    }
+    
+    @IBOutlet weak var endYearTextBox: UILabel!
+    
     /// Анвинд с сохраненнием выбранного жанра
     ///
     /// - parameter segue: Сегвей, который делает unwind
@@ -49,6 +69,17 @@ class SettingsMenuController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.startYearSlider.minimumValue = 1950
+        self.startYearSlider.maximumValue = 2016
+        self.startYearSlider.value = self.startYearSlider.minimumValue
+        self.startYearTextBox.text = String(lroundf(startYearSlider.minimumValue))
+        
+        self.endYearSlider.minimumValue = 1950
+        self.endYearSlider.maximumValue = 2016
+        self.endYearTextBox.text = String(lroundf(endYearSlider.maximumValue))
+        self.endYearSlider.value = self.endYearSlider.maximumValue
+        
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false

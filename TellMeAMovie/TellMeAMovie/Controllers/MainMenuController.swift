@@ -9,11 +9,16 @@
 import UIKit
 
 class MainMenuController: UITableViewController {
+    @IBOutlet weak var titleRu: UILabel!
+    
+    @IBOutlet weak var titleEn: UILabel!
+    
     
     @IBAction func cancelSettingsToMainMenu(segue:UIStoryboardSegue) {
     }
     
     @IBAction func saveSettingsToMainMenu(segue:UIStoryboardSegue) {
+
     }
 
     override func viewDidLoad() {

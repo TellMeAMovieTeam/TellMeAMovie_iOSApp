@@ -3,7 +3,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -416,10 +415,10 @@
                                             <frame key="frameInset" width="375" height="244"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" pagingEnabled="YES" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="lZM-OE-AdS">
+                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" pagingEnabled="YES" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="lZM-OE-AdS">
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" secondItem="lZM-OE-AdS" secondAttribute="height" multiplier="375:236" id="l69-wS-oMk"/>
+                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="245" id="8y8-Yl-Q7w"/>
                                                     </constraints>
                                                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="b97-5U-U0M">
                                                         <size key="itemSize" width="348" height="175"/>
@@ -429,7 +428,7 @@
                                                     </collectionViewFlowLayout>
                                                     <cells>
                                                         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="VET-gy-I10">
-                                                            <rect key="frame" x="0.0" y="31" width="348" height="175"/>
+                                                            <rect key="frame" x="0.0" y="35" width="348" height="175"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                                                 <rect key="frame" x="0.0" y="0.0" width="348" height="175"/>
@@ -444,10 +443,10 @@
                                                 </collectionView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="lZM-OE-AdS" secondAttribute="trailing" id="Bz5-cT-Qv2"/>
-                                                <constraint firstItem="lZM-OE-AdS" firstAttribute="top" secondItem="Dzk-eq-jO7" secondAttribute="top" id="EPX-Nj-Afk"/>
-                                                <constraint firstAttribute="bottom" secondItem="lZM-OE-AdS" secondAttribute="bottom" constant="8" id="V2N-a2-GSG"/>
-                                                <constraint firstItem="lZM-OE-AdS" firstAttribute="leading" secondItem="Dzk-eq-jO7" secondAttribute="leading" id="brA-iQ-X8F"/>
+                                                <constraint firstItem="lZM-OE-AdS" firstAttribute="leading" secondItem="Dzk-eq-jO7" secondAttribute="leading" id="NPi-xn-KNk"/>
+                                                <constraint firstItem="lZM-OE-AdS" firstAttribute="top" secondItem="Dzk-eq-jO7" secondAttribute="top" id="T9k-2y-FZV"/>
+                                                <constraint firstAttribute="trailing" secondItem="lZM-OE-AdS" secondAttribute="trailing" id="TZT-MV-0Dw"/>
+                                                <constraint firstAttribute="bottom" secondItem="lZM-OE-AdS" secondAttribute="bottom" id="a0k-e7-p64"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -462,9 +461,9 @@
                                             <frame key="frameInset" width="375" height="339"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" scrollEnabled="NO" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mfL-Pg-j5c">
+                                                <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="250" scrollEnabled="NO" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mfL-Pg-j5c">
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda. 124124124124412412412412412412425434334534543534543</mutableString>
+                                                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda. 124124124124412412412412412412425434334534543534543</string>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>

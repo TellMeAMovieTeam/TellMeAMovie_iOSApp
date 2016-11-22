@@ -9,9 +9,6 @@
 import UIKit
 
 class MainMenuController: UITableViewController {
-    @IBOutlet weak var titleRu: UILabel!
-    
-    @IBOutlet weak var titleEn: UILabel!
     
     
     @IBAction func cancelSettingsToMainMenu(segue:UIStoryboardSegue) {
@@ -29,6 +26,10 @@ class MainMenuController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 140
+
     }
 
     override func didReceiveMemoryWarning() {

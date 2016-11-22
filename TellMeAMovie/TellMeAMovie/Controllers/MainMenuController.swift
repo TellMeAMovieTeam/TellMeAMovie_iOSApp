@@ -8,8 +8,9 @@
 
 import UIKit
 
-class MainMenuController: UITableViewController {
+class MainMenuController: UITableViewController, UICollectionViewDataSource {
     
+    @IBOutlet weak var filmTitle: UILabel!
     
     @IBAction func cancelSettingsToMainMenu(segue:UIStoryboardSegue) {
     }
@@ -20,15 +21,19 @@ class MainMenuController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        tableView.estimatedRowHeight = 140
+        tableView.rowHeight = UITableViewAutomaticDimension
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
-        tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.estimatedRowHeight = 140
+
+        
+        filmTitle.text = "Star Wars - Empire Srikes Back"
 
     }
 
@@ -37,6 +42,34 @@ class MainMenuController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 4
+    }
+    
+    public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
+        cell.backgroundColor = UIColor.black
+        
+        // Configure the cell
+        return cell
+    }
+    
+    public func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: IndexPath) -> CGSize {
+        // Compute the dimension of a cell for an NxN layout with space S between
+        // cells.  Take the collection view's width, subtract (N-1)*S points for
+        // the spaces between the cells, and then divide by N to find the final
+        // dimension for the cell's width and height.
+        
+        let cellsAcross: CGFloat = 3
+        let spaceBetweenCells: CGFloat = 1
+        let dim = (collectionView.bounds.width - (cellsAcross - 1) * spaceBetweenCells) / cellsAcross
+        return CGSize.init(width: dim, height: dim)
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        return UITableViewAutomaticDimension
+    }
     // MARK: - Table view data source
     /*
     override func numberOfSections(in tableView: UITableView) -> Int {

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MainMenuController: UITableViewController, UICollectionViewDataSource {
+class MainMenuController: UITableViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     @IBOutlet weak var filmTitle: UILabel!
     
@@ -31,8 +31,6 @@ class MainMenuController: UITableViewController, UICollectionViewDataSource {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
-
-        
         filmTitle.text = "Star Wars - Empire Srikes Back"
 
     }
@@ -54,16 +52,13 @@ class MainMenuController: UITableViewController, UICollectionViewDataSource {
         return cell
     }
     
-    public func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: IndexPath) -> CGSize {
-        // Compute the dimension of a cell for an NxN layout with space S between
-        // cells.  Take the collection view's width, subtract (N-1)*S points for
-        // the spaces between the cells, and then divide by N to find the final
-        // dimension for the cell's width and height.
+    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        let cellsAcross: CGFloat = 3
-        let spaceBetweenCells: CGFloat = 1
-        let dim = (collectionView.bounds.width - (cellsAcross - 1) * spaceBetweenCells) / cellsAcross
-        return CGSize.init(width: dim, height: dim)
+        //let cell = tableView.dequeueReusableCell(withIdentifier: "FramesCell")
+        
+        //return CGSize.init(width: (cell?.intrinsicContentSize.width)!, height: (cell?.intrinsicContentSize.height)!)
+        
+        return CGSize.init(width: 200, height: 200)
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

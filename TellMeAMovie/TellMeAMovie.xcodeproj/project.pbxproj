@@ -11,6 +11,7 @@
 		160234C01DC111B50081FE88 /* SettingsMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160234BF1DC111B50081FE88 /* SettingsMenuController.swift */; };
 		160234C21DC120390081FE88 /* GenreTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160234C11DC120390081FE88 /* GenreTableViewController.swift */; };
 		160234C41DC12AE70081FE88 /* CountrysTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160234C31DC12AE70081FE88 /* CountrysTableViewController.swift */; };
+		16425A051DE638D80066793E /* TMDbHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16425A041DE638D80066793E /* TMDbHelper.swift */; };
 		1676A92E1DB956A400371B86 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1676A92D1DB956A400371B86 /* AppDelegate.swift */; };
 		1676A9331DB956A400371B86 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1676A9311DB956A400371B86 /* Main.storyboard */; };
 		1676A9351DB956A400371B86 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1676A9341DB956A400371B86 /* Assets.xcassets */; };
@@ -23,6 +24,7 @@
 		160234BF1DC111B50081FE88 /* SettingsMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsMenuController.swift; sourceTree = "<group>"; };
 		160234C11DC120390081FE88 /* GenreTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenreTableViewController.swift; sourceTree = "<group>"; };
 		160234C31DC12AE70081FE88 /* CountrysTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountrysTableViewController.swift; sourceTree = "<group>"; };
+		16425A041DE638D80066793E /* TMDbHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMDbHelper.swift; sourceTree = "<group>"; };
 		1676A92A1DB956A400371B86 /* TellMeAMovie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TellMeAMovie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1676A92D1DB956A400371B86 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1676A9321DB956A400371B86 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -92,6 +94,7 @@
 				1676A9341DB956A400371B86 /* Assets.xcassets */,
 				1676A9361DB956A400371B86 /* LaunchScreen.storyboard */,
 				1676A9391DB956A400371B86 /* Info.plist */,
+				16425A041DE638D80066793E /* TMDbHelper.swift */,
 			);
 			path = TellMeAMovie;
 			sourceTree = "<group>";
@@ -197,7 +200,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run \'pod install\' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		20DC5DF3E847AADFA673DB99 /* [CP] Embed Pods Frameworks */ = {
@@ -239,6 +242,7 @@
 			files = (
 				160234C41DC12AE70081FE88 /* CountrysTableViewController.swift in Sources */,
 				1676A92E1DB956A400371B86 /* AppDelegate.swift in Sources */,
+				16425A051DE638D80066793E /* TMDbHelper.swift in Sources */,
 				160234C21DC120390081FE88 /* GenreTableViewController.swift in Sources */,
 				160234C01DC111B50081FE88 /* SettingsMenuController.swift in Sources */,
 				160234BE1DC110630081FE88 /* MainMenuController.swift in Sources */,

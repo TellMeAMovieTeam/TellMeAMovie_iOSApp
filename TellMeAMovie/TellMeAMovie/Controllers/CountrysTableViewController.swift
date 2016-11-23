@@ -10,11 +10,7 @@ import UIKit
 
 class CountrysTableViewController: UITableViewController {
     var countrys:[String] = [
-        "Нет",
-        "Албания",
-        "Россия",
-        "Испания",
-        "США"]
+        "No"]
     
     var selectedCountryIndex:Int?
     
@@ -30,6 +26,8 @@ class CountrysTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
     }
     
     override func didReceiveMemoryWarning() {

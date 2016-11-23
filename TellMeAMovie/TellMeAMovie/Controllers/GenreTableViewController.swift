@@ -7,17 +7,12 @@
 //
 
 import UIKit
+import TMDBSwift
 
 class GenreTableViewController: UITableViewController {
     
     var genres:[String] = [
-        "Нет",
-        "Боевик",
-        "Хоррор",
-        "Триллер",
-        "Вестерн",
-        "Комедия",
-        "Мелодрама"]
+        "No"]
     
     var selectedGenreIndex:Int?
     
@@ -32,6 +27,27 @@ class GenreTableViewController: UITableViewController {
     }
     
     override func viewDidLoad() {
+    
+        GenresMDB.genres(TMDb_APIv3_key, listType: .movie, language: "en") {
+            
+            apiReturn, TMDBgenres in
+            if let TMDBgenres = TMDBgenres{
+                
+                self.genres.removeAll()
+                self.genres.append("No")
+                
+                TMDBgenres.forEach{
+                    
+                    self.genres.append($0.name!)
+                    print($0.name)
+                    
+                }
+                
+                self.tableView.reloadData()
+            }
+        
+        }
+    
         super.viewDidLoad()
     }
 

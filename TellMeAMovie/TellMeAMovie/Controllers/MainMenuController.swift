@@ -45,7 +45,9 @@ class MainMenuController: UITableViewController, UICollectionViewDataSource, UIC
                 
                 self.movieTitle.text = movie.title
                 self.tagLine.text = movie.tagline
-                //self.productionCountry.text = movie.production_countries?.count
+                
+                print(movie.production_countries?[0].name)
+                
                 self.movieRating.text = String(format: "%.2f", movie.vote_average!)
                 self.movieOverview.text = movie.overview
                 
@@ -54,6 +56,10 @@ class MainMenuController: UITableViewController, UICollectionViewDataSource, UIC
             
             self.tableView.reloadData()
         }
+        
+        let posterCell = tableView.dequeueReusableCell(withIdentifier: "PosterCell")
+        
+        //posterCell?.frame.height = 400
         
         super.viewDidLoad()
     }
@@ -77,16 +83,27 @@ class MainMenuController: UITableViewController, UICollectionViewDataSource, UIC
     
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        //let cell = tableView.dequeueReusableCell(withIdentifier: "FramesCell")
+        let cellWidth = self.view.frame.size.width - 10
         
-        //return CGSize.init(width: (cell?.intrinsicContentSize.width)!, height: (cell?.intrinsicContentSize.height)!)
+        return CGSize.init(width: cellWidth, height: 200)
         
-        return CGSize.init(width: 200, height: 200)
+        //return CGSize.init(width: 200, height: 200)
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
+        if (indexPath.section == 1 && indexPath.row == 0) {
+        
+            return 500
+        }
+        
         return UITableViewAutomaticDimension
+        
     }
-
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
+        tableView.reloadData()
+        
+    }
 }

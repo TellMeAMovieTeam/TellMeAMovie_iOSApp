@@ -9,3 +9,18 @@
 import Foundation
 
 public let TMDb_APIv3_key : String = "a21fd90cc71c8a7e7cdd53aa432f5c07"
+
+
+/// Структура для хранения выбранного пользователем жанра
+public struct Genre {
+    
+    var genreName : String = ""
+    var genreId : Int = -1
+    
+    init(genreName : String, genreId : Int) {
+        
+        self.genreName = genreName
+        self.genreId = genreId
+    }
+    
+}

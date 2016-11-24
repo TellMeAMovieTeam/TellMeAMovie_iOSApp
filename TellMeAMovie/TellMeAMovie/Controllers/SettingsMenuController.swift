@@ -14,9 +14,9 @@ class SettingsMenuController: UITableViewController {
 
     @IBOutlet weak var detailCountry: UILabel!
     
-    var genre:String = "Нет" {
+    var genre:Genre = Genre.init(genreName: "No", genreId: -1) {
         didSet {
-            detailGenre.text? = genre
+            detailGenre.text? = genre.genreName
         }
     }
     
@@ -77,6 +77,10 @@ class SettingsMenuController: UITableViewController {
         if let genreTableViewController = segue.source as? GenreTableViewController,
             let selectedGenre = genreTableViewController.selectedGenre {
             genre = selectedGenre
+            
+            print("unwindWithSelectedGenre")
+            print(genre.genreName)
+            print(genre.genreId)
         }
     }
     

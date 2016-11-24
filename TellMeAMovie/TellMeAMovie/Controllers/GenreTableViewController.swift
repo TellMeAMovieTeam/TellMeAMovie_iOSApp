@@ -11,20 +11,13 @@ import TMDBSwift
 
 class GenreTableViewController: UITableViewController {
     
-    var genres:[String] = [
-        "No"]
+    var genres:[Genre] = []
     
     var selectedGenreIndex:Int?
     
     
     /// Получает выбранный жанр
-    var selectedGenre:String? {
-        didSet {
-            if let genre = selectedGenre {
-                selectedGenreIndex = genres.index(of: genre)!
-            }
-        }
-    }
+    var selectedGenre:Genre?
     
     override func viewDidLoad() {
     
@@ -34,13 +27,11 @@ class GenreTableViewController: UITableViewController {
             if let TMDBgenres = TMDBgenres{
                 
                 self.genres.removeAll()
-                self.genres.append("No")
+                self.genres.append(Genre.init(genreName: "No", genreId: -1))
                 
                 TMDBgenres.forEach{
                     
-                    self.genres.append($0.name!)
-                    print($0.name)
-                    
+                    self.genres.append( Genre.init(genreName: $0.name!, genreId: $0.id!))
                 }
                 
                 self.tableView.reloadData()
@@ -71,7 +62,7 @@ class GenreTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "GenreCell", for: indexPath)
-        cell.textLabel?.text = genres[indexPath.row]
+        cell.textLabel?.text = genres[indexPath.row].genreName
         
         if indexPath.row == selectedGenreIndex {
             cell.accessoryType = .checkmark

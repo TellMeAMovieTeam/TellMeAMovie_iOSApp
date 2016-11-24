@@ -354,14 +354,14 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="Постер" id="zdX-7g-uJs">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="482" id="Rnq-kQ-CcD">
-                                        <rect key="frame" x="0.0" y="164" width="375" height="482"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="541" id="Rnq-kQ-CcD">
+                                        <rect key="frame" x="0.0" y="164" width="375" height="541"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" tableViewCell="Rnq-kQ-CcD" id="dcI-QB-Wah">
-                                            <frame key="frameInset" width="375" height="481.5"/>
+                                            <frame key="frameInset" width="375" height="540"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="Lm3-UO-aJ3"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="Lm3-UO-aJ3"/>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="Lm3-UO-aJ3" firstAttribute="top" secondItem="dcI-QB-Wah" secondAttribute="top" id="AFm-UY-kbo"/>
@@ -376,7 +376,7 @@
                             <tableViewSection headerTitle="Слоган" id="PGo-aT-gEW">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="60" id="TFY-yE-0m4">
-                                        <rect key="frame" x="0.0" y="674" width="375" height="60"/>
+                                        <rect key="frame" x="0.0" y="733" width="375" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="TFY-yE-0m4" id="sxo-NC-vXC">
                                             <frame key="frameInset" width="375" height="59.5"/>
@@ -401,7 +401,7 @@
                             <tableViewSection headerTitle="Страна" id="vBw-UW-iow">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="60" id="En2-Kf-UPI">
-                                        <rect key="frame" x="0.0" y="762" width="375" height="60"/>
+                                        <rect key="frame" x="0.0" y="821" width="375" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="En2-Kf-UPI" id="5Tg-Yl-Tm8">
                                             <frame key="frameInset" width="375" height="59.5"/>
@@ -426,7 +426,7 @@
                             <tableViewSection headerTitle="Рейтинг" id="fzw-xs-riu">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="ICW-70-TyD">
-                                        <rect key="frame" x="0.0" y="850" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="909" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ICW-70-TyD" id="neI-G9-zfI">
                                             <frame key="frameInset" width="375" height="43.5"/>
@@ -451,7 +451,7 @@
                             <tableViewSection headerTitle="Кадры" id="fZq-qV-Bln">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="FramesCell" rowHeight="245" id="8Qz-pQ-IkN">
-                                        <rect key="frame" x="0.0" y="922" width="375" height="245"/>
+                                        <rect key="frame" x="0.0" y="981" width="375" height="245"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8Qz-pQ-IkN" id="Dzk-eq-jO7">
                                             <frame key="frameInset" width="375" height="244.5"/>
@@ -498,7 +498,7 @@
                             <tableViewSection headerTitle="Описание" id="jHI-JM-RQT">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleAspectFit" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="340" id="YaQ-2d-8gF">
-                                        <rect key="frame" x="0.0" y="1195" width="375" height="340"/>
+                                        <rect key="frame" x="0.0" y="1254" width="375" height="340"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" tableViewCell="YaQ-2d-8gF" id="mpV-dw-ggN">
                                             <frame key="frameInset" width="375" height="339.5"/>
@@ -540,6 +540,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="movieOverview" destination="mfL-Pg-j5c" id="9zs-2W-yH3"/>
+                        <outlet property="moviePoster" destination="Lm3-UO-aJ3" id="OGW-W1-HJA"/>
                         <outlet property="movieRating" destination="tfz-es-ErX" id="Tr4-gf-7ep"/>
                         <outlet property="movieTitle" destination="HA8-0S-DxF" id="eyx-Or-VKu"/>
                         <outlet property="productionCountry" destination="n2f-JT-ZWW" id="k4P-5Q-muh"/>

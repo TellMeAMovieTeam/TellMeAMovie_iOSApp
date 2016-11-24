@@ -23,13 +23,15 @@ class MainMenuController: UITableViewController, UICollectionViewDataSource, UIC
     @IBOutlet weak var movieRating: UILabel!
     @IBOutlet weak var tagLine: UILabel!
     @IBOutlet weak var productionCountry: UILabel!
+    @IBOutlet weak var movieOverview: UITextView!
+    @IBOutlet weak var moviePoster: UIImageView!
     
     override func viewDidLoad() {
         
-        tableView.estimatedRowHeight = 140
+        tableView.estimatedRowHeight = 540
         tableView.rowHeight = UITableViewAutomaticDimension
         
-        MovieMDB.movie(TMDb_APIv3_key, movieID: 550, language: "en") {
+        MovieMDB.movie(TMDb_APIv3_key, movieID: 550, language: "ru") {
             
             apiReturn, movie in
             if let movie = movie{
@@ -45,7 +47,9 @@ class MainMenuController: UITableViewController, UICollectionViewDataSource, UIC
                 self.tagLine.text = movie.tagline
                 //self.productionCountry.text = movie.production_countries?.count
                 self.movieRating.text = String(format: "%.2f", movie.vote_average!)
+                self.movieOverview.text = movie.overview
                 
+                setImageFromURL(url: imageBase + movie.poster_path!, imageView: self.moviePoster)
             }
             
             self.tableView.reloadData()

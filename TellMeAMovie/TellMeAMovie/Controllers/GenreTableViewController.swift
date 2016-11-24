@@ -21,13 +21,13 @@ class GenreTableViewController: UITableViewController {
     
     override func viewDidLoad() {
     
-        GenresMDB.genres(TMDb_APIv3_key, listType: .movie, language: "en") {
+        GenresMDB.genres(TMDb_APIv3_key, listType: .movie, language: "ru") {
             
             apiReturn, TMDBgenres in
             if let TMDBgenres = TMDBgenres{
                 
                 self.genres.removeAll()
-                self.genres.append(Genre.init(genreName: "No", genreId: -1))
+                self.genres.append(Genre.init(genreName: "Нет", genreId: -1))
                 
                 TMDBgenres.forEach{
                     

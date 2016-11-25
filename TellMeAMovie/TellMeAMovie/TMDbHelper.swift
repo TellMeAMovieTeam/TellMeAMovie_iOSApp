@@ -11,6 +11,8 @@ import TMDBSwift
 
 public let TMDb_APIv3_key : String = "a21fd90cc71c8a7e7cdd53aa432f5c07"
 
+public let minimalYear : Int = 1950
+
 public let imageBase = "https://image.tmdb.org/t/p/w500"
 
 /// Структура для хранения выбранного пользователем жанра
@@ -48,5 +50,15 @@ public func getSingleLineGenres(movie: MovieMDB) -> String {
     print(genresStr)
     
     return genresStr
+
+}
+
+public func getCurrentYear() -> Int {
+    
+    let date = Date()
+    let calendar = Calendar.current
+    let year = calendar.component(.year, from: date)
+    
+    return year
 
 }

@@ -87,7 +87,7 @@
                                             <frame key="frameInset" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ic9-St-Icb" customClass="YSRangeSlider" customModule="YSRangeSlider">
+                                                <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ic9-St-Icb" customClass="YSRangeSlider" customModule="YSRangeSlider">
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="color" keyPath="sliderLineColorBetweenThumbs">
@@ -188,7 +188,7 @@
                                             <frame key="frameInset" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SBi-j7-arY" customClass="YSRangeSlider" customModule="YSRangeSlider">
+                                                <view tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SBi-j7-arY" customClass="YSRangeSlider" customModule="YSRangeSlider">
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="color" keyPath="sliderLineColorBetweenThumbs">
@@ -301,6 +301,12 @@
                     <connections>
                         <outlet property="detailCountry" destination="JqO-DN-9R5" id="y39-hY-LTJ"/>
                         <outlet property="detailGenre" destination="jkh-7w-11v" id="Y9y-1u-PZF"/>
+                        <outlet property="labelEndYear" destination="h9h-f4-J5V" id="PwB-CZ-Op5"/>
+                        <outlet property="labelRatingMax" destination="ic0-HD-Dok" id="dbs-7v-kzQ"/>
+                        <outlet property="labelRatingMin" destination="ISv-6f-fY8" id="U5u-EP-HWb"/>
+                        <outlet property="labelStartYear" destination="Aoe-QV-6NW" id="W7M-WS-0WW"/>
+                        <outlet property="ratingRangeSlider" destination="SBi-j7-arY" id="lYT-Uj-zj1"/>
+                        <outlet property="yearRangeSlider" destination="Ic9-St-Icb" id="0Ru-Rs-l4h"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PUe-x2-Pdw" userLabel="First Responder" sceneMemberID="firstResponder"/>

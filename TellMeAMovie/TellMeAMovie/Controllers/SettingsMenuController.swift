@@ -7,12 +7,20 @@
 //
 
 import UIKit
+import YSRangeSlider
 
 class SettingsMenuController: UITableViewController {
     
     @IBOutlet weak var detailGenre: UILabel!
-
     @IBOutlet weak var detailCountry: UILabel!
+    
+    @IBOutlet weak var labelStartYear: UILabel!
+    @IBOutlet weak var labelEndYear: UILabel!
+    @IBOutlet weak var yearRangeSlider: YSRangeSlider!
+    
+    @IBOutlet weak var labelRatingMin: UILabel!
+    @IBOutlet weak var labelRatingMax: UILabel!
+    @IBOutlet weak var ratingRangeSlider: YSRangeSlider!
     
     var genre:Genre = Genre.init(genreName: "No", genreId: -1) {
         didSet {
@@ -54,12 +62,48 @@ class SettingsMenuController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        yearRangeSlider.delegate = self
+        ratingRangeSlider.delegate = self
+        
+        // MARK: Year slider
+        let currentYear : Int = getCurrentYear()
+        
+        self.yearRangeSlider.minimumValue = CGFloat(minimalYear)
+        self.yearRangeSlider.minimumSelectedValue = CGFloat(minimalYear)
+        
+        self.yearRangeSlider.maximumValue = CGFloat(currentYear)
+        self.yearRangeSlider.maximumSelectedValue = CGFloat(currentYear)
+        
+        self.labelStartYear.text = String(lroundf(Float(self.yearRangeSlider.minimumSelectedValue)))
+        self.labelEndYear.text = String(lroundf(Float(self.yearRangeSlider.maximumSelectedValue)))
+        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+}
 
+// MARK: - YSRangeSliderDelegate
 
+extension SettingsMenuController: YSRangeSliderDelegate {
+    func rangeSliderDidChange(_ rangeSlider: YSRangeSlider, minimumSelectedValue: CGFloat, maximumSelectedValue: CGFloat) {
+        
+        //tag = 1 - year
+        if(rangeSlider.tag == 1) {
+            
+            self.labelStartYear.text = String(lroundf(Float(self.yearRangeSlider.minimumSelectedValue)))
+            self.labelEndYear.text = String(lroundf(Float(self.yearRangeSlider.maximumSelectedValue)))
+            
+        }
+        
+        //tag = 2 - rating
+        if (rangeSlider.tag == 2) {
+        
+        
+        }
+    }
+    
 }

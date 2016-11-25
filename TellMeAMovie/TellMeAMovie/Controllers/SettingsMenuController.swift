@@ -22,7 +22,7 @@ class SettingsMenuController: UITableViewController {
     @IBOutlet weak var labelRatingMax: UILabel!
     @IBOutlet weak var ratingRangeSlider: YSRangeSlider!
     
-    var genre:Genre = Genre.init(genreName: "No", genreId: -1) {
+    var genre:Genre = Genre.init(genreName: "Нет", genreId: -1) {
         didSet {
             detailGenre.text? = genre.genreName
         }
@@ -77,6 +77,11 @@ class SettingsMenuController: UITableViewController {
         self.labelStartYear.text = String(lroundf(Float(self.yearRangeSlider.minimumSelectedValue)))
         self.labelEndYear.text = String(lroundf(Float(self.yearRangeSlider.maximumSelectedValue)))
         
+        //MARK: Rating slider
+        
+        self.labelRatingMin.text = String(round(100*Float(self.ratingRangeSlider.minimumSelectedValue))/100)
+        self.labelRatingMax.text = String(round(100*Float(self.ratingRangeSlider.maximumSelectedValue))/100)
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -102,6 +107,8 @@ extension SettingsMenuController: YSRangeSliderDelegate {
         //tag = 2 - rating
         if (rangeSlider.tag == 2) {
         
+            self.labelRatingMin.text = String(round(100*Float(self.ratingRangeSlider.minimumSelectedValue))/100)
+            self.labelRatingMax.text = String(round(100*Float(self.ratingRangeSlider.maximumSelectedValue))/100)
         
         }
     }

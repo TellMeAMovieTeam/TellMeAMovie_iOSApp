@@ -25,9 +25,11 @@ class MainMenuController: UITableViewController, UICollectionViewDataSource, UIC
     @IBOutlet weak var productionCountry: UILabel!
     @IBOutlet weak var movieOverview: UITextView!
     @IBOutlet weak var moviePoster: UIImageView!
+    @IBOutlet weak var movieGenre: UILabel!
     
-    let widthModifyer : Float = 16.0
-    let heightModifyer : Float = 9.0
+    let longSideModifyer : Float = 16.0
+    let shortSideModifyer : Float = 9.0
+    var frameNumber : Int = 5
     
     override func viewDidLoad() {
         
@@ -48,6 +50,7 @@ class MainMenuController: UITableViewController, UICollectionViewDataSource, UIC
                 
                 self.movieTitle.text = movie.title
                 self.tagLine.text = movie.tagline
+                self.movieGenre.text = getSingleLineGenres(movie: movie)
                 
                 print(movie.production_countries?[0].name)
                 
@@ -60,20 +63,15 @@ class MainMenuController: UITableViewController, UICollectionViewDataSource, UIC
             self.tableView.reloadData()
         }
         
-        let posterCell = tableView.dequeueReusableCell(withIdentifier: "PosterCell")
-        
-        //posterCell?.frame.height = 400
-        
         super.viewDidLoad()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
-
+    
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4
+        return frameNumber
     }
     
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -87,17 +85,20 @@ class MainMenuController: UITableViewController, UICollectionViewDataSource, UIC
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         let cellWidth : Float = Float(self.view.frame.size.width - 10)
-        let cellHeight : Float = roundf((cellWidth / widthModifyer) * heightModifyer)
+        let cellHeight : Float = roundf((cellWidth / longSideModifyer) * shortSideModifyer)
         
         return CGSize.init(width: CGFloat(cellWidth), height: CGFloat(cellHeight))
-
+        
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
         if (indexPath.section == 1 && indexPath.row == 0) {
-        
-            return 500
+            
+            let cellWidth : Float = Float(self.view.frame.size.width - 16) //16 так как два констрейнта по 8
+            let cellHeight : Float = roundf((cellWidth / shortSideModifyer) * longSideModifyer)
+            
+            return CGFloat(cellHeight)
         }
         
         return UITableViewAutomaticDimension

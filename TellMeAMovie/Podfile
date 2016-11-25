@@ -8,5 +8,6 @@ target 'TellMeAMovie' do
   # Pods for TellMeAMovie
   pod "TMDBSwift"
   pod 'SDWebImage', '~>3.8'
+  pod 'YSRangeSlider'
 
 end

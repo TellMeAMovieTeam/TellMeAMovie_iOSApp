@@ -3,15 +3,18 @@ PODS:
     - SDWebImage/Core (= 3.8.2)
   - SDWebImage/Core (3.8.2)
   - TMDBSwift (0.2.2)
+  - YSRangeSlider (3.1.0)
 
 DEPENDENCIES:
   - SDWebImage (~> 3.8)
   - TMDBSwift
+  - YSRangeSlider
 
 SPEC CHECKSUMS:
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
   TMDBSwift: 29144be00568a1c5c5d748ce2ec4b735cd98f466
+  YSRangeSlider: 791b224d7b0871c99f779eb7ec333eda147cdbab
 
-PODFILE CHECKSUM: 188f8c2c845dcc84066b0f7c596f09de17387c60
+PODFILE CHECKSUM: b6382b691c40b5211c800f361f3f407cd4a28c11
 
 COCOAPODS: 1.1.1

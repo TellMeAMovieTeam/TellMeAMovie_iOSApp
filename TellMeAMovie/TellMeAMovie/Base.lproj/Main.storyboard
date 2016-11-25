@@ -78,136 +78,203 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Минимальный год" id="z82-PQ-Gf1">
+                            <tableViewSection headerTitle="Год выхода фильма" id="z82-PQ-Gf1">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="Mxq-0M-w8f">
                                         <rect key="frame" x="0.0" y="236" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Mxq-0M-w8f" id="iwi-66-foX">
-                                            <frame key="frameInset" width="375" height="43"/>
+                                            <frame key="frameInset" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <slider opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="Ybe-U9-xvf">
-                                                    <frame key="frameInset" minX="90" minY="6" width="268" height="31"/>
-                                                    <connections>
-                                                        <action selector="startYearSliderAction:" destination="MDS-ak-1cT" eventType="valueChanged" id="fPq-Ky-Kip"/>
-                                                    </connections>
-                                                </slider>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Год" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aoe-QV-6NW">
-                                                    <frame key="frameInset" minX="16" minY="10" width="68" height="20"/>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ic9-St-Icb" customClass="YSRangeSlider" customModule="YSRangeSlider">
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="sliderLineColorBetweenThumbs">
+                                                            <color key="value" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="leftThumbShadowColor">
+                                                            <color key="value" red="0.68933244989999998" green="0.74042840229999995" blue="0.77652568720000004" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="leftThumbColor">
+                                                            <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="leftThumbShadowRadius">
+                                                            <real key="value" value="4"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="leftThumbShadowOpacity">
+                                                            <real key="value" value="1"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="leftThumbCornerRadius">
+                                                            <real key="value" value="15"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="size" keyPath="leftThumbShadowOffset">
+                                                            <size key="value" width="0.0" height="0.0"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="thumbsSize">
+                                                            <real key="value" value="28"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="rightThumbColor">
+                                                            <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="rightThumbShadowColor">
+                                                            <color key="value" red="0.68933244989999998" green="0.74042840229999995" blue="0.77652568720000004" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="rightThumbCornerRadius">
+                                                            <real key="value" value="15"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="rightThumbShadowOpacity">
+                                                            <real key="value" value="1"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="sliderSidePadding">
+                                                            <real key="value" value="0.0"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="rightThumbShadowRadius">
+                                                            <real key="value" value="4"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="step">
+                                                            <real key="value" value="1"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="sliderLineHeight">
+                                                            <real key="value" value="2"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="minimumValue">
+                                                            <real key="value" value="1950"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="maximumValue">
+                                                            <real key="value" value="2016"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="minimumSelectedValue">
+                                                            <real key="value" value="1950"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="maximumSelectedValue">
+                                                            <real key="value" value="2016"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ГодН" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aoe-QV-6NW">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ГодК" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h9h-f4-J5V">
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="Aoe-QV-6NW" firstAttribute="leading" secondItem="iwi-66-foX" secondAttribute="leadingMargin" constant="8" id="IGh-mC-VBf"/>
-                                                <constraint firstItem="Ybe-U9-xvf" firstAttribute="top" secondItem="iwi-66-foX" secondAttribute="top" constant="6" id="KtH-Nf-Ubn"/>
-                                                <constraint firstAttribute="trailing" secondItem="Ybe-U9-xvf" secondAttribute="trailing" constant="19" id="Ytr-H6-7Vp"/>
-                                                <constraint firstItem="Aoe-QV-6NW" firstAttribute="top" secondItem="iwi-66-foX" secondAttribute="topMargin" constant="2" id="jUX-RU-RrB"/>
-                                                <constraint firstItem="Ybe-U9-xvf" firstAttribute="leading" secondItem="Aoe-QV-6NW" secondAttribute="trailing" constant="8" id="wXt-ub-3kc"/>
+                                                <constraint firstItem="Ic9-St-Icb" firstAttribute="top" secondItem="iwi-66-foX" secondAttribute="topMargin" constant="5" id="5Gg-2a-A6m"/>
+                                                <constraint firstAttribute="bottom" secondItem="h9h-f4-J5V" secondAttribute="bottom" constant="5" id="FBa-UG-r59"/>
+                                                <constraint firstItem="Aoe-QV-6NW" firstAttribute="top" secondItem="iwi-66-foX" secondAttribute="top" constant="5" id="H10-eD-CsK"/>
+                                                <constraint firstItem="h9h-f4-J5V" firstAttribute="top" secondItem="iwi-66-foX" secondAttribute="top" constant="5" id="Ypp-IU-4bp"/>
+                                                <constraint firstItem="Aoe-QV-6NW" firstAttribute="leading" secondItem="iwi-66-foX" secondAttribute="leading" constant="16" id="b9F-q7-r4W"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="Ic9-St-Icb" secondAttribute="bottom" constant="5" id="cQy-3b-3ec"/>
+                                                <constraint firstAttribute="trailing" secondItem="h9h-f4-J5V" secondAttribute="trailing" constant="16" id="ezL-4D-7t4"/>
+                                                <constraint firstAttribute="bottom" secondItem="Aoe-QV-6NW" secondAttribute="bottom" constant="5" id="nzs-6Q-1Vd"/>
+                                                <constraint firstItem="Ic9-St-Icb" firstAttribute="leading" secondItem="Aoe-QV-6NW" secondAttribute="trailing" constant="20" id="qAy-iT-meB"/>
+                                                <constraint firstItem="h9h-f4-J5V" firstAttribute="leading" secondItem="Ic9-St-Icb" secondAttribute="trailing" constant="20" id="vwC-qI-SVP"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Максимальный год" id="vry-eC-iht">
+                            <tableViewSection headerTitle="Рейтинг фильма" id="eNa-ya-4sM" userLabel="Рейтинг фильма">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="BKB-Az-1qy">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="lYj-3o-3kg">
                                         <rect key="frame" x="0.0" y="308" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BKB-Az-1qy" id="94i-eD-K0W">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lYj-3o-3kg" id="DFy-Gg-pPL">
                                             <frame key="frameInset" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <slider opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="Zef-na-rnu">
-                                                    <frame key="frameInset" minX="90" minY="6" width="268" height="31"/>
-                                                    <connections>
-                                                        <action selector="endYearSliderAction:" destination="MDS-ak-1cT" eventType="valueChanged" id="D70-vj-5VC"/>
-                                                        <action selector="startYearSliderAction:" destination="MDS-ak-1cT" eventType="valueChanged" id="Eek-OG-jJw"/>
-                                                    </connections>
-                                                </slider>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Год" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Az-zA-89P">
-                                                    <frame key="frameInset" minX="16" minY="10" width="68" height="20"/>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SBi-j7-arY" customClass="YSRangeSlider" customModule="YSRangeSlider">
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="sliderLineColorBetweenThumbs">
+                                                            <color key="value" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="leftThumbShadowColor">
+                                                            <color key="value" red="0.68933244989999998" green="0.74042840229999995" blue="0.77652568720000004" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="leftThumbColor">
+                                                            <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="leftThumbShadowRadius">
+                                                            <real key="value" value="4"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="leftThumbShadowOpacity">
+                                                            <real key="value" value="1"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="leftThumbCornerRadius">
+                                                            <real key="value" value="15"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="size" keyPath="leftThumbShadowOffset">
+                                                            <size key="value" width="0.0" height="0.0"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="thumbsSize">
+                                                            <real key="value" value="28"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="rightThumbColor">
+                                                            <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="rightThumbShadowColor">
+                                                            <color key="value" red="0.68933244989999998" green="0.74042840229999995" blue="0.77652568720000004" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="rightThumbCornerRadius">
+                                                            <real key="value" value="15"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="rightThumbShadowOpacity">
+                                                            <real key="value" value="1"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="sliderSidePadding">
+                                                            <real key="value" value="0.0"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="rightThumbShadowRadius">
+                                                            <real key="value" value="4"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="step">
+                                                            <real key="value" value="0.0"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="sliderLineHeight">
+                                                            <real key="value" value="2"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="minimumValue">
+                                                            <real key="value" value="0.0"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="maximumValue">
+                                                            <real key="value" value="10"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="minimumSelectedValue">
+                                                            <real key="value" value="0.0"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="maximumSelectedValue">
+                                                            <real key="value" value="10"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="РетН" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ISv-6f-fY8" userLabel="РетН">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="РетК" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ic0-HD-Dok" userLabel="РетК">
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="Zef-na-rnu" firstAttribute="leading" secondItem="5Az-zA-89P" secondAttribute="trailing" constant="8" id="8Yh-y7-AVP"/>
-                                                <constraint firstItem="Zef-na-rnu" firstAttribute="top" secondItem="94i-eD-K0W" secondAttribute="top" constant="6" id="Kn7-KE-CQl"/>
-                                                <constraint firstItem="5Az-zA-89P" firstAttribute="leading" secondItem="94i-eD-K0W" secondAttribute="leadingMargin" constant="8" id="Yn5-n1-uZB"/>
-                                                <constraint firstItem="5Az-zA-89P" firstAttribute="top" secondItem="94i-eD-K0W" secondAttribute="topMargin" constant="2" id="tUp-gk-mSR"/>
-                                                <constraint firstAttribute="trailing" secondItem="Zef-na-rnu" secondAttribute="trailing" constant="19" id="ysd-xZ-ixB"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                            <tableViewSection headerTitle="Минимальная оценка" id="D6O-e4-fNo">
-                                <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="eWb-76-d1q">
-                                        <rect key="frame" x="0.0" y="380" width="375" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eWb-76-d1q" id="yYg-Mm-N9u">
-                                            <frame key="frameInset" width="375" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <slider opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="KLt-ok-G21">
-                                                    <frame key="frameInset" minX="90" minY="6" width="268" height="31"/>
-                                                    <connections>
-                                                        <action selector="startRatingSliderAction:" destination="MDS-ak-1cT" eventType="valueChanged" id="18c-Vs-HrF"/>
-                                                        <action selector="startYearSliderAction:" destination="MDS-ak-1cT" eventType="valueChanged" id="QH7-t3-Vmc"/>
-                                                    </connections>
-                                                </slider>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Оценка" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qg8-Id-92y">
-                                                    <frame key="frameInset" minX="16" minY="10" width="68" height="20"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="KLt-ok-G21" secondAttribute="trailing" constant="19" id="9ey-qg-d4b"/>
-                                                <constraint firstItem="Qg8-Id-92y" firstAttribute="leading" secondItem="yYg-Mm-N9u" secondAttribute="leadingMargin" constant="8" id="BMd-5F-zh3"/>
-                                                <constraint firstItem="KLt-ok-G21" firstAttribute="top" secondItem="yYg-Mm-N9u" secondAttribute="top" constant="6" id="cPQ-dr-aS7"/>
-                                                <constraint firstItem="KLt-ok-G21" firstAttribute="leading" secondItem="Qg8-Id-92y" secondAttribute="trailing" constant="8" id="dhe-pw-hkV"/>
-                                                <constraint firstItem="Qg8-Id-92y" firstAttribute="top" secondItem="yYg-Mm-N9u" secondAttribute="topMargin" constant="2" id="qPT-6d-A6r"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                            <tableViewSection headerTitle="Максимальная оценка" id="42n-ES-h97">
-                                <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="Ius-ol-s1B">
-                                        <rect key="frame" x="0.0" y="452" width="375" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ius-ol-s1B" id="weh-Gv-mvs">
-                                            <frame key="frameInset" width="375" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <slider opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="mSb-vy-3oC">
-                                                    <frame key="frameInset" minX="90" minY="6" width="268" height="31"/>
-                                                    <connections>
-                                                        <action selector="endRatingSliderAction:" destination="MDS-ak-1cT" eventType="valueChanged" id="8M1-uJ-HBe"/>
-                                                        <action selector="startYearSliderAction:" destination="MDS-ak-1cT" eventType="valueChanged" id="t6h-Vp-jBF"/>
-                                                    </connections>
-                                                </slider>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Оценка" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ig8-bk-bLF">
-                                                    <frame key="frameInset" minX="16" minY="10" width="68" height="20"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="ig8-bk-bLF" firstAttribute="leading" secondItem="weh-Gv-mvs" secondAttribute="leadingMargin" constant="8" id="At7-zi-u3Z"/>
-                                                <constraint firstItem="ig8-bk-bLF" firstAttribute="top" secondItem="weh-Gv-mvs" secondAttribute="topMargin" constant="2" id="MB7-ph-5Ig"/>
-                                                <constraint firstItem="mSb-vy-3oC" firstAttribute="leading" secondItem="ig8-bk-bLF" secondAttribute="trailing" constant="8" id="oeX-QJ-hhU"/>
-                                                <constraint firstItem="mSb-vy-3oC" firstAttribute="top" secondItem="weh-Gv-mvs" secondAttribute="top" constant="6" id="vz7-nZ-efC"/>
-                                                <constraint firstAttribute="trailing" secondItem="mSb-vy-3oC" secondAttribute="trailing" constant="19" id="wcm-1e-72Y"/>
+                                                <constraint firstAttribute="bottom" secondItem="ic0-HD-Dok" secondAttribute="bottom" constant="5" id="FH4-LS-MXt"/>
+                                                <constraint firstItem="ic0-HD-Dok" firstAttribute="top" secondItem="DFy-Gg-pPL" secondAttribute="top" constant="5" id="HXh-m4-nM0"/>
+                                                <constraint firstAttribute="trailing" secondItem="ic0-HD-Dok" secondAttribute="trailing" constant="16" id="Hto-bY-j1c"/>
+                                                <constraint firstItem="SBi-j7-arY" firstAttribute="leading" secondItem="ISv-6f-fY8" secondAttribute="trailing" constant="20" id="TV1-bN-yQQ"/>
+                                                <constraint firstItem="ic0-HD-Dok" firstAttribute="leading" secondItem="SBi-j7-arY" secondAttribute="trailing" constant="20" id="U11-dR-7h6"/>
+                                                <constraint firstItem="SBi-j7-arY" firstAttribute="top" secondItem="DFy-Gg-pPL" secondAttribute="topMargin" constant="5" id="bLL-np-29c"/>
+                                                <constraint firstItem="ISv-6f-fY8" firstAttribute="leading" secondItem="DFy-Gg-pPL" secondAttribute="leading" constant="16" id="hPj-rS-pv6"/>
+                                                <constraint firstItem="ISv-6f-fY8" firstAttribute="top" secondItem="DFy-Gg-pPL" secondAttribute="top" constant="5" id="hnj-Pj-QrE"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="SBi-j7-arY" secondAttribute="bottom" constant="5" id="wrb-6g-Nw6"/>
+                                                <constraint firstAttribute="bottom" secondItem="ISv-6f-fY8" secondAttribute="bottom" constant="5" id="zAY-og-Wrc"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -234,14 +301,6 @@
                     <connections>
                         <outlet property="detailCountry" destination="JqO-DN-9R5" id="y39-hY-LTJ"/>
                         <outlet property="detailGenre" destination="jkh-7w-11v" id="Y9y-1u-PZF"/>
-                        <outlet property="endRatingSlider" destination="mSb-vy-3oC" id="eX5-5b-nSW"/>
-                        <outlet property="endRatingTextBox" destination="ig8-bk-bLF" id="2Mm-id-AjE"/>
-                        <outlet property="endYearSlider" destination="Zef-na-rnu" id="jot-VM-LBk"/>
-                        <outlet property="endYearTextBox" destination="5Az-zA-89P" id="w6H-hE-FJZ"/>
-                        <outlet property="startRatingSlider" destination="KLt-ok-G21" id="bEZ-ey-rB4"/>
-                        <outlet property="startRatingTextBox" destination="Qg8-Id-92y" id="Dpr-O4-695"/>
-                        <outlet property="startYearSlider" destination="Ybe-U9-xvf" id="tns-jM-e3K"/>
-                        <outlet property="startYearTextBox" destination="Aoe-QV-6NW" id="2fg-SF-3zh"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PUe-x2-Pdw" userLabel="First Responder" sceneMemberID="firstResponder"/>

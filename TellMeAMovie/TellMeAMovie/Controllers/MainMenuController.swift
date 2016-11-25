@@ -26,6 +26,9 @@ class MainMenuController: UITableViewController, UICollectionViewDataSource, UIC
     @IBOutlet weak var movieOverview: UITextView!
     @IBOutlet weak var moviePoster: UIImageView!
     
+    let widthModifyer : Float = 16.0
+    let heightModifyer : Float = 9.0
+    
     override func viewDidLoad() {
         
         tableView.estimatedRowHeight = 540
@@ -83,11 +86,11 @@ class MainMenuController: UITableViewController, UICollectionViewDataSource, UIC
     
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        let cellWidth = self.view.frame.size.width - 10
+        let cellWidth : Float = Float(self.view.frame.size.width - 10)
+        let cellHeight : Float = roundf((cellWidth / widthModifyer) * heightModifyer)
         
-        return CGSize.init(width: cellWidth, height: 200)
-        
-        //return CGSize.init(width: 200, height: 200)
+        return CGSize.init(width: CGFloat(cellWidth), height: CGFloat(cellHeight))
+
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

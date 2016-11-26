@@ -22,12 +22,6 @@ class MainMenuController: UITableViewController, UICollectionViewDataSource, UIC
             
             settingsInMainMenu = settingsMenuController.settingsFromSettingsMenu
             settingsInMainMenu.saveSettingsToUserDef()
-            
-            settingsInMainMenu.getSettingsFromUSerDef()
-            print("Settings after getting")
-            print(settingsInMainMenu.selectedGenre.genreName)
-            
-            
         }
         //TODO: обновление данных
         

@@ -20,40 +20,70 @@ class GenreTableViewController: UITableViewController {
     var selectedGenre:Genre?
     
     override func viewDidLoad() {
-    
-        GenresMDB.genres(TMDb_APIv3_key, listType: .movie, language: "ru") {
+        
+        let decodedGenres = getGenresFromUD()
+        
+        if (decodedGenres.count == 0) {
             
-            apiReturn, TMDBgenres in
-            if let TMDBgenres = TMDBgenres{
+            GenresMDB.genres(TMDb_APIv3_key, listType: .movie, language: "ru") {
                 
-                self.genres.removeAll()
-                self.genres.append(Genre.init(genreName: "Нет", genreId: -1))
-                
-                TMDBgenres.forEach{
+                apiReturn, TMDBgenres in
+                if let TMDBgenres = TMDBgenres{
                     
-                    self.genres.append( Genre.init(genreName: $0.name!, genreId: $0.id!))
+                    self.genres.removeAll()
+                    self.genres.append(Genre.init(genreName: "Нет", genreId: -1))
+                    
+                    TMDBgenres.forEach{
+                        
+                        self.genres.append( Genre.init(genreName: $0.name!, genreId: $0.id!))
+                    }
+                    
+                    self.tableView.reloadData()
                 }
                 
-                self.tableView.reloadData()
             }
-        
+            
+            saveGenresToUD(genres: self.genres)
+            
+        } else {
+            
+            self.genres = decodedGenres
+            
         }
-    
         super.viewDidLoad()
     }
-
+    
+    private func saveGenresToUD(genres : [Genre]) {
+        
+        let userDefaults = UserDefaults.standard
+        let encodedData: Data = NSKeyedArchiver.archivedData(withRootObject: genres)
+        userDefaults.set(encodedData, forKey: "TellMeAMovie_Genres")
+        userDefaults.synchronize()
+        
+    }
+    
+    private func getGenresFromUD() -> [Genre] {
+        
+        if let decoded  = UserDefaults.standard.object(forKey: "TellMeAMovie_Genres") as! Data? {
+            let decodedGenres = NSKeyedUnarchiver.unarchiveObject(with: decoded) as! [Genre]
+            
+            return decodedGenres
+        }
+        return []
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     // MARK: - Table view data source
-
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return genres.count
@@ -99,5 +129,5 @@ class GenreTableViewController: UITableViewController {
             }
         }
     }
-
+    
 }

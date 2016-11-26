@@ -15,25 +15,6 @@ public let minimalYear : Int = 1950
 
 public let imageBase = "https://image.tmdb.org/t/p/w500"
 
-/// Структура для хранения выбранного пользователем жанра
-public struct Genre {
-    
-    var genreName : String = ""
-    var genreId : Int = -1
-    
-    init(genreName : String, genreId : Int) {
-        
-        self.genreName = genreName
-        self.genreId = genreId
-    }
-    
-    init() {
-        self.genreName = ""
-        self.genreId = -1
-    }
-    
-}
-
 public func getSingleLineGenres(movie: MovieMDB) -> String {
 
     let genresCount : Int = movie.genres.count

@@ -21,6 +21,12 @@ class MainMenuController: UITableViewController, UICollectionViewDataSource, UIC
         if let settingsMenuController = segue.source as? SettingsMenuController {
             
             settingsInMainMenu = settingsMenuController.settingsFromSettingsMenu
+            settingsInMainMenu.minYear = Int(settingsMenuController.labelStartYear.text!)!
+            settingsInMainMenu.maxYear = Int(settingsMenuController.labelEndYear.text!)!
+            
+            settingsInMainMenu.minRating = Float(settingsMenuController.labelRatingMin.text!)!
+            settingsInMainMenu.maxRating = Float(settingsMenuController.labelRatingMax.text!)!
+            
             settingsInMainMenu.saveSettingsToUserDef()
         }
         //TODO: обновление данных

@@ -82,56 +82,22 @@ class SettingsMenuController: UITableViewController {
         }
         
         // MARK: Year slider
-        //self.yearRangeSlider.minimumValue = CGFloat(minimalYear)
-        //self.yearRangeSlider.maximumValue = CGFloat(currentYear)
+        self.yearRangeSlider.minimumValue = CGFloat(minimalYear)
+        self.yearRangeSlider.maximumValue = CGFloat(currentYear)
         
         print("settingsFromSettingsMenu.minYear \(settingsFromSettingsMenu.minYear)")
-        if (settingsFromSettingsMenu.minYear != 0) {
-            
-            self.yearRangeSlider.minimumSelectedValue = CGFloat(settingsFromSettingsMenu.minYear)
-            
-        } else {
-            
-            self.yearRangeSlider.minimumSelectedValue = CGFloat(minimalYear)
-        }
+        self.yearRangeSlider.minimumSelectedValue = CGFloat(settingsFromSettingsMenu.minYear)
         
         print("settingsFromSettingsMenu.maxYear \(settingsFromSettingsMenu.maxYear)")
-        if (settingsFromSettingsMenu.maxYear != 0) {
-            
-            self.yearRangeSlider.maximumSelectedValue = CGFloat(settingsFromSettingsMenu.maxYear)
-            
-        } else {
-            
-            self.yearRangeSlider.maximumSelectedValue = CGFloat(currentYear)
-        }
-        
-        self.labelStartYear.text = String(lroundf(Float(self.yearRangeSlider.minimumSelectedValue)))
-        self.labelEndYear.text = String(lroundf(Float(self.yearRangeSlider.maximumSelectedValue)))
+        self.yearRangeSlider.maximumSelectedValue = CGFloat(settingsFromSettingsMenu.maxYear)
         
         //MARK: Rating slider
         
         print("settingsFromSettingsMenu.minRating \(settingsFromSettingsMenu.minRating)")
-        if(settingsFromSettingsMenu.minRating != 0) {
-        
-            self.ratingRangeSlider.minimumSelectedValue = CGFloat(settingsFromSettingsMenu.minRating)
-            self.labelRatingMin.text = String(round(Float(self.ratingRangeSlider.minimumSelectedValue)))
-        } else {
-        
-            self.labelRatingMin.text = String(round(10*Float(self.ratingRangeSlider.minimumSelectedValue))/10)
-        
-        }
+        self.ratingRangeSlider.minimumSelectedValue = CGFloat(settingsFromSettingsMenu.minRating)
         
         print("settingsFromSettingsMenu.maxRating \(settingsFromSettingsMenu.maxRating)")
-        if(settingsFromSettingsMenu.maxRating != 0) {
-            
-            self.ratingRangeSlider.maximumSelectedValue = CGFloat(settingsFromSettingsMenu.maxRating)
-            self.labelRatingMax.text = String(round(Float(self.ratingRangeSlider.maximumSelectedValue)))
-            
-        } else {
-            
-            self.labelRatingMax.text = String(round(10*Float(self.ratingRangeSlider.maximumSelectedValue))/10)
-            
-        }
+        self.ratingRangeSlider.maximumSelectedValue = CGFloat(settingsFromSettingsMenu.maxRating)
         
     }
     
@@ -152,10 +118,6 @@ extension SettingsMenuController: YSRangeSliderDelegate {
             
             self.labelStartYear.text = String(lroundf(Float(minimumSelectedValue)))
             self.labelEndYear.text = String(lroundf(Float(maximumSelectedValue)))
-            
-            self.settingsFromSettingsMenu.minYear = Int(self.labelStartYear.text!)!
-            self.settingsFromSettingsMenu.maxYear = Int(self.labelEndYear.text!)!
-            
         }
         
         //tag = 2 - rating
@@ -163,9 +125,6 @@ extension SettingsMenuController: YSRangeSliderDelegate {
             
             self.labelRatingMin.text = String(round(10*Float(rangeSlider.minimumSelectedValue))/10)
             self.labelRatingMax.text = String(round(10*Float(rangeSlider.maximumSelectedValue))/10)
-            
-            self.settingsFromSettingsMenu.minRating = Float(self.labelRatingMin.text!)!
-            self.settingsFromSettingsMenu.maxRating = Float(self.labelRatingMax.text!)!
         }
     }
     

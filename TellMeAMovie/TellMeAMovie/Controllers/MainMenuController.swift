@@ -11,11 +11,24 @@ import TMDBSwift
 
 class MainMenuController: UITableViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
+    var settingsInMainMenu : Settings = Settings.init()
+    
     @IBAction func cancelSettingsToMainMenu(segue:UIStoryboardSegue) {
     }
     
     @IBAction func saveSettingsToMainMenu(segue:UIStoryboardSegue) {
         
+        if let settingsMenuController = segue.source as? SettingsMenuController {
+            
+            settingsInMainMenu = settingsMenuController.settingsFromSettingsMenu
+            settingsInMainMenu.saveSettingsToUserDef()
+            
+            settingsInMainMenu.getSettingsFromUSerDef()
+            print("Settings after getting")
+            print(settingsInMainMenu.selectedGenre.genreName)
+            
+            
+        }
         //TODO: обновление данных
         
     }

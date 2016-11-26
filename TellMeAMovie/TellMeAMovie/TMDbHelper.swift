@@ -27,6 +27,11 @@ public struct Genre {
         self.genreId = genreId
     }
     
+    init() {
+        self.genreName = ""
+        self.genreId = -1
+    }
+    
 }
 
 public func getSingleLineGenres(movie: MovieMDB) -> String {

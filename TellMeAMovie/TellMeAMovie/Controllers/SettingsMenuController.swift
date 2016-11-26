@@ -22,15 +22,21 @@ class SettingsMenuController: UITableViewController {
     @IBOutlet weak var labelRatingMax: UILabel!
     @IBOutlet weak var ratingRangeSlider: YSRangeSlider!
     
+    public var settingsFromSettingsMenu : Settings = Settings.init()
+    
     var genre:Genre = Genre.init(genreName: "Нет", genreId: -1) {
         didSet {
             detailGenre.text? = genre.genreName
+            
+            settingsFromSettingsMenu.selectedGenre = genre
         }
     }
     
     var country:String = "Нет" {
         didSet {
             detailCountry.text? = country
+            
+            settingsFromSettingsMenu.selectedCountry = country
         }
     }
     
@@ -41,10 +47,6 @@ class SettingsMenuController: UITableViewController {
         if let genreTableViewController = segue.source as? GenreTableViewController,
             let selectedGenre = genreTableViewController.selectedGenre {
             genre = selectedGenre
-            
-            print("unwindWithSelectedGenre")
-            print(genre.genreName)
-            print(genre.genreId)
         }
     }
     
@@ -65,6 +67,8 @@ class SettingsMenuController: UITableViewController {
         yearRangeSlider.delegate = self
         ratingRangeSlider.delegate = self
         
+        //TODO вставить обработку получения сохраненых данных
+        
         // MARK: Year slider
         let currentYear : Int = getCurrentYear()
         
@@ -79,8 +83,8 @@ class SettingsMenuController: UITableViewController {
         
         //MARK: Rating slider
         
-        self.labelRatingMin.text = String(round(100*Float(self.ratingRangeSlider.minimumSelectedValue))/100)
-        self.labelRatingMax.text = String(round(100*Float(self.ratingRangeSlider.maximumSelectedValue))/100)
+        self.labelRatingMin.text = String(round(10*Float(self.ratingRangeSlider.minimumSelectedValue))/10)
+        self.labelRatingMax.text = String(round(10*Float(self.ratingRangeSlider.maximumSelectedValue))/10)
         
     }
 
@@ -107,8 +111,8 @@ extension SettingsMenuController: YSRangeSliderDelegate {
         //tag = 2 - rating
         if (rangeSlider.tag == 2) {
         
-            self.labelRatingMin.text = String(round(100*Float(self.ratingRangeSlider.minimumSelectedValue))/100)
-            self.labelRatingMax.text = String(round(100*Float(self.ratingRangeSlider.maximumSelectedValue))/100)
+            self.labelRatingMin.text = String(round(10*Float(self.ratingRangeSlider.minimumSelectedValue))/10)
+            self.labelRatingMax.text = String(round(10*Float(self.ratingRangeSlider.maximumSelectedValue))/10)
         
         }
     }

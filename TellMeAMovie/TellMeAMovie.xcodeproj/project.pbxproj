@@ -12,6 +12,7 @@
 		160234C21DC120390081FE88 /* GenreTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160234C11DC120390081FE88 /* GenreTableViewController.swift */; };
 		160234C41DC12AE70081FE88 /* CountrysTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160234C31DC12AE70081FE88 /* CountrysTableViewController.swift */; };
 		163F07C91DE7052800F12503 /* Client_getImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163F07C81DE7052800F12503 /* Client_getImage.swift */; };
+		163F07CB1DEA11E100F12503 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163F07CA1DEA11E100F12503 /* Settings.swift */; };
 		16425A051DE638D80066793E /* TMDbHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16425A041DE638D80066793E /* TMDbHelper.swift */; };
 		1676A92E1DB956A400371B86 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1676A92D1DB956A400371B86 /* AppDelegate.swift */; };
 		1676A9331DB956A400371B86 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1676A9311DB956A400371B86 /* Main.storyboard */; };
@@ -26,6 +27,7 @@
 		160234C11DC120390081FE88 /* GenreTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenreTableViewController.swift; sourceTree = "<group>"; };
 		160234C31DC12AE70081FE88 /* CountrysTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountrysTableViewController.swift; sourceTree = "<group>"; };
 		163F07C81DE7052800F12503 /* Client_getImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Client_getImage.swift; sourceTree = "<group>"; };
+		163F07CA1DEA11E100F12503 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		16425A041DE638D80066793E /* TMDbHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMDbHelper.swift; sourceTree = "<group>"; };
 		1676A92A1DB956A400371B86 /* TellMeAMovie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TellMeAMovie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1676A92D1DB956A400371B86 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 				1676A9361DB956A400371B86 /* LaunchScreen.storyboard */,
 				1676A9391DB956A400371B86 /* Info.plist */,
 				16425A041DE638D80066793E /* TMDbHelper.swift */,
+				163F07CA1DEA11E100F12503 /* Settings.swift */,
 			);
 			path = TellMeAMovie;
 			sourceTree = "<group>";
@@ -253,6 +256,7 @@
 			files = (
 				160234C41DC12AE70081FE88 /* CountrysTableViewController.swift in Sources */,
 				1676A92E1DB956A400371B86 /* AppDelegate.swift in Sources */,
+				163F07CB1DEA11E100F12503 /* Settings.swift in Sources */,
 				16425A051DE638D80066793E /* TMDbHelper.swift in Sources */,
 				160234C21DC120390081FE88 /* GenreTableViewController.swift in Sources */,
 				160234C01DC111B50081FE88 /* SettingsMenuController.swift in Sources */,
@@ -381,6 +385,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = NN66A2H896;
 				INFOPLIST_FILE = TellMeAMovie/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = IlyaGutnikovLLC.TellMeAMovie;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -395,6 +400,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = NN66A2H896;
 				INFOPLIST_FILE = TellMeAMovie/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = IlyaGutnikovLLC.TellMeAMovie;
 				PRODUCT_NAME = "$(TARGET_NAME)";

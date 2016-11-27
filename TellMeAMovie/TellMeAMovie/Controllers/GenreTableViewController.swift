@@ -15,7 +15,6 @@ class GenreTableViewController: UITableViewController {
     
     var selectedGenreIndex:Int?
     
-    
     /// Получает выбранный жанр
     var selectedGenre:Genre?
     

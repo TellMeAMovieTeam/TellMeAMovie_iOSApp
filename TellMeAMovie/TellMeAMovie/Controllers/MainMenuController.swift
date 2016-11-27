@@ -33,12 +33,14 @@ class MainMenuController: UITableViewController, UICollectionViewDataSource, UIC
         
     }
     @IBOutlet weak var movieTitle: UILabel!
+    @IBOutlet weak var movieOriginalTitle: UILabel!
     @IBOutlet weak var movieRating: UILabel!
     @IBOutlet weak var tagLine: UILabel!
     @IBOutlet weak var productionCountry: UILabel!
     @IBOutlet weak var movieOverview: UITextView!
     @IBOutlet weak var moviePoster: UIImageView!
     @IBOutlet weak var movieGenre: UILabel!
+    @IBOutlet weak var movieYear: UILabel!
     
     let longSideModifyer : Float = 16.0
     let shortSideModifyer : Float = 9.0
@@ -62,6 +64,7 @@ class MainMenuController: UITableViewController, UICollectionViewDataSource, UIC
                 print(movie.production_companies?[0].name)
                 
                 self.movieTitle.text = movie.title
+                self.movieOriginalTitle.text = movie.original_title
                 self.tagLine.text = movie.tagline
                 self.movieGenre.text = getSingleLineGenres(movie: movie)
                 
@@ -69,6 +72,7 @@ class MainMenuController: UITableViewController, UICollectionViewDataSource, UIC
                 
                 self.movieRating.text = String(format: "%.2f", movie.vote_average!)
                 self.movieOverview.text = movie.overview
+                self.movieYear.text = movie.release_date?.substring(to: (movie.release_date?.index((movie.release_date?.endIndex)!, offsetBy: -6))!)
                 
                 setImageFromURL(url: imageBase + movie.poster_path!, imageView: self.moviePoster)
             }
@@ -106,7 +110,7 @@ class MainMenuController: UITableViewController, UICollectionViewDataSource, UIC
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        if (indexPath.section == 1 && indexPath.row == 0) {
+        if (indexPath.section == 2 && indexPath.row == 0) {
             
             let cellWidth : Float = Float(self.view.frame.size.width - 16) //16 так как два констрейнта по 8
             let cellHeight : Float = roundf((cellWidth / shortSideModifyer) * longSideModifyer)

@@ -69,13 +69,14 @@ public class Settings : NSObject, NSCoding {
     public func saveSettingsToUserDef() {
         
         let settings : Settings = Settings.init(selectedGenre: self.selectedGenre, selectedCountry: self.selectedCountry, minYear: self.minYear, maxYear: self.maxYear, minRating: self.minRating, maxRating: self.maxRating)
-        
+        /*
         print("saveSettingsToUserDef settings.selectedGenre.genreName \(settings.selectedGenre.genreName)")
         print("saveSettingsToUserDef settings.selectedCountry \(settings.selectedCountry)")
         print("saveSettingsToUserDef settings.minRating \(settings.minRating)")
         print("saveSettingsToUserDef settings.maxRating \(settings.maxRating)")
         print("saveSettingsToUserDef settings.minYear \(settings.minYear)")
         print("saveSettingsToUserDef settings.maxYear \(settings.maxYear)")
+        */
         
         let data  = NSKeyedArchiver.archivedData(withRootObject: settings)
         let defaults = UserDefaults.standard
@@ -90,13 +91,14 @@ public class Settings : NSObject, NSCoding {
         let decoded  = UserDefaults.standard.object(forKey: "TellMeAMovie_Settings") as! Data
         let decodedSettings = NSKeyedUnarchiver.unarchiveObject(with: decoded) as! Settings
         
+        /*
         print("getSettingsFromUserDef settings.selectedGenre.genreName \(decodedSettings.selectedGenre.genreName)")
         print("getSettingsFromUserDef settings.selectedCountry \(decodedSettings.selectedCountry)")
         print("getSettingsFromUserDef settings.minRating \(decodedSettings.minRating)")
         print("getSettingsFromUserDef settings.maxRating \(decodedSettings.maxRating)")
         print("getSettingsFromUserDef settings.minYear \(decodedSettings.minYear)")
         print("getSettingsFromUserDef settings.maxYear \(decodedSettings.maxYear)")
-        
+        */
         
         self.selectedGenre = decodedSettings.selectedGenre
         self.selectedCountry = decodedSettings.selectedCountry

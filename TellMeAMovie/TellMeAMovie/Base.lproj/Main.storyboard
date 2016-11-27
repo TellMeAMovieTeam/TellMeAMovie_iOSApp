@@ -697,8 +697,6 @@
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vmQ-1M-qP2" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <swipeGestureRecognizer direction="left" id="Kju-N2-ng2"/>
-                <swipeGestureRecognizer direction="right" id="ZLt-Qi-eqk"/>
             </objects>
             <point key="canvasLocation" x="812" y="138.98050974512745"/>
         </scene>

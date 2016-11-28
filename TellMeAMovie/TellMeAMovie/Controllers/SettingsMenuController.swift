@@ -12,7 +12,6 @@ import YSRangeSlider
 class SettingsMenuController: UITableViewController {
     
     @IBOutlet weak var detailGenre: UILabel!
-    @IBOutlet weak var detailCountry: UILabel!
     
     @IBOutlet weak var labelStartYear: UILabel!
     @IBOutlet weak var labelEndYear: UILabel!
@@ -32,13 +31,6 @@ class SettingsMenuController: UITableViewController {
         }
     }
     
-    var country:String = "Нет" {
-        didSet {
-            detailCountry.text? = country
-            
-            settingsFromSettingsMenu.selectedCountry = country
-        }
-    }
     
     /// Анвинд с сохраненнием выбранного жанра
     ///
@@ -47,17 +39,6 @@ class SettingsMenuController: UITableViewController {
         if let genreTableViewController = segue.source as? GenreTableViewController,
             let selectedGenre = genreTableViewController.selectedGenre {
             genre = selectedGenre
-        }
-    }
-    
-    
-    /// Анвинд с сохраненнием выбранной страны
-    ///
-    /// - parameter segue: Сегвей, который делает unwind
-    @IBAction func unwindWithSelectedCountry(segue:UIStoryboardSegue) {
-        if let countrysTableViewController = segue.source as? CountrysTableViewController,
-            let selectedCountry = countrysTableViewController.selectedCountry {
-            country = selectedCountry
         }
     }
     
@@ -74,11 +55,6 @@ class SettingsMenuController: UITableViewController {
         print("settingsFromSettingsMenu.selectedGenre.genreName \(settingsFromSettingsMenu.selectedGenre.genreName)")
         if(!settingsFromSettingsMenu.selectedGenre.genreName.isEmpty) {
             detailGenre.text = settingsFromSettingsMenu.selectedGenre.genreName
-        }
-        
-        print("settingsFromSettingsMenu.selectedCountry \(settingsFromSettingsMenu.selectedCountry)")
-        if (!settingsFromSettingsMenu.selectedCountry.isEmpty) {
-            detailCountry.text = settingsFromSettingsMenu.selectedCountry
         }
         
         // MARK: Year slider

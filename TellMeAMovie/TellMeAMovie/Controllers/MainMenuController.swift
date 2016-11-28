@@ -50,6 +50,7 @@ class MainMenuController: UITableViewController, UICollectionViewDataSource, UIC
         
         tableView.estimatedRowHeight = 540
         tableView.rowHeight = UITableViewAutomaticDimension
+        settingsInMainMenu.getSettingsFromUserDef()
         
         MovieMDB.movie(TMDb_APIv3_key, movieID: 550, language: "ru") {
             
@@ -79,6 +80,8 @@ class MainMenuController: UITableViewController, UICollectionViewDataSource, UIC
             
             self.tableView.reloadData()
         }
+        
+        getMoviesWithCurrentSettings()
         
         super.viewDidLoad()
         
@@ -154,8 +157,6 @@ class MainMenuController: UITableViewController, UICollectionViewDataSource, UIC
             year_lte = String(settingsInMainMenu.maxYear) + "-01-01"
         }
         
-        //MARK : Country
-        
         //MARK : Genre
         var genre : String? = nil
         if (settingsInMainMenu.selectedGenre.genreId == -1 ) {
@@ -187,7 +188,7 @@ class MainMenuController: UITableViewController, UICollectionViewDataSource, UIC
             rating_lte = Double(settingsInMainMenu.maxRating)
         }
         
-        DiscoverMovieMDB.discoverMovies(apikey: TMDb_APIv3_key, language: "RU", page: 1, primary_release_date_gte: year_gte, primary_release_date_lte: year_lte, vote_average_gte: rating_gte, vote_average_lte: rating_lte, with_genres: genre){
+        DiscoverMovieMDB.discoverMovies(apikey: TMDb_APIv3_key, language: "ru", page: 1, primary_release_date_gte: year_gte, primary_release_date_lte: year_lte, vote_average_gte: rating_gte, vote_average_lte: rating_lte, with_genres: genre){
             data, movieArr  in
             if let movieArr = movieArr{
                 print(movieArr[0].id)

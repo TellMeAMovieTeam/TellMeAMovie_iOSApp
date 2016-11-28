@@ -10,7 +10,6 @@
 		160234BE1DC110630081FE88 /* MainMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160234BD1DC110630081FE88 /* MainMenuController.swift */; };
 		160234C01DC111B50081FE88 /* SettingsMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160234BF1DC111B50081FE88 /* SettingsMenuController.swift */; };
 		160234C21DC120390081FE88 /* GenreTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160234C11DC120390081FE88 /* GenreTableViewController.swift */; };
-		160234C41DC12AE70081FE88 /* CountrysTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160234C31DC12AE70081FE88 /* CountrysTableViewController.swift */; };
 		163F07C91DE7052800F12503 /* Client_getImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163F07C81DE7052800F12503 /* Client_getImage.swift */; };
 		163F07CB1DEA11E100F12503 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163F07CA1DEA11E100F12503 /* Settings.swift */; };
 		163F07CD1DEA3ECC00F12503 /* Genre.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163F07CC1DEA3ECC00F12503 /* Genre.swift */; };
@@ -27,7 +26,6 @@
 		160234BD1DC110630081FE88 /* MainMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenuController.swift; sourceTree = "<group>"; };
 		160234BF1DC111B50081FE88 /* SettingsMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsMenuController.swift; sourceTree = "<group>"; };
 		160234C11DC120390081FE88 /* GenreTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenreTableViewController.swift; sourceTree = "<group>"; };
-		160234C31DC12AE70081FE88 /* CountrysTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountrysTableViewController.swift; sourceTree = "<group>"; };
 		163F07C81DE7052800F12503 /* Client_getImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Client_getImage.swift; sourceTree = "<group>"; };
 		163F07CA1DEA11E100F12503 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		163F07CC1DEA3ECC00F12503 /* Genre.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Genre.swift; sourceTree = "<group>"; };
@@ -62,7 +60,6 @@
 				160234BD1DC110630081FE88 /* MainMenuController.swift */,
 				160234BF1DC111B50081FE88 /* SettingsMenuController.swift */,
 				160234C11DC120390081FE88 /* GenreTableViewController.swift */,
-				160234C31DC12AE70081FE88 /* CountrysTableViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -261,7 +258,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				163F07CD1DEA3ECC00F12503 /* Genre.swift in Sources */,
-				160234C41DC12AE70081FE88 /* CountrysTableViewController.swift in Sources */,
 				1676A92E1DB956A400371B86 /* AppDelegate.swift in Sources */,
 				163F07CB1DEA11E100F12503 /* Settings.swift in Sources */,
 				163F07CF1DEB2B1A00F12503 /* Movie.swift in Sources */,

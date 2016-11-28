@@ -130,6 +130,77 @@ class MainMenuController: UITableViewController, UICollectionViewDataSource, UIC
         
     }
     
+    private func getMoviesWithCurrentSettings() {
+        
+        //MARK : Year checking
+        var year_gte : String = ""
+        var year_lte : String = ""
+        
+        if (settingsInMainMenu.minYear == 0) {
+            
+            year_gte = "1950-01-01"
+            
+        } else {
+            
+            year_gte = String(settingsInMainMenu.minYear) + "-01-01"
+        }
+        
+        if (settingsInMainMenu.maxYear == 0) {
+            
+            year_lte = String(getCurrentYear()) + "-01-01"
+            
+        } else {
+            
+            year_lte = String(settingsInMainMenu.maxYear) + "-01-01"
+        }
+        
+        //MARK : Country
+        
+        //MARK : Genre
+        var genre : String? = nil
+        if (settingsInMainMenu.selectedGenre.genreId == -1 ) {
+        
+            genre = nil
+            
+        } else {
+        
+            genre = String(settingsInMainMenu.selectedGenre.genreId)
+        }
+        
+        //MARK : Rating
+        var rating_gte : Double = 0
+        var rating_lte : Double = 0
+        
+        if (settingsInMainMenu.minRating == 0) {
+        
+            rating_gte = 0
+        } else {
+        
+            rating_gte = Double(settingsInMainMenu.minRating)
+        }
+        
+        if (settingsInMainMenu.maxRating == 0) {
+        
+            rating_lte = 10
+        } else {
+        
+            rating_lte = Double(settingsInMainMenu.maxRating)
+        }
+        
+        DiscoverMovieMDB.discoverMovies(apikey: TMDb_APIv3_key, language: "RU", page: 1, primary_release_date_gte: year_gte, primary_release_date_lte: year_lte, vote_average_gte: rating_gte, vote_average_lte: rating_lte, with_genres: genre){
+            data, movieArr  in
+            if let movieArr = movieArr{
+                print(movieArr[0].id)
+                print(movieArr[0].title)
+                print(movieArr[0].original_title)
+                print(movieArr[0].release_date)
+                print(movieArr[0].overview)
+            }
+        }
+        
+        
+    }
+    
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
         if (indexPath.section == 2 && indexPath.row == 0) {

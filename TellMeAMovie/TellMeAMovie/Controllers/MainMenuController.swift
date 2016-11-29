@@ -11,7 +11,8 @@ import TMDBSwift
 
 class MainMenuController: UITableViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
-    var settingsInMainMenu : Settings = Settings.init()
+    private var settingsInMainMenu : Settings = Settings.init()
+    private var movies : [Movie] = []
     
     @IBAction func cancelSettingsToMainMenu(segue:UIStoryboardSegue) {
     }
@@ -80,7 +81,7 @@ class MainMenuController: UITableViewController, UICollectionViewDataSource, UIC
             
             self.tableView.reloadData()
         }
-        
+        settingsInMainMenu.getSettingsFromUserDef()
         getMoviesWithCurrentSettings()
         
         super.viewDidLoad()
@@ -160,11 +161,11 @@ class MainMenuController: UITableViewController, UICollectionViewDataSource, UIC
         //MARK : Genre
         var genre : String? = nil
         if (settingsInMainMenu.selectedGenre.genreId == -1 ) {
-        
+            
             genre = nil
             
         } else {
-        
+            
             genre = String(settingsInMainMenu.selectedGenre.genreId)
         }
         
@@ -173,32 +174,77 @@ class MainMenuController: UITableViewController, UICollectionViewDataSource, UIC
         var rating_lte : Double = 0
         
         if (settingsInMainMenu.minRating == 0) {
-        
+            
             rating_gte = 0
         } else {
-        
+            
             rating_gte = Double(settingsInMainMenu.minRating)
         }
         
         if (settingsInMainMenu.maxRating == 0) {
-        
+            
             rating_lte = 10
         } else {
-        
+            
             rating_lte = Double(settingsInMainMenu.maxRating)
         }
         
+        var movieCounter = 0;
+        
         DiscoverMovieMDB.discoverMovies(apikey: TMDb_APIv3_key, language: "ru", page: 1, primary_release_date_gte: year_gte, primary_release_date_lte: year_lte, vote_average_gte: rating_gte, vote_average_lte: rating_lte, with_genres: genre){
             data, movieArr  in
-            if let movieArr = movieArr{
-                print(movieArr[0].id)
-                print(movieArr[0].title)
-                print(movieArr[0].original_title)
-                print(movieArr[0].release_date)
-                print(movieArr[0].overview)
+            if let movieArr = movieArr {
+                print("In discover")
+                movieArr.forEach {
+                    
+                    print($0.id)
+                    print($0.title)
+                    print($0.original_title)
+                    //по id фильма находим его кадры и полную информацию
+                    var discoverMovieID: Int = $0.id!
+                    
+                    MovieMDB.movie(TMDb_APIv3_key, movieID: discoverMovieID, language: "ru") {
+                        //получили информацию о фильме
+                        apiReturn, movie in
+                        if let movie = movie {
+                            
+                            MovieMDB.images(TMDb_APIv3_key, movieID: discoverMovieID, language: "en"){
+                                data, imgs in
+                                if let images = imgs {
+                                    
+                                    var stillsFilePath : [String] = []
+                                    var backdropsFilePath : [String] = []
+                                    
+                                    images.stills.forEach {
+                                        stillsFilePath.append($0.file_path!)
+                                    }
+                                    
+                                    images.backdrops.forEach {
+                                    
+                                        backdropsFilePath.append($0.file_path!)
+                                    }
+                                    print("Add movie to list")
+                                    self.movies.append(Movie.init(movie: movie, frames: backdropsFilePath))
+                                    
+                                    if((movieArr.count - 1) == movieCounter) {
+                                    
+                                        saveMoviesToUD(movies: self.movies)
+                                        
+                                        print("getMoviesFromUD")
+                                        var test : [Movie] = getMoviesFromUD()
+                                        print(test[0].movieTitle)
+                                    }
+                                    
+                                    movieCounter += 1
+                                }
+                            }
+                        }
+                    }
+                    
+                }
             }
+            
         }
-        
         
     }
     

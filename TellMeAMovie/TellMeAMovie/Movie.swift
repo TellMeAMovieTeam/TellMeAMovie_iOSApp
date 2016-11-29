@@ -9,14 +9,13 @@
 import Foundation
 import TMDBSwift
 
-public class Movie  {
+public class Movie : NSObject, NSCoding {
     
     var movieId : Int = 0
     var movieTitle : String = ""
     var movieOriginalTitle : String = ""
     var movieRating : Double = 0
     var movieTagLine : String = ""
-    var productionCountry : String = ""
     var movieOverview : String = ""
     var moviePoster : String = ""
     var movieGenre : String = ""
@@ -32,29 +31,29 @@ public class Movie  {
         self.movieOriginalTitle = movie.original_title!
         self.movieRating = movie.vote_average!
         self.movieTagLine = movie.tagline
-        self.productionCountry = (movie.production_countries?[0].name)!
         self.movieOverview = movie.overview!
         self.moviePoster = imageBase + movie.poster_path!
         self.movieGenre = getSingleLineGenres(movie: movie)
         self.movieYear = Int((movie.release_date?.substring(to: (movie.release_date?.index((movie.release_date?.endIndex)!, offsetBy: -6))!))!)!
         
-        frames.forEach {
+        self.framesURLs = []
+        
+        /*frames.forEach {
         
             self.framesURLs.append(imageBase + $0)
         
-        }
+        }*/
         
     }
     
     
-    public init(id : Int, title : String, originalTitle : String, voteAverage : Double, tagline : String, productionCountry : String, overview : String, moviePoster : String, movieGenre : String, movieYear : Int, frames : [String]) {
+    public init(id : Int, title : String, originalTitle : String, voteAverage : Double, tagline : String, overview : String, moviePoster : String, movieGenre : String, movieYear : Int, frames : [String]) {
     
         self.movieId = id
         self.movieTitle = title
         self.movieOriginalTitle = originalTitle
         self.movieRating = voteAverage
         self.movieTagLine = tagline
-        self.productionCountry = productionCountry
         self.movieOverview = overview
         self.moviePoster = moviePoster
         self.movieGenre = movieGenre
@@ -70,14 +69,13 @@ public class Movie  {
         let originalTitle = aDecoder.decodeObject(forKey: "TellMeAMovie_Movie_originalTitle") as! String
         let voteAverage = aDecoder.decodeDouble(forKey: "TellMeAMovie_Movie_voteAverage")
         let tagline = aDecoder.decodeObject(forKey: "TellMeAMovie_Movie_tagline") as! String
-        let productionCountry = aDecoder.decodeObject(forKey: "TellMeAMovie_Movie_productionCountry") as! String
         let overview = aDecoder.decodeObject(forKey: "TellMeAMovie_Movie_overview") as! String
         let moviePoster = aDecoder.decodeObject(forKey: "TellMeAMovie_Movie_moviePoster") as! String
         let movieGenre = aDecoder.decodeObject(forKey: "TellMeAMovie_Movie_movieGenre") as! String
         let movieYear = aDecoder.decodeInteger(forKey: "TellMeAMovie_Movie_movieYear")
         let frames : [String] = aDecoder.decodeObject(forKey: "TellMeAMovie_Movie_frames") as! [String]
         
-        self.init(id : id, title : title, originalTitle : originalTitle, voteAverage : voteAverage, tagline : tagline, productionCountry : productionCountry, overview : overview, moviePoster : moviePoster, movieGenre : movieGenre, movieYear : movieYear, frames : frames)
+        self.init(id : id, title : title, originalTitle : originalTitle, voteAverage : voteAverage, tagline : tagline, overview : overview, moviePoster : moviePoster, movieGenre : movieGenre, movieYear : movieYear, frames : frames)
     }
     
     public func encode(with aCoder: NSCoder) {
@@ -87,7 +85,6 @@ public class Movie  {
         aCoder.encode(self.movieOriginalTitle, forKey: "TellMeAMovie_Movie_originalTitle")
         aCoder.encode(self.movieRating, forKey: "TellMeAMovie_Movie_voteAverage")
         aCoder.encode(self.movieTagLine, forKey: "TellMeAMovie_Movie_tagline")
-        aCoder.encode(self.movieGenre, forKey: "TellMeAMovie_Movie_productionCountry")
         aCoder.encode(self.movieOverview, forKey: "TellMeAMovie_Movie_overview")
         aCoder.encode(self.moviePoster, forKey: "TellMeAMovie_Movie_moviePoster")
         aCoder.encode(self.movieGenre, forKey: "TellMeAMovie_Movie_movieGenre")

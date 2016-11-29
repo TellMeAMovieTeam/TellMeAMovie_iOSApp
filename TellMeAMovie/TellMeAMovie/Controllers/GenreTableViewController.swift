@@ -20,7 +20,7 @@ class GenreTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         
-        let decodedGenres = getGenresFromUD()
+        var decodedGenres = getGenresFromUD()
         
         if (decodedGenres.count == 0) {
             

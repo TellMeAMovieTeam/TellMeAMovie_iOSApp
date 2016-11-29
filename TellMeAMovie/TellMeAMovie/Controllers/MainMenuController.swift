@@ -38,7 +38,6 @@ class MainMenuController: UITableViewController, UICollectionViewDataSource, UIC
     @IBOutlet weak var movieOriginalTitle: UILabel!
     @IBOutlet weak var movieRating: UILabel!
     @IBOutlet weak var tagLine: UILabel!
-    @IBOutlet weak var productionCountry: UILabel!
     @IBOutlet weak var movieOverview: UITextView!
     @IBOutlet weak var moviePoster: UIImageView!
     @IBOutlet weak var movieGenre: UILabel!
@@ -70,8 +69,6 @@ class MainMenuController: UITableViewController, UICollectionViewDataSource, UIC
                 self.movieOriginalTitle.text = movie.original_title
                 self.tagLine.text = movie.tagline
                 self.movieGenre.text = getSingleLineGenres(movie: movie)
-                
-                print(movie.production_countries?[0].name)
                 
                 self.movieRating.text = String(format: "%.2f", movie.vote_average!)
                 self.movieOverview.text = movie.overview

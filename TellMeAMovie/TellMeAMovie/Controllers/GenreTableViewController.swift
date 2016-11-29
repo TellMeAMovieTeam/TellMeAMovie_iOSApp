@@ -24,7 +24,7 @@ class GenreTableViewController: UITableViewController {
         
         if (decodedGenres.count == 0) {
             
-            GenresMDB.genres(TMDb_APIv3_key, listType: .movie, language: "ru") {
+            GenresMDB.genres(TMDb_APIv3_key, listType: .movie, language: language) {
                 
                 apiReturn, TMDBgenres in
                 if let TMDBgenres = TMDBgenres{

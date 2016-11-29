@@ -13,6 +13,8 @@ public let TMDb_APIv3_key : String = "a21fd90cc71c8a7e7cdd53aa432f5c07"
 
 public let minimalYear : Int = 1950
 
+public let language : String = "ru"
+
 public let imageBase = "https://image.tmdb.org/t/p/w500"
 
 public func getSingleLineGenres(movie: MovieMDB) -> String {
@@ -33,7 +35,7 @@ public func getSingleLineGenres(movie: MovieMDB) -> String {
     
     //удаляем два последних элемента в строке с жанрами 
     genresStr = String(genresStr.characters.dropLast(2))
-    print(genresStr)
+    //print(genresStr)
     
     return genresStr
 

@@ -13,6 +13,7 @@ class MainMenuController: UITableViewController, UICollectionViewDataSource, UIC
     
     private var settingsInMainMenu : Settings = Settings.init()
     private var movies : [Movie] = []
+    private var isMoviesDataDownloaded : Bool = false
     
     @IBAction func cancelSettingsToMainMenu(segue:UIStoryboardSegue) {
     }
@@ -53,7 +54,7 @@ class MainMenuController: UITableViewController, UICollectionViewDataSource, UIC
         tableView.rowHeight = UITableViewAutomaticDimension
         settingsInMainMenu.getSettingsFromUserDef()
         
-        MovieMDB.movie(TMDb_APIv3_key, movieID: 550, language: "ru") {
+        MovieMDB.movie(TMDb_APIv3_key, movieID: 550, language: language) {
             
             apiReturn, movie in
             if let movie = movie{
@@ -191,7 +192,7 @@ class MainMenuController: UITableViewController, UICollectionViewDataSource, UIC
         
         var movieCounter = 0;
         
-        DiscoverMovieMDB.discoverMovies(apikey: TMDb_APIv3_key, language: "ru", page: 1, primary_release_date_gte: year_gte, primary_release_date_lte: year_lte, vote_average_gte: rating_gte, vote_average_lte: rating_lte, with_genres: genre){
+        DiscoverMovieMDB.discoverMovies(apikey: TMDb_APIv3_key, language: language, page: 1, primary_release_date_gte: year_gte, primary_release_date_lte: year_lte, vote_average_gte: rating_gte, vote_average_lte: rating_lte, with_genres: genre){
             data, movieArr  in
             if let movieArr = movieArr {
                 print("In discover")
@@ -203,12 +204,12 @@ class MainMenuController: UITableViewController, UICollectionViewDataSource, UIC
                     //по id фильма находим его кадры и полную информацию
                     var discoverMovieID: Int = $0.id!
                     
-                    MovieMDB.movie(TMDb_APIv3_key, movieID: discoverMovieID, language: "ru") {
+                    MovieMDB.movie(TMDb_APIv3_key, movieID: discoverMovieID, language: language) {
                         //получили информацию о фильме
                         apiReturn, movie in
                         if let movie = movie {
                             
-                            MovieMDB.images(TMDb_APIv3_key, movieID: discoverMovieID, language: "en"){
+                            MovieMDB.images(TMDb_APIv3_key, movieID: discoverMovieID, language: language) {
                                 data, imgs in
                                 if let images = imgs {
                                     
@@ -229,6 +230,7 @@ class MainMenuController: UITableViewController, UICollectionViewDataSource, UIC
                                     if((movieArr.count - 1) == movieCounter) {
                                     
                                         saveMoviesToUD(movies: self.movies)
+                                        self.isMoviesDataDownloaded = true
                                         
                                         print("getMoviesFromUD")
                                         var test : [Movie] = getMoviesFromUD()

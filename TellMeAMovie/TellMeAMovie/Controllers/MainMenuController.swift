@@ -30,6 +30,8 @@ class MainMenuController: UITableViewController, UICollectionViewDataSource, UIC
     /// Текущий выбранный фильм
     private var currentSelectedMovie : Movie = Movie.init()
     
+    private var frameCounter : Int = 0
+    
     @IBAction func cancelSettingsToMainMenu(segue:UIStoryboardSegue) {
     }
     
@@ -123,13 +125,17 @@ class MainMenuController: UITableViewController, UICollectionViewDataSource, UIC
         print("testFrame")
         
         var cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! FrameCollectionViewCell
-        var frameCounter : Int = 0
         if ((isMoviesDataDownloaded == true) && (currentSelectedMovie.framesURLs.count != 0)) {
             
             print(currentSelectedMovie.framesURLs[frameCounter])
             
             cell.frameInit(sringUrl: currentSelectedMovie.framesURLs[frameCounter])
             frameCounter += 1
+            
+            if (frameCounter == 5) {
+            
+                frameCounter = 0
+            }
         }
         
         //cell.backgroundColor = UIColor.black
@@ -295,10 +301,11 @@ class MainMenuController: UITableViewController, UICollectionViewDataSource, UIC
                 self.movieOverview.text = selectedMovie.movieOverview
                 self.movieYear.text = String(describing: selectedMovie.movieYear)
                 
-                //TODO обработать кадры и постер
                 self.moviePoster.sd_setImage(with: URL.init(string: selectedMovie.moviePoster))
                 
                 currentSelectedMovie = selectedMovie
+                
+                frameCounter = 0
                 
                 self.tableView.reloadData()
                 

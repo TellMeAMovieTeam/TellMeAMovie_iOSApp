@@ -15,6 +15,15 @@ class MainMenuController: UITableViewController, UICollectionViewDataSource, UIC
     private var movies : [Movie] = []
     private var isMoviesDataDownloaded : Bool = false
     
+    /// Общее число страниц выдачи с фильмами
+    private var totalMoviePages : Int = 0
+    
+    /// Текущая страница выдачи фильмов
+    private var currentMoviesPage : Int = 1
+    
+    /// Индекс текущего выбраного фильма, индекс жестко связан с данными
+    private var currentSelectedMovieIndex : Int = 0
+    
     @IBAction func cancelSettingsToMainMenu(segue:UIStoryboardSegue) {
     }
     
@@ -53,34 +62,13 @@ class MainMenuController: UITableViewController, UICollectionViewDataSource, UIC
         tableView.rowHeight = UITableViewAutomaticDimension
         settingsInMainMenu.getSettingsFromUserDef()
         
-        MovieMDB.movie(TMDb_APIv3_key, movieID: 550, language: language) {
-            
-            apiReturn, movie in
-            if let movie = movie{
-                
-                print(movie.poster_path)
-                
-                print(movie.title)
-                print(movie.revenue)
-                print(movie.genres[0].name)
-                print(movie.production_companies?[0].name)
-                
-                self.movieTitle.text = movie.title
-                self.movieOriginalTitle.text = movie.original_title
-                self.tagLine.text = movie.tagline
-                self.movieGenre.text = getSingleLineGenres(movie: movie)
-                
-                self.movieRating.text = String(format: "%.2f", movie.vote_average!)
-                self.movieOverview.text = movie.overview
-                self.movieYear.text = movie.release_date?.substring(to: (movie.release_date?.index((movie.release_date?.endIndex)!, offsetBy: -6))!)
-                
-                setImageFromURL(url: imageBase + movie.poster_path!, imageView: self.moviePoster)
-            }
-            
-            self.tableView.reloadData()
-        }
+        getMoviesWithCurrentSettings(page: 1)
+        setMovieToMainMenu(movieIndex: 0)
+        
+        //setImageFromURL(url: imageBase + movie.poster_path!, imageView: self.moviePoster)
+        
         settingsInMainMenu.getSettingsFromUserDef()
-        getMoviesWithCurrentSettings()
+        getMoviesWithCurrentSettings(page: 1)
         
         super.viewDidLoad()
         
@@ -132,7 +120,12 @@ class MainMenuController: UITableViewController, UICollectionViewDataSource, UIC
         
     }
     
-    private func getMoviesWithCurrentSettings() {
+    /// Получает фильм по заданым параметрам
+    ///
+    /// - parameter page: Страница выдачи
+    private func getMoviesWithCurrentSettings(page : Double) {
+        
+        settingsInMainMenu.getSettingsFromUserDef()
         
         //MARK : Year checking
         var year_gte : String = ""
@@ -189,10 +182,14 @@ class MainMenuController: UITableViewController, UICollectionViewDataSource, UIC
         
         var movieCounter = 0;
         
-        DiscoverMovieMDB.discoverMovies(apikey: TMDb_APIv3_key, language: language, page: 1, primary_release_date_gte: year_gte, primary_release_date_lte: year_lte, vote_average_gte: rating_gte, vote_average_lte: rating_lte, with_genres: genre){
+        self.movies = getMoviesFromUD()
+        self.isMoviesDataDownloaded = false
+        
+        DiscoverMovieMDB.discoverMovies(apikey: TMDb_APIv3_key, language: language, page: page, primary_release_date_gte: year_gte, primary_release_date_lte: year_lte, vote_average_gte: rating_gte, vote_average_lte: rating_lte, with_genres: genre){
             data, movieArr  in
             if let movieArr = movieArr {
-                print("In discover")
+                //print("In discover")
+                self.totalMoviePages = (data.pageResults?.total_pages)!
                 movieArr.forEach {
                     
                     print($0.id)
@@ -218,20 +215,16 @@ class MainMenuController: UITableViewController, UICollectionViewDataSource, UIC
                                     }
                                     
                                     images.backdrops.forEach {
-                                    
+                                        
                                         backdropsFilePath.append($0.file_path!)
                                     }
-                                    print("Add movie to list")
+                                    //print("Add movie to list")
                                     self.movies.append(Movie.init(movie: movie, frames: backdropsFilePath))
                                     
                                     if((movieArr.count - 1) == movieCounter) {
-                                    
+                                        
                                         saveMoviesToUD(movies: self.movies)
                                         self.isMoviesDataDownloaded = true
-                                        
-                                        print("getMoviesFromUD")
-                                        var test : [Movie] = getMoviesFromUD()
-                                        print(test[0].movieTitle)
                                     }
                                     
                                     movieCounter += 1
@@ -242,6 +235,77 @@ class MainMenuController: UITableViewController, UICollectionViewDataSource, UIC
                     
                 }
             }
+            
+        }
+        
+    }
+    
+    
+    /// Выставляет данные фильма в экран
+    ///
+    /// - parameter movieNumber: Номер сохраненого фильма
+    private func setMovieToMainMenu(movieIndex : Int) {
+        
+        if let moviesFromUD : [Movie] = getMoviesFromUD() {
+            
+            let selectedMovie = moviesFromUD[movieIndex]
+            
+            currentSelectedMovieIndex = movieIndex
+            
+            self.movieTitle.text = selectedMovie.movieTitle
+            self.movieOriginalTitle.text = selectedMovie.movieOriginalTitle
+            self.tagLine.text = selectedMovie.movieTagLine
+            self.movieGenre.text = selectedMovie.movieGenre
+            
+            self.movieRating.text = String(selectedMovie.movieRating)
+            self.movieOverview.text = selectedMovie.movieOverview
+            self.movieYear.text = String(selectedMovie.movieYear)
+            
+            //TODO обработать кадры и постер
+            
+            self.tableView.reloadData()
+        }
+    }
+    
+    /// Выставляем предыдущий фильм (свайп слева направо)
+    private func previousMovie() {
+        
+        if (currentSelectedMovieIndex != 0) {
+        
+            currentSelectedMovieIndex -= 1
+            setMovieToMainMenu(movieIndex: currentSelectedMovieIndex)
+        
+        } else {
+            
+            //обработка, если сделали свайп до самого начала списка фильмов
+            currentSelectedMovieIndex = 0
+            setMovieToMainMenu(movieIndex: currentSelectedMovieIndex)
+        }
+    }
+    
+    /// Берем следующий фильм (свайп справа налево)
+    private func nextMovie() {
+        
+        // просто берем следующий фильм
+        if (currentSelectedMovieIndex < (movies.count - 1)) {
+        
+            currentSelectedMovieIndex += 1
+            setMovieToMainMenu(movieIndex: currentSelectedMovieIndex)
+        }
+        
+        // прошли всю первую страницу выдачи и есть еще страницы выдачи
+        if ((currentSelectedMovieIndex == 9) && (currentMoviesPage <= totalMoviePages)) {
+            
+            currentMoviesPage += 1
+            getMoviesWithCurrentSettings(page: Double(currentMoviesPage))
+            currentSelectedMovieIndex += 1
+            setMovieToMainMenu(movieIndex: currentSelectedMovieIndex)
+        }
+        
+        // если фильмы с таким параметром закончились
+        if (currentSelectedMovieIndex == (movies.count - 1) && (currentMoviesPage == totalMoviePages)) {
+            
+            setMovieToMainMenu(movieIndex: currentSelectedMovieIndex)
             
         }
         

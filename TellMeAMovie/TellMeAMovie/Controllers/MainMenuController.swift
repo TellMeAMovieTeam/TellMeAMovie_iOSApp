@@ -63,7 +63,7 @@ class MainMenuController: UITableViewController, UICollectionViewDataSource, UIC
         settingsInMainMenu.getSettingsFromUserDef()
         
         getMoviesWithCurrentSettings(page: 1)
-        //setMovieToMainMenu(movieIndex: 0)
+        setMovieToMainMenu(movieIndex: 0)
         
         //setImageFromURL(url: imageBase + movie.poster_path!, imageView: self.moviePoster)
         
@@ -246,22 +246,25 @@ class MainMenuController: UITableViewController, UICollectionViewDataSource, UIC
         
         if let moviesFromUD : [Movie] = getMoviesFromUD() {
             
-            let selectedMovie = moviesFromUD[movieIndex]
-            
-            currentSelectedMovieIndex = movieIndex
-            
-            self.movieTitle.text = selectedMovie.movieTitle
-            self.movieOriginalTitle.text = selectedMovie.movieOriginalTitle
-            self.tagLine.text = selectedMovie.movieTagLine
-            self.movieGenre.text = selectedMovie.movieGenre
-            
-            self.movieRating.text = String(describing: selectedMovie.movieRating)
-            self.movieOverview.text = selectedMovie.movieOverview
-            self.movieYear.text = String(describing: selectedMovie.movieYear)
-            
-            //TODO обработать кадры и постер
-            
-            self.tableView.reloadData()
+            if (moviesFromUD.count != 0) {
+                
+                let selectedMovie = moviesFromUD[movieIndex]
+                
+                currentSelectedMovieIndex = movieIndex
+                
+                self.movieTitle.text = selectedMovie.movieTitle
+                self.movieOriginalTitle.text = selectedMovie.movieOriginalTitle
+                self.tagLine.text = selectedMovie.movieTagLine
+                self.movieGenre.text = selectedMovie.movieGenre
+                
+                self.movieRating.text = String(describing: selectedMovie.movieRating)
+                self.movieOverview.text = selectedMovie.movieOverview
+                self.movieYear.text = String(describing: selectedMovie.movieYear)
+                
+                //TODO обработать кадры и постер
+                
+                self.tableView.reloadData()
+            }
         }
     }
     
@@ -269,10 +272,10 @@ class MainMenuController: UITableViewController, UICollectionViewDataSource, UIC
     private func previousMovie() {
         
         if (currentSelectedMovieIndex != 0) {
-        
+            
             currentSelectedMovieIndex -= 1
             setMovieToMainMenu(movieIndex: currentSelectedMovieIndex)
-        
+            
         } else {
             
             //обработка, если сделали свайп до самого начала списка фильмов
@@ -286,7 +289,7 @@ class MainMenuController: UITableViewController, UICollectionViewDataSource, UIC
         
         // просто берем следующий фильм
         if (currentSelectedMovieIndex < (movies.count - 1)) {
-        
+            
             currentSelectedMovieIndex += 1
             setMovieToMainMenu(movieIndex: currentSelectedMovieIndex)
         }

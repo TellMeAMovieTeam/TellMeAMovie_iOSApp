@@ -46,12 +46,15 @@ class MainMenuController: UITableViewController, UICollectionViewDataSource, UIC
             
             settingsInMainMenu.saveSettingsToUserDef()
             
-            //обновляем данные
+            var allOldSettingsMovies : [Movie] = getMoviesFromUD()
+            var showedOldSettingsMovies : [Movie] = Array(allOldSettingsMovies[0...0+currentSelectedMovieIndex])
             removeMoviesFromUD()
+            saveMoviesToUD(movies: showedOldSettingsMovies)
             
-            settingsInMainMenu.getSettingsFromUserDef()
             getMoviesWithCurrentSettings(page: 1)
-            setMovieToMainMenu(movieIndex: 0)
+            //setMovieToMainMenu(movieIndex: currentSelectedMovieIndex)
+            
+            //reloadData()
         }
         
     }
@@ -95,11 +98,11 @@ class MainMenuController: UITableViewController, UICollectionViewDataSource, UIC
         if let swipeGesture = gesture as? UISwipeGestureRecognizer {
             switch swipeGesture.direction {
             case UISwipeGestureRecognizerDirection.right:
-                print("Swiped right")
+                //print("Swiped right")
                 previousMovie()
                 
             case UISwipeGestureRecognizerDirection.left:
-                print("Swiped left")
+                //print("Swiped left")
                 nextMovie()
             default:
                 break
@@ -250,7 +253,7 @@ class MainMenuController: UITableViewController, UICollectionViewDataSource, UIC
                                     
                                     if((movieArr.count - 1) == movieCounter) {
                                         
-                                        self.movies.shuffle()
+                                        //self.movies.shuffle()
                                         saveMoviesToUD(movies: self.movies)
                                         self.isMoviesDataDownloaded = true
                                     }
@@ -360,6 +363,19 @@ class MainMenuController: UITableViewController, UICollectionViewDataSource, UIC
             
         }*/
         
+    }
+    
+    private func reloadData() {
+        
+        //обновляем данные
+        removeMoviesFromUD()
+        
+        settingsInMainMenu.getSettingsFromUserDef()
+        getMoviesWithCurrentSettings(page: 1)
+        setMovieToMainMenu(movieIndex: 0)
+        
+        currentSelectedMovieIndex = 0
+    
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

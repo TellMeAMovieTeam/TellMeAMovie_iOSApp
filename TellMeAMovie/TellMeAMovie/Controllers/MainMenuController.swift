@@ -12,6 +12,8 @@ import SDWebImage
 
 class MainMenuController: UITableViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
+    @IBOutlet weak var collectionView: UICollectionView!
+    
     private var settingsInMainMenu : Settings = Settings.init()
     private var movies : [Movie] = []
     private var isMoviesDataDownloaded : Bool = false
@@ -24,6 +26,9 @@ class MainMenuController: UITableViewController, UICollectionViewDataSource, UIC
     
     /// Индекс текущего выбраного фильма, индекс жестко связан с данными
     private var currentSelectedMovieIndex : Int = 0
+    
+    /// Текущий выбранный фильм
+    private var currentSelectedMovie : Movie = Movie.init()
     
     @IBAction func cancelSettingsToMainMenu(segue:UIStoryboardSegue) {
     }
@@ -105,9 +110,20 @@ class MainMenuController: UITableViewController, UICollectionViewDataSource, UIC
     }
     
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
-        cell.backgroundColor = UIColor.black
+       
+        print("testFrame")
         
+        var cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! FrameCollectionViewCell
+        var frameCounter : Int = 0
+        if ((isMoviesDataDownloaded == true) && (currentSelectedMovie.framesURLs.count != 0)) {
+            
+            print(currentSelectedMovie.framesURLs[frameCounter])
+            
+            cell.frameInit(sringUrl: currentSelectedMovie.framesURLs[frameCounter])
+            frameCounter += 1
+        }
+        
+        //cell.backgroundColor = UIColor.black
         // Configure the cell
         return cell
     }
@@ -209,13 +225,19 @@ class MainMenuController: UITableViewController, UICollectionViewDataSource, UIC
                                 if let images = imgs {
 
                                     var backdropsFilePath : [String] = []
-                                    print("backDrops")
+                                    //print("backDrops")
                                     images.backdrops.forEach {
                                         
-                                        backdropsFilePath.append($0.file_path!)
+                                        backdropsFilePath.append(imageBase + $0.file_path!)
                                         //print($0.file_path)
                                     }
                                     //print("Add movie to list")
+                                    print("backdropsFilePath")
+                                    backdropsFilePath.forEach {
+                                    
+                                        print($0)
+                                    }
+                                    
                                     self.movies.append(Movie.init(movie: movie, frames: backdropsFilePath))
                                     
                                     if((movieArr.count - 1) == movieCounter) {
@@ -264,7 +286,19 @@ class MainMenuController: UITableViewController, UICollectionViewDataSource, UIC
                 //TODO обработать кадры и постер
                 self.moviePoster.sd_setImage(with: URL.init(string: selectedMovie.moviePoster))
                 
+                currentSelectedMovie = selectedMovie
+                
                 self.tableView.reloadData()
+                
+                self.collectionView.reloadData()
+                
+                print("frameUrls")
+                self.currentSelectedMovie.framesURLs.forEach{
+                
+                    print($0)
+                
+                }
+                
             }
         }
     }

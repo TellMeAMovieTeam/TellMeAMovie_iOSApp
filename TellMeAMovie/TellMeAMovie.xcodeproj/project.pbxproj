@@ -19,6 +19,7 @@
 		1676A9331DB956A400371B86 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1676A9311DB956A400371B86 /* Main.storyboard */; };
 		1676A9351DB956A400371B86 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1676A9341DB956A400371B86 /* Assets.xcassets */; };
 		1676A9381DB956A400371B86 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1676A9361DB956A400371B86 /* LaunchScreen.storyboard */; };
+		167AA4701DEF3123003B090D /* FrameCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167AA46F1DEF3123003B090D /* FrameCollectionViewCell.swift */; };
 		78D8625CF105F528C78341D9 /* Pods_TellMeAMovie.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A377682EA2E4D412D7509190 /* Pods_TellMeAMovie.framework */; };
 /* End PBXBuildFile section */
 
@@ -37,6 +38,7 @@
 		1676A9341DB956A400371B86 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1676A9371DB956A400371B86 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1676A9391DB956A400371B86 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		167AA46F1DEF3123003B090D /* FrameCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FrameCollectionViewCell.swift; sourceTree = "<group>"; };
 		2F4D0E178C98D4C2FF84E62D /* Pods-TellMeAMovie.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TellMeAMovie.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TellMeAMovie/Pods-TellMeAMovie.debug.xcconfig"; sourceTree = "<group>"; };
 		4427BFC0F3FCC1AAC05E8EE8 /* Pods-TellMeAMovie.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TellMeAMovie.release.xcconfig"; path = "Pods/Target Support Files/Pods-TellMeAMovie/Pods-TellMeAMovie.release.xcconfig"; sourceTree = "<group>"; };
 		A377682EA2E4D412D7509190 /* Pods_TellMeAMovie.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TellMeAMovie.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -60,6 +62,7 @@
 				160234BD1DC110630081FE88 /* MainMenuController.swift */,
 				160234BF1DC111B50081FE88 /* SettingsMenuController.swift */,
 				160234C11DC120390081FE88 /* GenreTableViewController.swift */,
+				167AA46F1DEF3123003B090D /* FrameCollectionViewCell.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -265,6 +268,7 @@
 				160234C21DC120390081FE88 /* GenreTableViewController.swift in Sources */,
 				160234C01DC111B50081FE88 /* SettingsMenuController.swift in Sources */,
 				163F07C91DE7052800F12503 /* Client_getImage.swift in Sources */,
+				167AA4701DEF3123003B090D /* FrameCollectionViewCell.swift in Sources */,
 				160234BE1DC110630081FE88 /* MainMenuController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -36,7 +36,7 @@ public class Movie : NSObject, NSCoding {
         self.movieGenre = getSingleLineGenres(movie: movie)
         self.movieYear = Int((movie.release_date?.substring(to: (movie.release_date?.index((movie.release_date?.endIndex)!, offsetBy: -6))!))!)!
         
-        self.framesURLs = []
+        self.framesURLs = frames
         
         /*frames.forEach {
          
@@ -62,6 +62,22 @@ public class Movie : NSObject, NSCoding {
         self.framesURLs = frames
     }
     
+    public override init() {
+    
+        self.movieId = -1
+        self.movieTitle = ""
+        self.movieOriginalTitle = ""
+        self.movieRating = -1
+        self.movieTagLine = ""
+        self.movieOverview = ""
+        self.moviePoster = ""
+        self.movieGenre = ""
+        self.movieYear = 0
+        
+        self.framesURLs = []
+    
+    }
+    
     required convenience public init(coder aDecoder: NSCoder) {
         
         let id = aDecoder.decodeInteger(forKey: "TellMeAMovie_Movie_Id")
@@ -73,7 +89,7 @@ public class Movie : NSObject, NSCoding {
         let moviePoster = aDecoder.decodeObject(forKey: "TellMeAMovie_Movie_moviePoster") as! String
         let movieGenre = aDecoder.decodeObject(forKey: "TellMeAMovie_Movie_movieGenre") as! String
         let movieYear = aDecoder.decodeInteger(forKey: "TellMeAMovie_Movie_movieYear")
-        let frames : [String] = aDecoder.decodeObject(forKey: "TellMeAMovie_Movie_frames") as! [String]
+        let frames : [String] = aDecoder.decodeObject(forKey: "TellMeAMovie_Movie_frames") as! [String] ?? [String]()
         
         self.init(id : id, title : title, originalTitle : originalTitle, voteAverage : voteAverage, tagline : tagline, overview : overview, moviePoster : moviePoster, movieGenre : movieGenre, movieYear : movieYear, frames : frames)
     }

@@ -11,15 +11,15 @@ import TMDBSwift
 
 public class Movie : NSObject, NSCoding {
     
-    var movieId : Int = 0
-    var movieTitle : String = ""
-    var movieOriginalTitle : String = ""
-    var movieRating : Double = 0
-    var movieTagLine : String = ""
-    var movieOverview : String = ""
-    var moviePoster : String = ""
-    var movieGenre : String = ""
-    var movieYear : Int = 0
+    var movieId : Int? = nil
+    var movieTitle : String? = nil
+    var movieOriginalTitle : String? = nil
+    var movieRating : Double? = nil
+    var movieTagLine : String? = nil
+    var movieOverview : String? = nil
+    var moviePoster : String? = nil
+    var movieGenre : String? = nil
+    var movieYear : Int? = nil
     
     //для более удобного хранения в UD
     var framesURLs : [String] = []
@@ -105,6 +105,8 @@ public func saveMoviesToUD(movies : [Movie]) {
 }
 
 public func getMoviesFromUD() -> [Movie] {
+    
+    //UserDefaults.standard.removeObject(forKey: "TellMeAMovie_Movies")
     
     if let decoded  = UserDefaults.standard.object(forKey: "TellMeAMovie_Movies") as! Data? {
         let decodedMovies = NSKeyedUnarchiver.unarchiveObject(with: decoded) as! [Movie]

@@ -63,12 +63,9 @@ class MainMenuController: UITableViewController, UICollectionViewDataSource, UIC
         settingsInMainMenu.getSettingsFromUserDef()
         
         getMoviesWithCurrentSettings(page: 1)
-        setMovieToMainMenu(movieIndex: 0)
+        //setMovieToMainMenu(movieIndex: 0)
         
         //setImageFromURL(url: imageBase + movie.poster_path!, imageView: self.moviePoster)
-        
-        settingsInMainMenu.getSettingsFromUserDef()
-        getMoviesWithCurrentSettings(page: 1)
         
         super.viewDidLoad()
         
@@ -246,6 +243,7 @@ class MainMenuController: UITableViewController, UICollectionViewDataSource, UIC
     /// - parameter movieNumber: Номер сохраненого фильма
     private func setMovieToMainMenu(movieIndex : Int) {
         
+        
         if let moviesFromUD : [Movie] = getMoviesFromUD() {
             
             let selectedMovie = moviesFromUD[movieIndex]
@@ -257,9 +255,9 @@ class MainMenuController: UITableViewController, UICollectionViewDataSource, UIC
             self.tagLine.text = selectedMovie.movieTagLine
             self.movieGenre.text = selectedMovie.movieGenre
             
-            self.movieRating.text = String(selectedMovie.movieRating)
+            self.movieRating.text = String(describing: selectedMovie.movieRating)
             self.movieOverview.text = selectedMovie.movieOverview
-            self.movieYear.text = String(selectedMovie.movieYear)
+            self.movieYear.text = String(describing: selectedMovie.movieYear)
             
             //TODO обработать кадры и постер
             

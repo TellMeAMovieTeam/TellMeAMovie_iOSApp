@@ -45,8 +45,14 @@ class MainMenuController: UITableViewController, UICollectionViewDataSource, UIC
             settingsInMainMenu.maxRating = Float(settingsMenuController.labelRatingMax.text!)!
             
             settingsInMainMenu.saveSettingsToUserDef()
+            
+            //обновляем данные
+            removeMoviesFromUD()
+            
+            settingsInMainMenu.getSettingsFromUserDef()
+            getMoviesWithCurrentSettings(page: 1)
+            setMovieToMainMenu(movieIndex: 0)
         }
-        //TODO: обновление данных
         
     }
     @IBOutlet weak var movieTitle: UILabel!
@@ -110,7 +116,7 @@ class MainMenuController: UITableViewController, UICollectionViewDataSource, UIC
     }
     
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-       
+        
         print("testFrame")
         
         var cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! FrameCollectionViewCell
@@ -206,7 +212,9 @@ class MainMenuController: UITableViewController, UICollectionViewDataSource, UIC
             data, movieArr  in
             if let movieArr = movieArr {
                 //print("In discover")
-                self.totalMoviePages = (data.pageResults?.total_pages)!
+                if (self.totalMoviePages == 0) {
+                    self.totalMoviePages = (data.pageResults?.total_pages)!
+                }
                 movieArr.forEach {
                     
                     print($0.id)
@@ -223,7 +231,7 @@ class MainMenuController: UITableViewController, UICollectionViewDataSource, UIC
                             MovieMDB.images(TMDb_APIv3_key, movieID: discoverMovieID, language: "") {
                                 data, imgs in
                                 if let images = imgs {
-
+                                    
                                     var backdropsFilePath : [String] = []
                                     //print("backDrops")
                                     images.backdrops.forEach {
@@ -234,7 +242,7 @@ class MainMenuController: UITableViewController, UICollectionViewDataSource, UIC
                                     //print("Add movie to list")
                                     print("backdropsFilePath")
                                     backdropsFilePath.forEach {
-                                    
+                                        
                                         print($0)
                                     }
                                     
@@ -242,6 +250,7 @@ class MainMenuController: UITableViewController, UICollectionViewDataSource, UIC
                                     
                                     if((movieArr.count - 1) == movieCounter) {
                                         
+                                        self.movies.shuffle()
                                         saveMoviesToUD(movies: self.movies)
                                         self.isMoviesDataDownloaded = true
                                     }
@@ -294,9 +303,9 @@ class MainMenuController: UITableViewController, UICollectionViewDataSource, UIC
                 
                 print("frameUrls")
                 self.currentSelectedMovie.framesURLs.forEach{
-                
+                    
                     print($0)
-                
+                    
                 }
                 
             }
@@ -329,8 +338,14 @@ class MainMenuController: UITableViewController, UICollectionViewDataSource, UIC
             setMovieToMainMenu(movieIndex: currentSelectedMovieIndex)
         }
         
+        if (currentSelectedMovieIndex == (movies.count - 1)) {
+            
+            setMovieToMainMenu(movieIndex: currentSelectedMovieIndex)
+            
+        }
+        
         // прошли всю первую страницу выдачи и есть еще страницы выдачи
-        if ((currentSelectedMovieIndex == 9) && (currentMoviesPage <= totalMoviePages)) {
+        /*if (((currentSelectedMovieIndex % 9) == 0) && (currentMoviesPage <= totalMoviePages)) {
             
             currentMoviesPage += 1
             getMoviesWithCurrentSettings(page: Double(currentMoviesPage))
@@ -343,7 +358,7 @@ class MainMenuController: UITableViewController, UICollectionViewDataSource, UIC
             
             setMovieToMainMenu(movieIndex: currentSelectedMovieIndex)
             
-        }
+        }*/
         
     }
     

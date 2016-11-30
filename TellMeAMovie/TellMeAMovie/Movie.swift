@@ -131,3 +131,8 @@ public func getMoviesFromUD() -> [Movie] {
     
 }
 
+public func removeMoviesFromUD() {
+
+    UserDefaults.standard.removeObject(forKey: "TellMeAMovie_Movies")
+}
+

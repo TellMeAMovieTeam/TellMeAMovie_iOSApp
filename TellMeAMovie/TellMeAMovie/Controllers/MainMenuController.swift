@@ -8,6 +8,7 @@
 
 import UIKit
 import TMDBSwift
+import SDWebImage
 
 class MainMenuController: UITableViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
@@ -84,8 +85,11 @@ class MainMenuController: UITableViewController, UICollectionViewDataSource, UIC
             switch swipeGesture.direction {
             case UISwipeGestureRecognizerDirection.right:
                 print("Swiped right")
+                previousMovie()
+                
             case UISwipeGestureRecognizerDirection.left:
                 print("Swiped left")
+                nextMovie()
             default:
                 break
             }
@@ -200,20 +204,16 @@ class MainMenuController: UITableViewController, UICollectionViewDataSource, UIC
                         apiReturn, movie in
                         if let movie = movie {
                             
-                            MovieMDB.images(TMDb_APIv3_key, movieID: discoverMovieID, language: language) {
+                            MovieMDB.images(TMDb_APIv3_key, movieID: discoverMovieID, language: "") {
                                 data, imgs in
                                 if let images = imgs {
-                                    
-                                    var stillsFilePath : [String] = []
+
                                     var backdropsFilePath : [String] = []
-                                    
-                                    images.stills.forEach {
-                                        stillsFilePath.append($0.file_path!)
-                                    }
-                                    
+                                    print("backDrops")
                                     images.backdrops.forEach {
                                         
                                         backdropsFilePath.append($0.file_path!)
+                                        //print($0.file_path)
                                     }
                                     //print("Add movie to list")
                                     self.movies.append(Movie.init(movie: movie, frames: backdropsFilePath))
@@ -262,6 +262,7 @@ class MainMenuController: UITableViewController, UICollectionViewDataSource, UIC
                 self.movieYear.text = String(describing: selectedMovie.movieYear)
                 
                 //TODO обработать кадры и постер
+                self.moviePoster.sd_setImage(with: URL.init(string: selectedMovie.moviePoster))
                 
                 self.tableView.reloadData()
             }

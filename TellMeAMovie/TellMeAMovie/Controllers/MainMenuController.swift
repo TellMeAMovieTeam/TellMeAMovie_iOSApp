@@ -12,8 +12,6 @@ import SDWebImage
 
 class MainMenuController: UITableViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
-    @IBOutlet weak var collectionView: UICollectionView!
-    
     private var settingsInMainMenu : Settings = Settings.init()
     private var movies : [Movie] = []
     private var isMoviesDataDownloaded : Bool = false
@@ -54,7 +52,7 @@ class MainMenuController: UITableViewController, UICollectionViewDataSource, UIC
             settingsInMainMenu.saveSettingsToUserDef()
             
             var allOldSettingsMovies : [Movie] = getMoviesFromUD()
-            var showedOldSettingsMovies : [Movie] = Array(allOldSettingsMovies[0...0+currentSelectedMovieIndex])
+            let showedOldSettingsMovies : [Movie] = Array(allOldSettingsMovies[0...0+currentSelectedMovieIndex])
             removeMoviesFromUD()
             saveMoviesToUD(movies: showedOldSettingsMovies)
             
@@ -65,6 +63,8 @@ class MainMenuController: UITableViewController, UICollectionViewDataSource, UIC
         }
         
     }
+    
+    @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var movieTitle: UILabel!
     @IBOutlet weak var movieOriginalTitle: UILabel!
     @IBOutlet weak var movieRating: UILabel!
@@ -87,7 +87,7 @@ class MainMenuController: UITableViewController, UICollectionViewDataSource, UIC
         tableView.rowHeight = UITableViewAutomaticDimension
         settingsInMainMenu.getSettingsFromUserDef()
         
-        var savedMovies : [Movie] = getMoviesFromUD()
+        let savedMovies : [Movie] = getMoviesFromUD()
         
         if (savedMovies.count != 0) {
             
@@ -148,7 +148,7 @@ class MainMenuController: UITableViewController, UICollectionViewDataSource, UIC
         
         //print("testFrame")
         
-        var cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! FrameCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! FrameCollectionViewCell
         if ((isMoviesDataDownloaded == true) && (currentSelectedMovie.framesURLs.count != 0)) {
             
             //print(currentSelectedMovie.framesURLs[frameCounter])
@@ -254,7 +254,7 @@ class MainMenuController: UITableViewController, UICollectionViewDataSource, UIC
                     print($0.title)
                     print($0.original_title)
                     //по id фильма находим его кадры и полную информацию
-                    var discoverMovieID: Int = $0.id!
+                    let discoverMovieID: Int = $0.id!
                     
                     MovieMDB.movie(TMDb_APIv3_key, movieID: discoverMovieID, language: language) {
                         //получили информацию о фильме

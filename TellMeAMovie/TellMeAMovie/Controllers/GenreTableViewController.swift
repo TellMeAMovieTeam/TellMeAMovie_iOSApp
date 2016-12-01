@@ -20,7 +20,7 @@ class GenreTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         
-        var decodedGenres = getGenresFromUD()
+        let decodedGenres = getGenresFromUD()
         
         if (decodedGenres.count == 0) {
             
@@ -38,37 +38,18 @@ class GenreTableViewController: UITableViewController {
                     }
                     
                     self.tableView.reloadData()
+                    saveGenresToUD(genres: self.genres)
                 }
                 
             }
             
-            saveGenresToUD(genres: self.genres)
-            
         } else {
             
             self.genres = decodedGenres
+            self.tableView.reloadData()
             
         }
         super.viewDidLoad()
-    }
-    
-    private func saveGenresToUD(genres : [Genre]) {
-        
-        let userDefaults = UserDefaults.standard
-        let encodedData: Data = NSKeyedArchiver.archivedData(withRootObject: genres)
-        userDefaults.set(encodedData, forKey: "TellMeAMovie_Genres")
-        userDefaults.synchronize()
-        
-    }
-    
-    private func getGenresFromUD() -> [Genre] {
-        
-        if let decoded  = UserDefaults.standard.object(forKey: "TellMeAMovie_Genres") as! Data? {
-            let decodedGenres = NSKeyedUnarchiver.unarchiveObject(with: decoded) as! [Genre]
-            
-            return decodedGenres
-        }
-        return []
     }
     
     override func didReceiveMemoryWarning() {

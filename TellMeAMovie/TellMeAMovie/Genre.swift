@@ -39,3 +39,22 @@ public class Genre : NSObject, NSCoding {
     }
     
 }
+
+public func saveGenresToUD(genres : [Genre]) {
+    
+    let userDefaults = UserDefaults.standard
+    let encodedData: Data = NSKeyedArchiver.archivedData(withRootObject: genres)
+    userDefaults.set(encodedData, forKey: "TellMeAMovie_Genres")
+    userDefaults.synchronize()
+    
+}
+
+public func getGenresFromUD() -> [Genre] {
+    
+    if let decoded  = UserDefaults.standard.object(forKey: "TellMeAMovie_Genres") as! Data? {
+        let decodedGenres = NSKeyedUnarchiver.unarchiveObject(with: decoded) as! [Genre]
+        
+        return decodedGenres
+    }
+    return []
+}

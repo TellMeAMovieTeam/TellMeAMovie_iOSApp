@@ -331,6 +331,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <sections>
                             <tableViewSection headerTitle="Название фильма" id="2zW-aM-p7c">
                                 <cells>
@@ -551,6 +552,10 @@
                                                 <constraint firstAttribute="bottom" secondItem="lZM-OE-AdS" secondAttribute="bottom" id="a0k-e7-p64"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <gestureRecognizers/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="a4p-P7-dER" appends="YES" id="8jB-hZ-8Fj"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -608,11 +613,58 @@
                         <outlet property="movieTitle" destination="HA8-0S-DxF" id="eyx-Or-VKu"/>
                         <outlet property="movieYear" destination="JOD-4c-eay" id="UMJ-17-JI2"/>
                         <outlet property="tagLine" destination="xZf-1W-cRd" id="1y1-7V-AH5"/>
+                        <outlet property="tapGestureRecognizer" destination="a4p-P7-dER" id="DQd-bJ-Uoh"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vmQ-1M-qP2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer numberOfTapsRequired="2" numberOfTouchesRequired="0" id="a4p-P7-dER">
+                    <connections>
+                        <segue destination="2cp-Kb-uhD" kind="presentation" id="brs-5N-JGf"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="812" y="138.98050974512745"/>
+        </scene>
+        <!--Кадры-->
+        <scene sceneID="Zp5-aS-QNS">
+            <objects>
+                <collectionViewController id="hjv-Mt-fr5" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="io8-1W-kni">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="1GO-PU-Vcd">
+                            <size key="itemSize" width="371" height="605"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="fXF-Lf-OBg">
+                                <rect key="frame" x="2" y="0.0" width="371" height="605"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="371" height="605"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </view>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="hjv-Mt-fr5" id="nj9-0y-vLK"/>
+                            <outlet property="delegate" destination="hjv-Mt-fr5" id="6W0-72-QXp"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" title="Кадры" id="109-8h-RLb">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Bjo-jA-mdQ">
+                            <connections>
+                                <action selector="cancelFramesViewerToMainMenuWithSegue:" destination="WKL-wR-ZUO" id="pFE-vo-VTE"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WKL-wR-ZUO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1519.2" y="982.75862068965523"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="UbD-AW-JHz">
@@ -667,6 +719,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="olf-wC-16B" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="812" y="-611"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="1JK-3b-5O4">
+            <objects>
+                <navigationController storyboardIdentifier="frameNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="2cp-Kb-uhD" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="loP-FK-eBv">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="hjv-Mt-fr5" kind="relationship" relationship="rootViewController" id="CjA-9P-N4T"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZvV-zp-BqH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="580" y="982.75862068965523"/>
         </scene>
     </scenes>
 </document>

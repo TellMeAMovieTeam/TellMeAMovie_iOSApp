@@ -15,7 +15,7 @@ public class Movie : NSObject, NSCoding {
     var movieTitle : String = ""
     var movieOriginalTitle : String = ""
     var movieRating : Double = 0
-    var movieTagLine : String = ""
+    var movieTagLine : String? = nil
     var movieOverview : String = ""
     var moviePoster : String = ""
     var movieGenre : String = ""
@@ -26,23 +26,20 @@ public class Movie : NSObject, NSCoding {
     
     public init(movie : MovieDetailedMDB, frames : [String]) {
         
-        self.movieId = movie.id!
-        self.movieTitle = movie.title!
-        self.movieOriginalTitle = movie.original_title!
-        self.movieRating = movie.vote_average!
-        self.movieTagLine = movie.tagline
-        self.movieOverview = movie.overview!
-        self.moviePoster = imageBase + movie.poster_path!
+        movie.id != nil ? (self.movieId = movie.id!) : (self.movieId = -1)
+        movie.title != nil ? (self.movieTitle = movie.title!) : (self.movieTitle = "")
+        movie.original_title != nil ? (self.movieOriginalTitle = movie.original_title!) : (self.movieOriginalTitle = "")
+        movie.vote_average != nil ? (self.movieRating = movie.vote_average!) : (self.movieRating = -1)
+        movie.tagline != nil ? (self.movieTagLine = movie.tagline!) : (self.movieTagLine = "")
+        movie.overview != nil ? (self.movieOverview = movie.overview!) : (self.movieOverview = "")
+        movie.poster_path != nil ? (self.moviePoster = imageBase + movie.poster_path!) : (self.moviePoster = "")
+        
         self.movieGenre = getSingleLineGenres(movie: movie)
-        self.movieYear = Int((movie.release_date?.substring(to: (movie.release_date?.index((movie.release_date?.endIndex)!, offsetBy: -6))!))!)!
+
+        movie.release_date != nil ? ( self.movieYear = Int((movie.release_date?.substring(to: (movie.release_date?.index((movie.release_date?.endIndex)!, offsetBy: -6))!))!)!) : (self.movieYear = 0)
+
         
-        self.framesURLs = frames
-        
-        /*frames.forEach {
-         
-         self.framesURLs.append(imageBase + $0)
-         
-         }*/
+        frames.count != 0 ? (self.framesURLs = frames) : (self.framesURLs = [])
         
     }
     

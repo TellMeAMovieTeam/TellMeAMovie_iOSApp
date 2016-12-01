@@ -18,6 +18,8 @@ class MainMenuController: UITableViewController, UICollectionViewDataSource, UIC
     private var movies : [Movie] = []
     private var isMoviesDataDownloaded : Bool = false
     
+    private var frameNumber : Int = 5
+    
     /// Общее число страниц выдачи с фильмами
     private var totalMoviePages : Int = 0
     
@@ -33,6 +35,9 @@ class MainMenuController: UITableViewController, UICollectionViewDataSource, UIC
     private var frameCounter : Int = 0
     
     @IBAction func cancelSettingsToMainMenu(segue:UIStoryboardSegue) {
+    }
+    
+    @IBAction func cancelFramesViewerToMainMenu(segue:UIStoryboardSegue) {
     }
     
     @IBAction func saveSettingsToMainMenu(segue:UIStoryboardSegue) {
@@ -69,23 +74,36 @@ class MainMenuController: UITableViewController, UICollectionViewDataSource, UIC
     @IBOutlet weak var movieGenre: UILabel!
     @IBOutlet weak var movieYear: UILabel!
     
+    @IBOutlet var tapGestureRecognizer: UITapGestureRecognizer!
+    
     let longSideModifyer : Float = 16.0
     let shortSideModifyer : Float = 9.0
-    var frameNumber : Int = 5
     
     override func viewDidLoad() {
+        
+        //removeMoviesFromUD()
         
         tableView.estimatedRowHeight = 540
         tableView.rowHeight = UITableViewAutomaticDimension
         settingsInMainMenu.getSettingsFromUserDef()
         
-        getMoviesWithCurrentSettings(page: 1)
-        setMovieToMainMenu(movieIndex: 0)
+        var savedMovies : [Movie] = getMoviesFromUD()
         
-        //setImageFromURL(url: imageBase + movie.poster_path!, imageView: self.moviePoster)
+        if (savedMovies.count != 0) {
+            
+            getMoviesWithCurrentSettings(page: 1)
+            setMovieToMainMenu(movieIndex: getCurrentSelectedMovieIndex())
+            
+        }
+        else {
         
+            getMoviesWithCurrentSettings(page: 1)
+            setMovieToMainMenu(movieIndex: 0)
+        }
+    
         super.viewDidLoad()
         
+        //свайпы
         let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
         swipeRight.direction = UISwipeGestureRecognizerDirection.right
         self.view.addGestureRecognizer(swipeRight)
@@ -93,6 +111,12 @@ class MainMenuController: UITableViewController, UICollectionViewDataSource, UIC
         let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
         swipeLeft.direction = UISwipeGestureRecognizerDirection.left
         self.view.addGestureRecognizer(swipeLeft)
+        
+        //двойной тап
+        //let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.respondToDoubleTap))
+        //tapGesture.numberOfTapsRequired = 2
+        
+        collectionView.addGestureRecognizer(tapGestureRecognizer)
         
     }
     
@@ -122,18 +146,18 @@ class MainMenuController: UITableViewController, UICollectionViewDataSource, UIC
     
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        print("testFrame")
+        //print("testFrame")
         
         var cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! FrameCollectionViewCell
         if ((isMoviesDataDownloaded == true) && (currentSelectedMovie.framesURLs.count != 0)) {
             
-            print(currentSelectedMovie.framesURLs[frameCounter])
+            //print(currentSelectedMovie.framesURLs[frameCounter])
             
             cell.frameInit(sringUrl: currentSelectedMovie.framesURLs[frameCounter])
             frameCounter += 1
             
-            if (frameCounter == 5) {
-            
+            if (frameCounter == frameNumber) {
+                
                 frameCounter = 0
             }
         }
@@ -291,6 +315,7 @@ class MainMenuController: UITableViewController, UICollectionViewDataSource, UIC
                 let selectedMovie = moviesFromUD[movieIndex]
                 
                 currentSelectedMovieIndex = movieIndex
+                saveCurrentSelectedMovieIndex(selectedMovieIndex : currentSelectedMovieIndex)
                 
                 self.movieTitle.text = selectedMovie.movieTitle
                 self.movieOriginalTitle.text = selectedMovie.movieOriginalTitle
@@ -307,16 +332,18 @@ class MainMenuController: UITableViewController, UICollectionViewDataSource, UIC
                 
                 frameCounter = 0
                 
+                frameNumber = self.currentSelectedMovie.framesURLs.count - 1
+                
                 self.tableView.reloadData()
                 
                 self.collectionView.reloadData()
                 
-                print("frameUrls")
-                self.currentSelectedMovie.framesURLs.forEach{
-                    
-                    print($0)
-                    
-                }
+                //print("frameUrls")
+                /*self.currentSelectedMovie.framesURLs.forEach{
+                 
+                 print($0)
+                 
+                 }*/
                 
             }
         }
@@ -336,6 +363,7 @@ class MainMenuController: UITableViewController, UICollectionViewDataSource, UIC
             currentSelectedMovieIndex = 0
             setMovieToMainMenu(movieIndex: currentSelectedMovieIndex)
         }
+        
     }
     
     /// Берем следующий фильм (свайп справа налево)
@@ -356,33 +384,20 @@ class MainMenuController: UITableViewController, UICollectionViewDataSource, UIC
         
         // прошли всю первую страницу выдачи и есть еще страницы выдачи
         /*if (((currentSelectedMovieIndex % 9) == 0) && (currentMoviesPage <= totalMoviePages)) {
-            
-            currentMoviesPage += 1
-            getMoviesWithCurrentSettings(page: Double(currentMoviesPage))
-            currentSelectedMovieIndex += 1
-            setMovieToMainMenu(movieIndex: currentSelectedMovieIndex)
-        }
+         
+         currentMoviesPage += 1
+         getMoviesWithCurrentSettings(page: Double(currentMoviesPage))
+         currentSelectedMovieIndex += 1
+         setMovieToMainMenu(movieIndex: currentSelectedMovieIndex)
+         }
+         
+         // если фильмы с таким параметром закончились
+         if (currentSelectedMovieIndex == (movies.count - 1) && (currentMoviesPage == totalMoviePages)) {
+         
+         setMovieToMainMenu(movieIndex: currentSelectedMovieIndex)
+         
+         }*/
         
-        // если фильмы с таким параметром закончились
-        if (currentSelectedMovieIndex == (movies.count - 1) && (currentMoviesPage == totalMoviePages)) {
-            
-            setMovieToMainMenu(movieIndex: currentSelectedMovieIndex)
-            
-        }*/
-        
-    }
-    
-    private func reloadData() {
-        
-        //обновляем данные
-        removeMoviesFromUD()
-        
-        settingsInMainMenu.getSettingsFromUserDef()
-        getMoviesWithCurrentSettings(page: 1)
-        setMovieToMainMenu(movieIndex: 0)
-        
-        currentSelectedMovieIndex = 0
-    
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

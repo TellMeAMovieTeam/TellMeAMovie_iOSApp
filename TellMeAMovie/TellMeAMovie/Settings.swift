@@ -113,4 +113,22 @@ public class Settings : NSObject, NSCoding {
         }
         
     }
+    
+}
+
+public func saveCurrentSelectedMovieIndex(selectedMovieIndex : Int) {
+    
+    UserDefaults.standard.set(selectedMovieIndex, forKey: "TellMeAMovie_selectedMovieIndex")
+}
+
+public func getCurrentSelectedMovieIndex() -> Int {
+    
+    if let selectedMovieIndex : Int = UserDefaults.standard.integer(forKey: "TellMeAMovie_selectedMovieIndex") {
+        
+        return selectedMovieIndex
+    } else {
+        
+        return -1
+    }
+    
 }

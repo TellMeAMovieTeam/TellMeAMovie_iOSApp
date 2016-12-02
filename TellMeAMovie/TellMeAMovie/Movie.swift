@@ -8,27 +8,32 @@
 
 import Foundation
 import TMDBSwift
-import RealmSwift
 import Realm
+import RealmSwift
 
+
+public class RealmStringObject : Object {
+    dynamic var value : String = ""
+    
+}
 
 //TODO переделать под realm
-public class Movie : NSObject, NSCoding {
+public class Movie : Object {
     
-    var movieId : Int = 0
-    var movieTitle : String = ""
-    var movieOriginalTitle : String = ""
-    var movieRating : Double = 0
-    var movieTagLine : String? = nil
-    var movieOverview : String = ""
-    var moviePoster : String = ""
-    var movieGenre : String = ""
-    var movieYear : Int = 0
+    dynamic var movieId : Int = 0
+    dynamic var movieTitle : String = ""
+    dynamic var movieOriginalTitle : String = ""
+    dynamic var movieRating : Double = 0
+    dynamic var movieTagLine : String = ""
+    dynamic var movieOverview : String = ""
+    dynamic var moviePoster : String = ""
+    dynamic var movieGenre : String = ""
+    dynamic var movieYear : Int = 0
     
     //для более удобного хранения в UD
-    var framesURLs : [String] = []
+    var framesURLs = List<RealmStringObject>()
     
-    public init(movie : MovieDetailedMDB, frames : [String]) {
+    public func setData(movie : MovieDetailedMDB, frames : [RealmStringObject]) {
         
         movie.id != nil ? (self.movieId = movie.id!) : (self.movieId = -1)
         movie.title != nil ? (self.movieTitle = movie.title!) : (self.movieTitle = "")
@@ -39,16 +44,29 @@ public class Movie : NSObject, NSCoding {
         movie.poster_path != nil ? (self.moviePoster = imageBase + movie.poster_path!) : (self.moviePoster = "")
         
         self.movieGenre = getSingleLineGenres(movie: movie)
-
+        
         movie.release_date != nil ? ( self.movieYear = Int((movie.release_date?.substring(to: (movie.release_date?.index((movie.release_date?.endIndex)!, offsetBy: -6))!))!)!) : (self.movieYear = 0)
-
         
-        frames.count != 0 ? (self.framesURLs = frames) : (self.framesURLs = [])
         
+        frames.count != 0 ? (self.framesURLs.append(objectsIn: frames)) : (self.framesURLs = List<RealmStringObject>())
     }
     
+    public func setData() {
+        
+        self.movieId = -1
+        self.movieTitle = ""
+        self.movieOriginalTitle = ""
+        self.movieRating = -1
+        self.movieTagLine = ""
+        self.movieOverview = ""
+        self.moviePoster = ""
+        self.movieGenre = ""
+        self.movieYear = 0
+        
+        self.framesURLs = List<RealmStringObject>()
+    }
     
-    public init(id : Int, title : String, originalTitle : String, voteAverage : Double, tagline : String, overview : String, moviePoster : String, movieGenre : String, movieYear : Int, frames : [String]) {
+    public func setData(id : Int, title : String, originalTitle : String, voteAverage : Double, tagline : String, overview : String, moviePoster : String, movieGenre : String, movieYear : Int, frames : [RealmStringObject]) {
         
         self.movieId = id
         self.movieTitle = title
@@ -60,80 +78,52 @@ public class Movie : NSObject, NSCoding {
         self.movieGenre = movieGenre
         self.movieYear = movieYear
         
-        self.framesURLs = frames
+        self.framesURLs.append(objectsIn: frames)
     }
-    
-    public override init() {
-    
-        self.movieId = -1
-        self.movieTitle = ""
-        self.movieOriginalTitle = ""
-        self.movieRating = -1
-        self.movieTagLine = ""
-        self.movieOverview = ""
-        self.moviePoster = ""
-        self.movieGenre = ""
-        self.movieYear = 0
-        
-        self.framesURLs = []
-    
-    }
-    
-    required convenience public init(coder aDecoder: NSCoder) {
-        
-        let id = aDecoder.decodeInteger(forKey: "TellMeAMovie_Movie_Id")
-        let title = aDecoder.decodeObject(forKey: "TellMeAMovie_Movie_title") as! String
-        let originalTitle = aDecoder.decodeObject(forKey: "TellMeAMovie_Movie_originalTitle") as! String
-        let voteAverage = aDecoder.decodeDouble(forKey: "TellMeAMovie_Movie_voteAverage")
-        let tagline = aDecoder.decodeObject(forKey: "TellMeAMovie_Movie_tagline") as! String
-        let overview = aDecoder.decodeObject(forKey: "TellMeAMovie_Movie_overview") as! String
-        let moviePoster = aDecoder.decodeObject(forKey: "TellMeAMovie_Movie_moviePoster") as! String
-        let movieGenre = aDecoder.decodeObject(forKey: "TellMeAMovie_Movie_movieGenre") as! String
-        let movieYear = aDecoder.decodeInteger(forKey: "TellMeAMovie_Movie_movieYear")
-        let frames : [String] = aDecoder.decodeObject(forKey: "TellMeAMovie_Movie_frames") as! [String] ?? [String]()
-        
-        self.init(id : id, title : title, originalTitle : originalTitle, voteAverage : voteAverage, tagline : tagline, overview : overview, moviePoster : moviePoster, movieGenre : movieGenre, movieYear : movieYear, frames : frames)
-    }
-    
-    public func encode(with aCoder: NSCoder) {
-        
-        aCoder.encode(self.movieId, forKey: "TellMeAMovie_Movie_Id")
-        aCoder.encode(self.movieTitle, forKey: "TellMeAMovie_Movie_title")
-        aCoder.encode(self.movieOriginalTitle, forKey: "TellMeAMovie_Movie_originalTitle")
-        aCoder.encode(self.movieRating, forKey: "TellMeAMovie_Movie_voteAverage")
-        aCoder.encode(self.movieTagLine, forKey: "TellMeAMovie_Movie_tagline")
-        aCoder.encode(self.movieOverview, forKey: "TellMeAMovie_Movie_overview")
-        aCoder.encode(self.moviePoster, forKey: "TellMeAMovie_Movie_moviePoster")
-        aCoder.encode(self.movieGenre, forKey: "TellMeAMovie_Movie_movieGenre")
-        aCoder.encode(self.movieYear, forKey: "TellMeAMovie_Movie_movieYear")
-        aCoder.encode(self.framesURLs, forKey: "TellMeAMovie_Movie_frames")
-        
-    }
-    
 }
 
 public func saveMoviesToUD(movies : [Movie]) {
     
-    let userDefaults = UserDefaults.standard
-    let encodedData: Data = NSKeyedArchiver.archivedData(withRootObject: movies)
-    userDefaults.set(encodedData, forKey: "TellMeAMovie_Movies")
-    userDefaults.synchronize()
+    let realm = try! Realm()
+    
+    let objects = List<Movie>()
+    movies.forEach {
+        objects.append($0)
+    }
+    
+    try! realm.write {
+        realm.add(objects)
+    }
     
 }
 
 public func getMoviesFromUD() -> [Movie] {
     
-    if let decoded  = UserDefaults.standard.object(forKey: "TellMeAMovie_Movies") as! Data? {
-        let decodedMovies = NSKeyedUnarchiver.unarchiveObject(with: decoded) as! [Movie]
-        
-        return decodedMovies
-    }
-    return []
+    let objects = try! Realm().objects(Movie)
     
+    let array = Array(objects)
+    
+    return array
+}
+
+public func removeMoviesFromUD(movies : [Movie]) {
+    
+    let objects = List<Movie>()
+    movies.forEach {
+        objects.append($0)
+    }
+    
+    let realm = try! Realm()
+    try! realm.write {
+        realm.delete(objects)
+    }
 }
 
 public func removeMoviesFromUD() {
-
-    UserDefaults.standard.removeObject(forKey: "TellMeAMovie_Movies")
+    
+    let realm = try! Realm()
+    try! realm.write {
+        realm.deleteAll()
+    }
 }
 

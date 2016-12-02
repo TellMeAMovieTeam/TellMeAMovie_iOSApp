@@ -132,3 +132,9 @@ public func getCurrentSelectedMovieIndex() -> Int {
     }
     
 }
+
+public func removeCurrentSelectedMovieIndex() {
+    
+    UserDefaults.standard.removeObject(forKey: "TellMeAMovie_selectedMovieIndex")
+
+}

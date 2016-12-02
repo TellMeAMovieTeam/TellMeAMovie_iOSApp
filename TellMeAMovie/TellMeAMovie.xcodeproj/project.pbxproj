@@ -10,7 +10,6 @@
 		160234BE1DC110630081FE88 /* MainMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160234BD1DC110630081FE88 /* MainMenuController.swift */; };
 		160234C01DC111B50081FE88 /* SettingsMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160234BF1DC111B50081FE88 /* SettingsMenuController.swift */; };
 		160234C21DC120390081FE88 /* GenreTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160234C11DC120390081FE88 /* GenreTableViewController.swift */; };
-		163F07C91DE7052800F12503 /* Client_getImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163F07C81DE7052800F12503 /* Client_getImage.swift */; };
 		163F07CB1DEA11E100F12503 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163F07CA1DEA11E100F12503 /* Settings.swift */; };
 		163F07CD1DEA3ECC00F12503 /* Genre.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163F07CC1DEA3ECC00F12503 /* Genre.swift */; };
 		163F07CF1DEB2B1A00F12503 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163F07CE1DEB2B1A00F12503 /* Movie.swift */; };
@@ -28,7 +27,6 @@
 		160234BD1DC110630081FE88 /* MainMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenuController.swift; sourceTree = "<group>"; };
 		160234BF1DC111B50081FE88 /* SettingsMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsMenuController.swift; sourceTree = "<group>"; };
 		160234C11DC120390081FE88 /* GenreTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenreTableViewController.swift; sourceTree = "<group>"; };
-		163F07C81DE7052800F12503 /* Client_getImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Client_getImage.swift; sourceTree = "<group>"; };
 		163F07CA1DEA11E100F12503 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		163F07CC1DEA3ECC00F12503 /* Genre.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Genre.swift; sourceTree = "<group>"; };
 		163F07CE1DEB2B1A00F12503 /* Movie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
@@ -77,14 +75,6 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		163F07C71DE7048300F12503 /* Client */ = {
-			isa = PBXGroup;
-			children = (
-				163F07C81DE7052800F12503 /* Client_getImage.swift */,
-			);
-			path = Client;
-			sourceTree = "<group>";
-		};
 		1676A9211DB956A400371B86 = {
 			isa = PBXGroup;
 			children = (
@@ -106,7 +96,6 @@
 		1676A92C1DB956A400371B86 /* TellMeAMovie */ = {
 			isa = PBXGroup;
 			children = (
-				163F07C71DE7048300F12503 /* Client */,
 				160234BC1DC10FF90081FE88 /* Models */,
 				160234BB1DC10FE80081FE88 /* Controllers */,
 				1676A92D1DB956A400371B86 /* AppDelegate.swift */,
@@ -271,7 +260,6 @@
 				16425A051DE638D80066793E /* TMDbHelper.swift in Sources */,
 				160234C21DC120390081FE88 /* GenreTableViewController.swift in Sources */,
 				160234C01DC111B50081FE88 /* SettingsMenuController.swift in Sources */,
-				163F07C91DE7052800F12503 /* Client_getImage.swift in Sources */,
 				167AA4701DEF3123003B090D /* FrameCollectionViewCell.swift in Sources */,
 				160234BE1DC110630081FE88 /* MainMenuController.swift in Sources */,
 			);

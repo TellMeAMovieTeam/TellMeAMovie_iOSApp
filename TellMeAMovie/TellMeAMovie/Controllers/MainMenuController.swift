@@ -9,6 +9,8 @@
 import UIKit
 import TMDBSwift
 import SDWebImage
+import RealmSwift
+import Realm
 
 class MainMenuController: UITableViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
@@ -53,7 +55,7 @@ class MainMenuController: UITableViewController, UICollectionViewDataSource, UIC
             
             var allOldSettingsMovies : [Movie] = getMoviesFromUD()
             let showedOldSettingsMovies : [Movie] = Array(allOldSettingsMovies[0...0+currentSelectedMovieIndex])
-            removeMoviesFromUD()
+            //removeMoviesFromUD(movies : Array(allOldSettingsMovies[0+currentSelectedMovieIndex...allOldSettingsMovies.count-1]))
             saveMoviesToUD(movies: showedOldSettingsMovies)
             
             getMoviesWithCurrentSettings(page: 1)
@@ -82,6 +84,7 @@ class MainMenuController: UITableViewController, UICollectionViewDataSource, UIC
     override func viewDidLoad() {
         
         //removeMoviesFromUD()
+        //removeCurrentSelectedMovieIndex()
         
         tableView.estimatedRowHeight = 540
         tableView.rowHeight = UITableViewAutomaticDimension
@@ -96,7 +99,8 @@ class MainMenuController: UITableViewController, UICollectionViewDataSource, UIC
             
         }
         else {
-        
+            
+            removeCurrentSelectedMovieIndex()
             getMoviesWithCurrentSettings(page: 1)
             setMovieToMainMenu(movieIndex: 0)
         }
@@ -162,7 +166,7 @@ class MainMenuController: UITableViewController, UICollectionViewDataSource, UIC
             
             //print(currentSelectedMovie.framesURLs[frameCounter])
             
-            cell.frameInit(sringUrl: currentSelectedMovie.framesURLs[frameCounter])
+            //cell.frameInit(sringUrl: currentSelectedMovie.framesURLs[frameCounter])
             frameCounter += 1
             //IndexPath - collectionView
             
@@ -275,11 +279,14 @@ class MainMenuController: UITableViewController, UICollectionViewDataSource, UIC
                                 data, imgs in
                                 if let images = imgs {
                                     
-                                    var backdropsFilePath : [String] = []
+                                    var backdropsFilePath : [RealmStringObject] = []
                                     //print("backDrops")
                                     images.backdrops.forEach {
                                         
-                                        backdropsFilePath.append(imageBase + $0.file_path!)
+                                        var realmString = RealmStringObject()
+                                        realmString.value = imageBase + $0.file_path!
+                                        
+                                        backdropsFilePath.append(realmString)
                                         //print($0.file_path)
                                     }
                                     //print("Add movie to list")
@@ -289,7 +296,10 @@ class MainMenuController: UITableViewController, UICollectionViewDataSource, UIC
                                         print($0)
                                     }
                                     
-                                    self.movies.append(Movie.init(movie: movie, frames: backdropsFilePath))
+                                    let movieWithData : Movie = Movie.init()
+                                    movieWithData.setData(movie: movie, frames: backdropsFilePath)
+                                    
+                                    self.movies.append(movieWithData)
                                     
                                     if((movieArr.count - 1) == movieCounter) {
                                         
@@ -320,11 +330,21 @@ class MainMenuController: UITableViewController, UICollectionViewDataSource, UIC
         
         if let moviesFromUD : [Movie] = getMoviesFromUD() {
             
+            var selectMovieIndex : Int = 0
+            
+            if (movieIndex > (moviesFromUD.count - 1)) {
+            
+                selectMovieIndex = moviesFromUD.count - 1
+            } else {
+            
+                selectMovieIndex = movieIndex
+            }
+            
             if (moviesFromUD.count != 0) {
                 
-                let selectedMovie = moviesFromUD[movieIndex]
+                let selectedMovie = moviesFromUD[selectMovieIndex]
                 
-                currentSelectedMovieIndex = movieIndex
+                currentSelectedMovieIndex = selectMovieIndex
                 saveCurrentSelectedMovieIndex(selectedMovieIndex : currentSelectedMovieIndex)
                 
                 self.movieTitle.text = selectedMovie.movieTitle
@@ -347,13 +367,6 @@ class MainMenuController: UITableViewController, UICollectionViewDataSource, UIC
                 self.tableView.reloadData()
                 
                 self.collectionView.reloadData()
-                
-                //print("frameUrls")
-                /*self.currentSelectedMovie.framesURLs.forEach{
-                 
-                 print($0)
-                 
-                 }*/
                 
             }
         }

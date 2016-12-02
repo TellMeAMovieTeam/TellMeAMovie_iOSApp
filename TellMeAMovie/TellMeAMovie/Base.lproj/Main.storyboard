@@ -481,7 +481,7 @@
                                             <frame key="frameInset" width="375" height="540.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView autoresizesSubviews="NO" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="248" verticalHuggingPriority="249" translatesAutoresizingMaskIntoConstraints="NO" id="Lm3-UO-aJ3"/>
+                                                <imageView autoresizesSubviews="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="248" verticalHuggingPriority="249" translatesAutoresizingMaskIntoConstraints="NO" id="Lm3-UO-aJ3"/>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="Lm3-UO-aJ3" firstAttribute="top" secondItem="dcI-QB-Wah" secondAttribute="top" id="AFm-UY-kbo"/>

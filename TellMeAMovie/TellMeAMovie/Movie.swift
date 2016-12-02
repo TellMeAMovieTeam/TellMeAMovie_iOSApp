@@ -8,6 +8,8 @@
 
 import Foundation
 import TMDBSwift
+import RealmSwift
+import Realm
 
 
 //TODO переделать под realm

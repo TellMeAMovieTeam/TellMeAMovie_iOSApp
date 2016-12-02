@@ -334,11 +334,11 @@
                         <sections>
                             <tableViewSection headerTitle="Инструкция" id="j5f-JT-o9S">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="80" id="Q8r-U4-HMF">
-                                        <rect key="frame" x="0.0" y="92" width="375" height="80"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="101" id="Q8r-U4-HMF">
+                                        <rect key="frame" x="0.0" y="92" width="375" height="101"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Q8r-U4-HMF" id="N9l-em-CeS">
-                                            <frame key="frameInset" width="375" height="79"/>
+                                            <frame key="frameInset" width="375" height="100"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Используйте горизонтальные свайпы для того чтобы переходить к следующему или предыдущему фильмам." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xvU-D8-ji9">
@@ -359,16 +359,16 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="Разработчики" id="uOu-lK-PaW">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="hNO-kb-IG6">
-                                        <rect key="frame" x="0.0" y="200" width="375" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="75" id="hNO-kb-IG6">
+                                        <rect key="frame" x="0.0" y="221" width="375" height="75"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hNO-kb-IG6" id="XLS-vb-oz7">
-                                            <frame key="frameInset" width="375" height="43"/>
+                                            <frame key="frameInset" width="375" height="74"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Гутников И.Е." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="xNB-pt-vSF">
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Гутников И.Е., Кириллова Ю.С., Арчаков Х.Б." translatesAutoresizingMaskIntoConstraints="NO" id="xNB-pt-vSF">
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
                                             </subviews>
@@ -385,7 +385,7 @@
                             <tableViewSection headerTitle="Написать разработчикам" id="gA3-Gp-08Z">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="55" id="Gw3-Sv-3CO">
-                                        <rect key="frame" x="0.0" y="272" width="375" height="55"/>
+                                        <rect key="frame" x="0.0" y="324" width="375" height="55"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Gw3-Sv-3CO" id="TSS-aN-b4J">
                                             <frame key="frameInset" width="375" height="54"/>

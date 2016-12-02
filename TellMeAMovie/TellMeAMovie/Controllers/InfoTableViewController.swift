@@ -10,19 +10,19 @@ import UIKit
 import MessageUI
 
 class InfoTableViewController: UITableViewController, MFMailComposeViewControllerDelegate {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        tableView.estimatedRowHeight = 100
+        
+        tableView.estimatedRowHeight = 200
         tableView.rowHeight = UITableViewAutomaticDimension
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     @IBAction func writeLetter(_ sender: UIButton) {
         
         let mailComposeViewController = configuredMailComposeViewController()
@@ -51,10 +51,11 @@ class InfoTableViewController: UITableViewController, MFMailComposeViewControlle
     
     // MARK: MFMailComposeViewControllerDelegate
     
-    func mailComposeController(controller: MFMailComposeViewController!, didFinishWithResult result: MFMailComposeResult, error: NSError!) {
-        controller.dismiss(animated: true, completion: nil)
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         
+        // Dismiss the mail compose view controller.
+        controller.dismiss(animated: true, completion: nil)
     }
-
-
+    
+    
 }

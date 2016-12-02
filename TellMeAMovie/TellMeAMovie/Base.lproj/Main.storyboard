@@ -338,7 +338,7 @@
                                         <rect key="frame" x="0.0" y="92" width="375" height="101"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Q8r-U4-HMF" id="N9l-em-CeS">
-                                            <frame key="frameInset" width="375" height="100"/>
+                                            <frame key="frameInset" width="375" height="100.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Используйте горизонтальные свайпы для того чтобы переходить к следующему или предыдущему фильмам." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xvU-D8-ji9">
@@ -363,7 +363,7 @@
                                         <rect key="frame" x="0.0" y="221" width="375" height="75"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hNO-kb-IG6" id="XLS-vb-oz7">
-                                            <frame key="frameInset" width="375" height="74"/>
+                                            <frame key="frameInset" width="375" height="74.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Гутников И.Е., Кириллова Ю.С., Арчаков Х.Б." translatesAutoresizingMaskIntoConstraints="NO" id="xNB-pt-vSF">
@@ -388,7 +388,7 @@
                                         <rect key="frame" x="0.0" y="324" width="375" height="55"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Gw3-Sv-3CO" id="TSS-aN-b4J">
-                                            <frame key="frameInset" width="375" height="54"/>
+                                            <frame key="frameInset" width="375" height="54.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fL2-wX-o0t">
@@ -481,7 +481,7 @@
                                             <frame key="frameInset" width="375" height="540.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView autoresizesSubviews="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="248" verticalHuggingPriority="249" translatesAutoresizingMaskIntoConstraints="NO" id="Lm3-UO-aJ3"/>
+                                                <imageView autoresizesSubviews="NO" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="248" verticalHuggingPriority="249" translatesAutoresizingMaskIntoConstraints="NO" id="Lm3-UO-aJ3"/>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="Lm3-UO-aJ3" firstAttribute="top" secondItem="dcI-QB-Wah" secondAttribute="top" id="AFm-UY-kbo"/>
@@ -716,23 +716,23 @@
         <!--Кадры-->
         <scene sceneID="Zp5-aS-QNS">
             <objects>
-                <collectionViewController storyboardIdentifier="frameCollectionViewController" id="hjv-Mt-fr5" customClass="FramesCollectionViewController" customModule="TellMeAMovie" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="io8-1W-kni">
+                <collectionViewController storyboardIdentifier="frameCollectionViewController" modalTransitionStyle="flipHorizontal" id="hjv-Mt-fr5" customClass="FramesCollectionViewController" customModule="TellMeAMovie" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="io8-1W-kni">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="1GO-PU-Vcd">
-                            <size key="itemSize" width="371" height="605"/>
+                            <size key="itemSize" width="365" height="605"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            <inset key="sectionInset" minX="5" minY="0.0" maxX="5" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="fXF-Lf-OBg" customClass="FrameCollectionViewCell" customModule="TellMeAMovie" customModuleProvider="target">
-                                <rect key="frame" x="2" y="0.0" width="371" height="605"/>
+                                <rect key="frame" x="5" y="0.0" width="365" height="605"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="371" height="605"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="365" height="605"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="y4s-XX-Kvs"/>

@@ -97,7 +97,7 @@ public func saveMoviesToUD(movies : [Movie]) {
     
 }
 
-public func getMoviesFromUD() -> [Movie] {
+public func getMoviesFromRealm() -> [Movie] {
     
     let objects = try! Realm().objects(Movie)
     
@@ -106,7 +106,7 @@ public func getMoviesFromUD() -> [Movie] {
     return array
 }
 
-public func removeMoviesFromUD(movies : [Movie]) {
+public func removeMoviesFromRealm(movies : [Movie]) {
     
     let objects = List<Movie>()
     movies.forEach {
@@ -119,11 +119,52 @@ public func removeMoviesFromUD(movies : [Movie]) {
     }
 }
 
-public func removeMoviesFromUD() {
+public func removeMoviesFromRealm() {
     
     let realm = try! Realm()
     try! realm.write {
         realm.deleteAll()
+    }
+}
+
+public func setMovieIdToUserDefaults(movie : Movie) {
+    
+    UserDefaults.standard.set(movie.movieId, forKey : "TellMeAMovie_MovieId")
+    
+}
+
+public func getMovieIdFromUserDefaults() -> Int {
+
+    if let movieId : Int = UserDefaults.standard.integer(forKey: "TellMeAMovie_MovieId") {
+        return movieId
+    }
+    
+    return -1
+}
+
+public func getMovieFromRealm(movieId : Int) -> Movie {
+    
+    if (movieId < 0) {
+    
+        return Movie.init()
+    }
+    
+    let realm = try! Realm()
+
+    var movies = realm.objects(Movie).filter("movieId = \(movieId)")
+    
+    if (movies.count >= 1) {
+        
+        let array = Array(movies)
+        print(array.count)
+        print(array[0].movieOriginalTitle)
+        
+        return array[0]
+    
+    } else {
+        
+        return Movie.init()
+    
     }
 }
 

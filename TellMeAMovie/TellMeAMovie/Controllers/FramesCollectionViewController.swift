@@ -20,6 +20,10 @@ class FramesCollectionViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let currentSelectedMovieId = getMovieIdFromUserDefaults()
+        let selectedMovie : Movie = getMovieFromRealm(movieId: currentSelectedMovieId)
+        currentSelectedMovie = selectedMovie
+        
         frameNumber = (currentSelectedMovie.framesURLs.count - 1)
         collectionView?.reloadData()
         
@@ -55,7 +59,7 @@ class FramesCollectionViewController: UICollectionViewController {
         let cellWidth : Float = Float(self.view.frame.size.width)
         let cellHeight : Float = roundf((cellWidth / shortSideModifyer) * longSideModifyer)
         
-        return CGSize.init(width: CGFloat(cellWidth), height: CGFloat(cellHeight))
+        return CGSize.init(width: CGFloat(cellHeight), height: CGFloat(cellWidth))
         
     }
     

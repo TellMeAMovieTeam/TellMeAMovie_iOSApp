@@ -51,9 +51,9 @@ class MainMenuController: UITableViewController, UICollectionViewDataSource, UIC
             
             settingsInMainMenu.saveSettingsToUserDef()
             
-            var allOldSettingsMovies : [Movie] = getMoviesFromUD()
+            var allOldSettingsMovies : [Movie] = getMoviesFromRealm()
             let showedOldSettingsMovies : [Movie] = Array(allOldSettingsMovies[0...0+currentSelectedMovieIndex])
-            removeMoviesFromUD(movies : Array(allOldSettingsMovies[currentSelectedMovieIndex+1...allOldSettingsMovies.count-1]))
+            removeMoviesFromRealm(movies : Array(allOldSettingsMovies[currentSelectedMovieIndex+1...allOldSettingsMovies.count-1]))
             saveMoviesToUD(movies: showedOldSettingsMovies)
             
             getMoviesWithCurrentSettings(page: 1)
@@ -88,7 +88,7 @@ class MainMenuController: UITableViewController, UICollectionViewDataSource, UIC
         tableView.rowHeight = UITableViewAutomaticDimension
         settingsInMainMenu.getSettingsFromUserDef()
         
-        let savedMovies : [Movie] = getMoviesFromUD()
+        let savedMovies : [Movie] = getMoviesFromRealm()
         
         if (savedMovies.count != 0) {
             
@@ -139,9 +139,12 @@ class MainMenuController: UITableViewController, UICollectionViewDataSource, UIC
     
     func respondToDoubleTap(gesture: UIGestureRecognizer) {
         
-        if let tapGesture = gesture as? UITapGestureRecognizer {
+        if (currentSelectedMovie.framesURLs.count != 0) {
         
             //print("double tap")
+            
+            setMovieIdToUserDefaults(movie: currentSelectedMovie)
+            
             let vc = self.storyboard?.instantiateViewController(withIdentifier: "frameNavigationController") as! UINavigationController
             self.present(vc, animated: true, completion: nil)
         }
@@ -239,7 +242,7 @@ class MainMenuController: UITableViewController, UICollectionViewDataSource, UIC
         
         var movieCounter = 0;
         
-        self.movies = getMoviesFromUD()
+        self.movies = getMoviesFromRealm()
         self.isMoviesDataDownloaded = false
         
         DiscoverMovieMDB.discoverMovies(apikey: TMDb_APIv3_key, language: language, page: page, primary_release_date_gte: year_gte, primary_release_date_lte: year_lte, vote_average_gte: rating_gte, vote_average_lte: rating_lte, with_genres: genre){
@@ -309,7 +312,7 @@ class MainMenuController: UITableViewController, UICollectionViewDataSource, UIC
     private func setMovieToMainMenu(movieIndex : Int) {
         
         
-        if let moviesFromUD : [Movie] = getMoviesFromUD() {
+        if let moviesFromUD : [Movie] = getMoviesFromRealm() {
             
             var selectMovieIndex : Int = 0
             

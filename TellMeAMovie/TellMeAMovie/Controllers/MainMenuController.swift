@@ -32,8 +32,6 @@ class MainMenuController: UITableViewController, UICollectionViewDataSource, UIC
     /// Текущий выбранный фильм
     private var currentSelectedMovie : Movie = Movie.init()
     
-    private var frameCounter : Int = 0
-    
     @IBAction func cancelSettingsToMainMenu(segue:UIStoryboardSegue) {
     }
     
@@ -162,22 +160,13 @@ class MainMenuController: UITableViewController, UICollectionViewDataSource, UIC
         //print("testFrame")
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! FrameCollectionViewCell
-        if ((isMoviesDataDownloaded == true) && (currentSelectedMovie.framesURLs.count != 0) && (cell.frameImageView.image == nil)) {
+        if ((isMoviesDataDownloaded == true) && (currentSelectedMovie.framesURLs.count != 0) /*&& (cell.frameImageView.image == nil)*/) {
             
-            //print(currentSelectedMovie.framesURLs[frameCounter])
+            cell.prepareForReuse()
             
-            //cell.frameInit(sringUrl: currentSelectedMovie.framesURLs[frameCounter])
-            frameCounter += 1
-            //IndexPath - collectionView
-            
-            if (frameCounter == frameNumber) {
-                
-                frameCounter = 0
-            }
+            cell.frameInit(sringUrl: currentSelectedMovie.framesURLs[indexPath.item].value)
+
         }
-        
-        //cell.backgroundColor = UIColor.black
-        // Configure the cell
         return cell
     }
     
@@ -289,12 +278,6 @@ class MainMenuController: UITableViewController, UICollectionViewDataSource, UIC
                                         backdropsFilePath.append(realmString)
                                         //print($0.file_path)
                                     }
-                                    //print("Add movie to list")
-                                    print("backdropsFilePath")
-                                    backdropsFilePath.forEach {
-                                        
-                                        print($0)
-                                    }
                                     
                                     let movieWithData : Movie = Movie.init()
                                     movieWithData.setData(movie: movie, frames: backdropsFilePath)
@@ -359,8 +342,6 @@ class MainMenuController: UITableViewController, UICollectionViewDataSource, UIC
                 self.moviePoster.sd_setImage(with: URL.init(string: selectedMovie.moviePoster))
                 
                 currentSelectedMovie = selectedMovie
-                
-                frameCounter = 0
                 
                 frameNumber = self.currentSelectedMovie.framesURLs.count - 1
                 

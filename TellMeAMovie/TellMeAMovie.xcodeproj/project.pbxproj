@@ -20,6 +20,8 @@
 		1676A9381DB956A400371B86 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1676A9361DB956A400371B86 /* LaunchScreen.storyboard */; };
 		167AA4701DEF3123003B090D /* FrameCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167AA46F1DEF3123003B090D /* FrameCollectionViewCell.swift */; };
 		167AA4721DEF72EE003B090D /* ArrayShuffle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167AA4711DEF72EE003B090D /* ArrayShuffle.swift */; };
+		16F848A41DF1DAF20061B6EC /* FramesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F848A31DF1DAF20061B6EC /* FramesCollectionViewController.swift */; };
+		16F848A61DF1E9700061B6EC /* InfoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F848A51DF1E9700061B6EC /* InfoTableViewController.swift */; };
 		78D8625CF105F528C78341D9 /* Pods_TellMeAMovie.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A377682EA2E4D412D7509190 /* Pods_TellMeAMovie.framework */; };
 /* End PBXBuildFile section */
 
@@ -39,6 +41,8 @@
 		1676A9391DB956A400371B86 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		167AA46F1DEF3123003B090D /* FrameCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FrameCollectionViewCell.swift; sourceTree = "<group>"; };
 		167AA4711DEF72EE003B090D /* ArrayShuffle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayShuffle.swift; sourceTree = "<group>"; };
+		16F848A31DF1DAF20061B6EC /* FramesCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FramesCollectionViewController.swift; sourceTree = "<group>"; };
+		16F848A51DF1E9700061B6EC /* InfoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoTableViewController.swift; sourceTree = "<group>"; };
 		2F4D0E178C98D4C2FF84E62D /* Pods-TellMeAMovie.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TellMeAMovie.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TellMeAMovie/Pods-TellMeAMovie.debug.xcconfig"; sourceTree = "<group>"; };
 		4427BFC0F3FCC1AAC05E8EE8 /* Pods-TellMeAMovie.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TellMeAMovie.release.xcconfig"; path = "Pods/Target Support Files/Pods-TellMeAMovie/Pods-TellMeAMovie.release.xcconfig"; sourceTree = "<group>"; };
 		A377682EA2E4D412D7509190 /* Pods_TellMeAMovie.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TellMeAMovie.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -64,6 +68,8 @@
 				160234BF1DC111B50081FE88 /* SettingsMenuController.swift */,
 				160234C11DC120390081FE88 /* GenreTableViewController.swift */,
 				167AA46F1DEF3123003B090D /* FrameCollectionViewCell.swift */,
+				16F848A31DF1DAF20061B6EC /* FramesCollectionViewController.swift */,
+				16F848A51DF1E9700061B6EC /* InfoTableViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -255,11 +261,13 @@
 				163F07CD1DEA3ECC00F12503 /* Genre.swift in Sources */,
 				167AA4721DEF72EE003B090D /* ArrayShuffle.swift in Sources */,
 				1676A92E1DB956A400371B86 /* AppDelegate.swift in Sources */,
+				16F848A61DF1E9700061B6EC /* InfoTableViewController.swift in Sources */,
 				163F07CB1DEA11E100F12503 /* Settings.swift in Sources */,
 				163F07CF1DEB2B1A00F12503 /* Movie.swift in Sources */,
 				16425A051DE638D80066793E /* TMDbHelper.swift in Sources */,
 				160234C21DC120390081FE88 /* GenreTableViewController.swift in Sources */,
 				160234C01DC111B50081FE88 /* SettingsMenuController.swift in Sources */,
+				16F848A41DF1DAF20061B6EC /* FramesCollectionViewController.swift in Sources */,
 				167AA4701DEF3123003B090D /* FrameCollectionViewCell.swift in Sources */,
 				160234BE1DC110630081FE88 /* MainMenuController.swift in Sources */,
 			);

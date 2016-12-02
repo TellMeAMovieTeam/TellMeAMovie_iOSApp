@@ -30,7 +30,7 @@ class MainMenuController: UITableViewController, UICollectionViewDataSource, UIC
     private var currentSelectedMovieIndex : Int = 0
     
     /// Текущий выбранный фильм
-    private var currentSelectedMovie : Movie = Movie.init()
+    public var currentSelectedMovie : Movie = Movie.init()
     
     @IBAction func cancelSettingsToMainMenu(segue:UIStoryboardSegue) {
     }
@@ -156,8 +156,6 @@ class MainMenuController: UITableViewController, UICollectionViewDataSource, UIC
     }
     
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        //print("testFrame")
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! FrameCollectionViewCell
         if ((isMoviesDataDownloaded == true) && (currentSelectedMovie.framesURLs.count != 0) /*&& (cell.frameImageView.image == nil)*/) {

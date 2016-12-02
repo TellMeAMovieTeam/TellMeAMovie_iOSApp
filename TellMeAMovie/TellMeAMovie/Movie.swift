@@ -9,6 +9,8 @@
 import Foundation
 import TMDBSwift
 
+
+//TODO переделать под realm
 public class Movie : NSObject, NSCoding {
     
     var movieId : Int = 0

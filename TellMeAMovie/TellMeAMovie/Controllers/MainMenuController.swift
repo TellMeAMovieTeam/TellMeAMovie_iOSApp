@@ -113,10 +113,9 @@ class MainMenuController: UITableViewController, UICollectionViewDataSource, UIC
         self.view.addGestureRecognizer(swipeLeft)
         
         //двойной тап
-        //let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.respondToDoubleTap))
-        //tapGesture.numberOfTapsRequired = 2
-        
-        collectionView.addGestureRecognizer(tapGestureRecognizer)
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.respondToDoubleTap))
+        tapGesture.numberOfTapsRequired = 2
+        collectionView.addGestureRecognizer(tapGesture)
         
     }
     
@@ -136,6 +135,16 @@ class MainMenuController: UITableViewController, UICollectionViewDataSource, UIC
         }
     }
     
+    func respondToDoubleTap(gesture: UIGestureRecognizer) {
+        
+        if let tapGesture = gesture as? UITapGestureRecognizer {
+        
+            //print("double tap")
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "frameNavigationController") as! UINavigationController
+            self.present(vc, animated: true, completion: nil)
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -149,12 +158,13 @@ class MainMenuController: UITableViewController, UICollectionViewDataSource, UIC
         //print("testFrame")
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! FrameCollectionViewCell
-        if ((isMoviesDataDownloaded == true) && (currentSelectedMovie.framesURLs.count != 0)) {
+        if ((isMoviesDataDownloaded == true) && (currentSelectedMovie.framesURLs.count != 0) && (cell.frameImageView.image == nil)) {
             
             //print(currentSelectedMovie.framesURLs[frameCounter])
             
             cell.frameInit(sringUrl: currentSelectedMovie.framesURLs[frameCounter])
             frameCounter += 1
+            //IndexPath - collectionView
             
             if (frameCounter == frameNumber) {
                 

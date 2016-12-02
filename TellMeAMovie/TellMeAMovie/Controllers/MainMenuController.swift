@@ -55,7 +55,7 @@ class MainMenuController: UITableViewController, UICollectionViewDataSource, UIC
             
             var allOldSettingsMovies : [Movie] = getMoviesFromUD()
             let showedOldSettingsMovies : [Movie] = Array(allOldSettingsMovies[0...0+currentSelectedMovieIndex])
-            //removeMoviesFromUD(movies : Array(allOldSettingsMovies[0+currentSelectedMovieIndex...allOldSettingsMovies.count-1]))
+            removeMoviesFromUD(movies : Array(allOldSettingsMovies[currentSelectedMovieIndex+1...allOldSettingsMovies.count-1]))
             saveMoviesToUD(movies: showedOldSettingsMovies)
             
             getMoviesWithCurrentSettings(page: 1)

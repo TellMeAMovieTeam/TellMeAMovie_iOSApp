@@ -8,9 +8,7 @@
 
 import UIKit
 
-private let reuseIdentifier = "Cell"
-
-class FramesCollectionViewController: UICollectionViewController {
+class FramesCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 
     private var frameNumber : Int = 0
     public var currentSelectedMovie : Movie = Movie.init()
@@ -41,7 +39,7 @@ class FramesCollectionViewController: UICollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! FrameCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BigCell", for: indexPath) as! FrameCollectionViewCell
         cell.frameImageView.transform = CGAffineTransform(rotationAngle: CGFloat(M_PI_2)); //90 degree//rotation in radians
 
         if (currentSelectedMovie.framesURLs.count != 0) {
@@ -57,9 +55,14 @@ class FramesCollectionViewController: UICollectionViewController {
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         let cellWidth : Float = Float(self.view.frame.size.width)
-        let cellHeight : Float = roundf((cellWidth / shortSideModifyer) * longSideModifyer)
+        let cellHeight : Float = Float(self.view.frame.size.height)
+        //let cellHeight : Float = roundf((cellWidth / shortSideModifyer) * longSideModifyer)
         
-        return CGSize.init(width: CGFloat(cellHeight), height: CGFloat(cellWidth))
+        print("Cell-test")
+        print(cellWidth)
+        print(cellHeight)
+        
+        return CGSize.init(width: CGFloat(cellWidth), height: CGFloat(cellHeight))
         
     }
     

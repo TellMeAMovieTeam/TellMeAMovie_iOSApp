@@ -10,6 +10,7 @@ target 'TellMeAMovie' do
   pod 'SDWebImage', '~>3.8'
   pod 'YSRangeSlider'
   pod 'RealmSwift'
+  pod 'PureLayout'
 
 end
 

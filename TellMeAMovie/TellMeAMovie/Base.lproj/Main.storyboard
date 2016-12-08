@@ -717,7 +717,7 @@
         <scene sceneID="Zp5-aS-QNS">
             <objects>
                 <collectionViewController storyboardIdentifier="frameCollectionViewController" modalTransitionStyle="flipHorizontal" id="hjv-Mt-fr5" customClass="FramesCollectionViewController" customModule="TellMeAMovie" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="io8-1W-kni">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" pagingEnabled="YES" dataMode="prototypes" id="io8-1W-kni">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -728,7 +728,7 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" reuseIdentifier="BigCell" id="fXF-Lf-OBg" customClass="FrameCollectionViewCell" customModule="TellMeAMovie" customModuleProvider="target">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" reuseIdentifier="BigCell" id="fXF-Lf-OBg" customClass="BigFrameCollectionViewCell" customModule="TellMeAMovie" customModuleProvider="target">
                                 <rect key="frame" x="5" y="0.0" width="365" height="605"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -739,10 +739,10 @@
                                     </subviews>
                                 </view>
                                 <constraints>
-                                    <constraint firstAttribute="trailingMargin" secondItem="y4s-XX-Kvs" secondAttribute="trailing" id="bjw-cw-b0k"/>
-                                    <constraint firstItem="y4s-XX-Kvs" firstAttribute="top" secondItem="fXF-Lf-OBg" secondAttribute="topMargin" id="f0T-vw-ZcH"/>
-                                    <constraint firstAttribute="bottomMargin" secondItem="y4s-XX-Kvs" secondAttribute="bottom" id="w4b-N1-yNZ"/>
-                                    <constraint firstItem="y4s-XX-Kvs" firstAttribute="leading" secondItem="fXF-Lf-OBg" secondAttribute="leadingMargin" id="wAw-fH-oIN"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="y4s-XX-Kvs" secondAttribute="trailing" placeholder="YES" id="bjw-cw-b0k"/>
+                                    <constraint firstItem="y4s-XX-Kvs" firstAttribute="top" secondItem="fXF-Lf-OBg" secondAttribute="topMargin" placeholder="YES" id="f0T-vw-ZcH"/>
+                                    <constraint firstAttribute="bottomMargin" secondItem="y4s-XX-Kvs" secondAttribute="bottom" placeholder="YES" id="w4b-N1-yNZ"/>
+                                    <constraint firstItem="y4s-XX-Kvs" firstAttribute="leading" secondItem="fXF-Lf-OBg" secondAttribute="leadingMargin" placeholder="YES" id="wAw-fH-oIN"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="frameImageView" destination="y4s-XX-Kvs" id="XRJ-ox-fSD"/>
@@ -790,7 +790,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="73g-pg-mL3" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="nhi-fD-VtJ">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="nhi-fD-VtJ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

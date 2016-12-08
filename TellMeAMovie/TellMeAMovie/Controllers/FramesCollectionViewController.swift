@@ -39,16 +39,16 @@ class FramesCollectionViewController: UICollectionViewController, UICollectionVi
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BigCell", for: indexPath) as! FrameCollectionViewCell
-        cell.frameImageView.transform = CGAffineTransform(rotationAngle: CGFloat(M_PI_2)); //90 degree//rotation in radians
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BigCell", for: indexPath) as? BigFrameCollectionViewCell else {
+            return UICollectionViewCell()
+        }
+        
+//        cell.frameImageView.transform = CGAffineTransform(rotationAngle: CGFloat(M_PI_2)); //90 degree//rotation in radians
 
         if (currentSelectedMovie.framesURLs.count != 0) {
-            
-            cell.prepareForReuse()
-            
             cell.frameInit(sringUrl: currentSelectedMovie.framesURLs[indexPath.item].value)
-            
         }
+        
         return cell
     }
     

@@ -1,4 +1,5 @@
 PODS:
+  - PureLayout (3.0.2)
   - Realm (2.1.0):
     - Realm/Headers (= 2.1.0)
   - Realm/Headers (2.1.0)
@@ -11,18 +12,20 @@ PODS:
   - YSRangeSlider (3.1.0)
 
 DEPENDENCIES:
+  - PureLayout
   - RealmSwift
   - SDWebImage (~> 3.8)
   - TMDBSwift
   - YSRangeSlider
 
 SPEC CHECKSUMS:
+  PureLayout: 4d550abe49a94f24c2808b9b95db9131685fe4cd
   Realm: bc829ad0ef3d4eea70c34cfcc3b1704d18d50df1
   RealmSwift: a4d4abbf0088c337cab5b738054395842e4b3052
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
   TMDBSwift: 29144be00568a1c5c5d748ce2ec4b735cd98f466
   YSRangeSlider: 791b224d7b0871c99f779eb7ec333eda147cdbab
 
-PODFILE CHECKSUM: 265de4b39f664003efd73ef57dadb5af14073850
+PODFILE CHECKSUM: a5822aac5dfe00347698cc13362c35c99327cc44
 
 COCOAPODS: 1.1.1

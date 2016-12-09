@@ -80,6 +80,9 @@
 		160234BC1DC10FF90081FE88 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				163F07CA1DEA11E100F12503 /* Settings.swift */,
+				163F07CC1DEA3ECC00F12503 /* Genre.swift */,
+				163F07CE1DEB2B1A00F12503 /* Movie.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -113,9 +116,6 @@
 				1676A9361DB956A400371B86 /* LaunchScreen.storyboard */,
 				1676A9391DB956A400371B86 /* Info.plist */,
 				16425A041DE638D80066793E /* TMDbHelper.swift */,
-				163F07CA1DEA11E100F12503 /* Settings.swift */,
-				163F07CC1DEA3ECC00F12503 /* Genre.swift */,
-				163F07CE1DEB2B1A00F12503 /* Movie.swift */,
 			);
 			path = TellMeAMovie;
 			sourceTree = "<group>";

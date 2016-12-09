@@ -143,10 +143,13 @@ class MainMenuController: UITableViewController, UICollectionViewDataSource, UIC
         
             //print("double tap")
             
-            setMovieIdToUserDefaults(movie: currentSelectedMovie)
-            
             let vc = self.storyboard?.instantiateViewController(withIdentifier: "frameNavigationController") as! UINavigationController
-            self.present(vc, animated: true, completion: nil)
+            
+            if let framesController = vc.viewControllers.first as? FramesCollectionViewController {
+                
+                framesController.currentSelectedMovie = currentSelectedMovie
+                self.present(vc, animated: true, completion: nil)
+            }
         }
     }
     

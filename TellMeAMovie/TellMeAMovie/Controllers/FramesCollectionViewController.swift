@@ -11,6 +11,7 @@ import UIKit
 class FramesCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 
     private var frameNumber : Int = 0
+    public var currentSelectedMovieId = 0
     public var currentSelectedMovie : Movie = Movie.init()
     let longSideModifyer : Float = 16.0
     let shortSideModifyer : Float = 9.0
@@ -18,9 +19,8 @@ class FramesCollectionViewController: UICollectionViewController, UICollectionVi
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let currentSelectedMovieId = getMovieIdFromUserDefaults()
-        let selectedMovie : Movie = getMovieFromRealm(movieId: currentSelectedMovieId)
-        currentSelectedMovie = selectedMovie
+        //let selectedMovie : Movie = getMovieFromRealm(movieId: currentSelectedMovieId)
+        //currentSelectedMovie = selectedMovie
         
         frameNumber = (currentSelectedMovie.framesURLs.count - 1)
         collectionView?.reloadData()
@@ -42,8 +42,6 @@ class FramesCollectionViewController: UICollectionViewController, UICollectionVi
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BigCell", for: indexPath) as? BigFrameCollectionViewCell else {
             return UICollectionViewCell()
         }
-        
-//        cell.frameImageView.transform = CGAffineTransform(rotationAngle: CGFloat(M_PI_2)); //90 degree//rotation in radians
 
         if (currentSelectedMovie.framesURLs.count != 0) {
             cell.frameInit(sringUrl: currentSelectedMovie.framesURLs[indexPath.item].value)

@@ -256,12 +256,12 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="Nwz-lp-Vgp">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="cLR-c5-GYZ">
+                        <barButtonItem key="leftBarButtonItem" image="Cancel" id="cLR-c5-GYZ">
                             <connections>
                                 <segue destination="aLc-41-bgb" kind="unwind" identifier="CancelSettings" unwindAction="cancelSettingsToMainMenuWithSegue:" id="PN2-Gv-R4k"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="J5y-7M-wja">
+                        <barButtonItem key="rightBarButtonItem" image="Save" id="J5y-7M-wja">
                             <connections>
                                 <segue destination="aLc-41-bgb" kind="unwind" identifier="SaveSettings" unwindAction="saveSettingsToMainMenuWithSegue:" id="Aku-MO-GTO"/>
                             </connections>
@@ -686,12 +686,12 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="M20-Pc-StE">
-                        <barButtonItem key="leftBarButtonItem" title="Team" id="xPi-r8-ced">
+                        <barButtonItem key="leftBarButtonItem" image="Info" id="xPi-r8-ced">
                             <connections>
                                 <segue destination="JPX-5N-M3X" kind="show" id="602-lo-XFT"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="compose" id="csw-h9-Lcz">
+                        <barButtonItem key="rightBarButtonItem" image="Settings" id="csw-h9-Lcz">
                             <connections>
                                 <segue destination="gc3-Of-lqw" kind="presentation" id="jQT-xW-aPU"/>
                             </connections>
@@ -717,7 +717,7 @@
         <scene sceneID="Zp5-aS-QNS">
             <objects>
                 <collectionViewController storyboardIdentifier="frameCollectionViewController" modalTransitionStyle="flipHorizontal" id="hjv-Mt-fr5" customClass="FramesCollectionViewController" customModule="TellMeAMovie" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" pagingEnabled="YES" dataMode="prototypes" id="io8-1W-kni">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" id="io8-1W-kni">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -755,7 +755,7 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" title="Кадры" id="109-8h-RLb">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Bjo-jA-mdQ">
+                        <barButtonItem key="leftBarButtonItem" image="Back" id="Bjo-jA-mdQ">
                             <connections>
                                 <segue destination="axN-a8-UUI" kind="unwind" unwindAction="cancelFramesViewerToMainMenuWithSegue:" id="RgF-Zd-Fsm"/>
                             </connections>
@@ -790,7 +790,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="73g-pg-mL3" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="nhi-fD-VtJ">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="nhi-fD-VtJ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -822,4 +822,11 @@
             <point key="canvasLocation" x="812" y="923"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Back" width="24" height="24"/>
+        <image name="Cancel" width="25" height="25"/>
+        <image name="Info" width="25" height="25"/>
+        <image name="Save" width="25" height="25"/>
+        <image name="Settings" width="25" height="25"/>
+    </resources>
 </document>
